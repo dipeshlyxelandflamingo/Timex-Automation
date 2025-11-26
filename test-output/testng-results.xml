@@ -1,37 +1,327 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="5" passed="5" failed="0" skipped="0">
+<testng-results ignored="0" total="19" passed="14" failed="5" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-11-24T13:33:51 IST" name="Default suite" finished-at="2025-11-24T13:35:56 IST" duration-ms="124668">
+  <suite started-at="2025-11-26T17:18:28 IST" name="Suite" finished-at="2025-11-26T17:39:50 IST" duration-ms="1282347">
     <groups>
     </groups>
-    <test started-at="2025-11-24T13:33:51 IST" name="Default test" finished-at="2025-11-24T13:35:56 IST" duration-ms="124668">
+    <test started-at="2025-11-26T17:18:28 IST" name="Test" finished-at="2025-11-26T17:39:50 IST" duration-ms="1282347">
+      <class name="Form_testing.CheckOut">
+        <test-method signature="TC_01_CheckOutEnableStatus()[pri:1, instance:Form_testing.CheckOut@24569dba]" started-at="2025-11-26T17:39:30 IST" name="TC_01_CheckOutEnableStatus" finished-at="2025-11-26T17:39:50 IST" duration-ms="20156" status="FAIL">
+          <exception class="org.openqa.selenium.TimeoutException">
+            <message>
+              <![CDATA[Expected condition failed: waiting for visibility of element located by By.xpath: //*[contains(text(),'Order Summary')] (tried for 10 second(s) with 500 milliseconds interval)
+Build info: version: '4.25.0', revision: '8a8aea2337'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.7'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 142.0.7444.176, chrome: {chromedriverVersion: 142.0.7444.175 (302067f14a4..., userDataDir: C:\Users\LYXELA~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:49613}, goog:processID: 6952, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:49613/devtoo..., se:cdpVersion: 142.0.7444.176, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: fee001fea9f30745ab657dfc25f0b32a]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.xpath: //*[contains(text(),'Order Summary')] (tried for 10 second(s) with 500 milliseconds interval)
+Build info: version: '4.25.0', revision: '8a8aea2337'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.7'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 142.0.7444.176, chrome: {chromedriverVersion: 142.0.7444.175 (302067f14a4..., userDataDir: C:\Users\LYXELA~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:49613}, goog:processID: 6952, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:49613/devtoo..., se:cdpVersion: 142.0.7444.176, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: fee001fea9f30745ab657dfc25f0b32a
+at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
+at Form_testing.CheckOut.TC_01_CheckOutEnableStatus(CheckOut.java:19)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:848)
+at org.testng.TestRunner.run(TestRunner.java:621)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
+at org.testng.TestNG.runSuites(TestNG.java:1114)
+at org.testng.TestNG.run(TestNG.java:1082)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.TimeoutException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_01_CheckOutEnableStatus -->
+      </class> <!-- Form_testing.CheckOut -->
       <class name="Form_testing.Homepage">
-        <test-method is-config="true" signature="SetUp()[pri:0, instance:Form_testing.Homepage@303cf2ba]" started-at="2025-11-24T13:33:51 IST" name="SetUp" finished-at="2025-11-24T13:34:43 IST" duration-ms="52317" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:Form_testing.Homepage@8519cb4]" started-at="2025-11-26T17:17:56 IST" name="setUp" finished-at="2025-11-26T17:18:28 IST" duration-ms="31321" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- SetUp -->
-        <test-method signature="TC_01_MarlinAutomatic_ShopNowButton()[pri:1, instance:Form_testing.Homepage@303cf2ba]" started-at="2025-11-24T13:34:44 IST" name="TC_01_MarlinAutomatic_ShopNowButton" finished-at="2025-11-24T13:34:47 IST" duration-ms="3397" status="PASS">
+        </test-method> <!-- setUp -->
+        <test-method signature="TC_01_ClosePopUp()[pri:1, instance:Form_testing.Homepage@8519cb4]" started-at="2025-11-26T17:18:28 IST" name="TC_01_ClosePopUp" finished-at="2025-11-26T17:18:52 IST" duration-ms="24422" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- TC_01_MarlinAutomatic_ShopNowButton -->
-        <test-method signature="TC_02_ClickOnLatestReleaseAndBestSellerProducts()[pri:2, instance:Form_testing.Homepage@303cf2ba]" started-at="2025-11-24T13:34:47 IST" name="TC_02_ClickOnLatestReleaseAndBestSellerProducts" finished-at="2025-11-24T13:35:48 IST" duration-ms="60780" status="PASS">
+        </test-method> <!-- TC_01_ClosePopUp -->
+        <test-method signature="TC_02_MarlinAutomatic_ShopNowButton()[pri:2, instance:Form_testing.Homepage@8519cb4]" started-at="2025-11-26T17:18:52 IST" name="TC_02_MarlinAutomatic_ShopNowButton" finished-at="2025-11-26T17:19:17 IST" duration-ms="24224" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- TC_02_ClickOnLatestReleaseAndBestSellerProducts -->
-        <test-method signature="TC_03_ClickOnPopularCategory()[pri:3, instance:Form_testing.Homepage@303cf2ba]" started-at="2025-11-24T13:35:48 IST" name="TC_03_ClickOnPopularCategory" finished-at="2025-11-24T13:35:50 IST" duration-ms="2532" status="PASS">
+        </test-method> <!-- TC_02_MarlinAutomatic_ShopNowButton -->
+        <test-method signature="TC_03_ClickOnLatestReleaseAndBestSellerProducts()[pri:3, instance:Form_testing.Homepage@8519cb4]" started-at="2025-11-26T17:19:17 IST" name="TC_03_ClickOnLatestReleaseAndBestSellerProducts" finished-at="2025-11-26T17:28:05 IST" duration-ms="528289" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- TC_03_ClickOnPopularCategory -->
-        <test-method signature="TC_04_ClickOnLeatherStrapWatch()[pri:4, instance:Form_testing.Homepage@303cf2ba]" started-at="2025-11-24T13:35:50 IST" name="TC_04_ClickOnLeatherStrapWatch" finished-at="2025-11-24T13:35:53 IST" duration-ms="2733" status="PASS">
+        </test-method> <!-- TC_03_ClickOnLatestReleaseAndBestSellerProducts -->
+        <test-method signature="TC_04_ClickOnPopularCategory()[pri:4, instance:Form_testing.Homepage@8519cb4]" started-at="2025-11-26T17:28:05 IST" name="TC_04_ClickOnPopularCategory" finished-at="2025-11-26T17:28:31 IST" duration-ms="26169" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- TC_04_ClickOnLeatherStrapWatch -->
-        <test-method signature="TC_04_ClickOnMoretoLoveSection()[pri:5, instance:Form_testing.Homepage@303cf2ba]" started-at="2025-11-24T13:35:53 IST" name="TC_04_ClickOnMoretoLoveSection" finished-at="2025-11-24T13:35:56 IST" duration-ms="2719" status="PASS">
+        </test-method> <!-- TC_04_ClickOnPopularCategory -->
+        <test-method signature="TC_05_ClickOnLeatherStrapWatch()[pri:5, instance:Form_testing.Homepage@8519cb4]" started-at="2025-11-26T17:28:31 IST" name="TC_05_ClickOnLeatherStrapWatch" finished-at="2025-11-26T17:28:58 IST" duration-ms="26288" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- TC_04_ClickOnMoretoLoveSection -->
+        </test-method> <!-- TC_05_ClickOnLeatherStrapWatch -->
+        <test-method signature="TC_06_ClickOnMoretoLoveSection()[pri:6, instance:Form_testing.Homepage@8519cb4]" started-at="2025-11-26T17:28:58 IST" name="TC_06_ClickOnMoretoLoveSection" finished-at="2025-11-26T17:29:25 IST" duration-ms="27401" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_06_ClickOnMoretoLoveSection -->
+        <test-method signature="TC_07_ClickOnWatchesCategoryPage()[pri:7, instance:Form_testing.Homepage@8519cb4]" started-at="2025-11-26T17:29:25 IST" name="TC_07_ClickOnWatchesCategoryPage" finished-at="2025-11-26T17:29:54 IST" duration-ms="29164" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_07_ClickOnWatchesCategoryPage -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:Form_testing.Homepage@8519cb4]" started-at="2025-11-26T17:39:50 IST" name="tearDown" finished-at="2025-11-26T17:39:53 IST" duration-ms="2489" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
       </class> <!-- Form_testing.Homepage -->
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+      <class name="Form_testing.PDP">
+        <test-method signature="TC_01_ClickOnProductRecommendations()[pri:1, instance:Form_testing.PDP@18271936]" started-at="2025-11-26T17:30:34 IST" name="TC_01_ClickOnProductRecommendations" finished-at="2025-11-26T17:39:28 IST" duration-ms="533160" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_01_ClickOnProductRecommendations -->
+        <test-method signature="TC_02_ClickOnAddToCartButton()[pri:2, instance:Form_testing.PDP@18271936]" started-at="2025-11-26T17:39:28 IST" name="TC_02_ClickOnAddToCartButton" finished-at="2025-11-26T17:39:30 IST" duration-ms="2192" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_02_ClickOnAddToCartButton -->
+      </class> <!-- Form_testing.PDP -->
+      <class name="Form_testing.PLP_Page">
+        <test-method signature="TC_01_SelectBandColorFilter()[pri:1, instance:Form_testing.PLP_Page@909217e]" started-at="2025-11-26T17:29:54 IST" name="TC_01_SelectBandColorFilter" finished-at="2025-11-26T17:29:57 IST" duration-ms="3220" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_01_SelectBandColorFilter -->
+        <test-method signature="TC_02_SelectDialColorFilter()[pri:2, instance:Form_testing.PLP_Page@909217e]" started-at="2025-11-26T17:29:57 IST" name="TC_02_SelectDialColorFilter" finished-at="2025-11-26T17:30:02 IST" duration-ms="4090" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_02_SelectDialColorFilter -->
+        <test-method signature="TC_03_SelectCaseDiameterFilter()[pri:3, instance:Form_testing.PLP_Page@909217e]" started-at="2025-11-26T17:30:02 IST" name="TC_03_SelectCaseDiameterFilter" finished-at="2025-11-26T17:30:05 IST" duration-ms="3256" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_03_SelectCaseDiameterFilter -->
+        <test-method signature="TC_04_SelectBandMaterialFilter()[pri:4, instance:Form_testing.PLP_Page@909217e]" started-at="2025-11-26T17:30:05 IST" name="TC_04_SelectBandMaterialFilter" finished-at="2025-11-26T17:30:08 IST" duration-ms="3064" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_04_SelectBandMaterialFilter -->
+        <test-method signature="TC_05_ClickOnProduct()[pri:5, instance:Form_testing.PLP_Page@909217e]" started-at="2025-11-26T17:30:08 IST" name="TC_05_ClickOnProduct" finished-at="2025-11-26T17:30:34 IST" duration-ms="26461" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_05_ClickOnProduct -->
+      </class> <!-- Form_testing.PLP_Page -->
+      <class name="Form_testing.MiniCart">
+        <test-method signature="TC_01_QuantityIncrease()[pri:1, instance:Form_testing.MiniCart@8462f31]" started-at="2025-11-26T17:39:30 IST" name="TC_01_QuantityIncrease" finished-at="2025-11-26T17:39:30 IST" duration-ms="11" status="FAIL">
+          <exception class="java.lang.NullPointerException">
+            <message>
+              <![CDATA[Cannot invoke "org.openqa.selenium.WebDriver.findElement(org.openqa.selenium.By)" because "driver" is null]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.findElement(org.openqa.selenium.By)" because "driver" is null
+at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:194)
+at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:190)
+at org.openqa.selenium.support.ui.ExpectedConditions$22.apply(ExpectedConditions.java:627)
+at org.openqa.selenium.support.ui.ExpectedConditions$22.apply(ExpectedConditions.java:624)
+at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:203)
+at Form_testing.MiniCart.TC_01_QuantityIncrease(MiniCart.java:21)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:848)
+at org.testng.TestRunner.run(TestRunner.java:621)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
+at org.testng.TestNG.runSuites(TestNG.java:1114)
+at org.testng.TestNG.run(TestNG.java:1082)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.NullPointerException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_01_QuantityIncrease -->
+        <test-method signature="TC_02_QuantityDecrease()[pri:2, instance:Form_testing.MiniCart@8462f31]" started-at="2025-11-26T17:39:30 IST" name="TC_02_QuantityDecrease" finished-at="2025-11-26T17:39:30 IST" duration-ms="5" status="FAIL">
+          <exception class="java.lang.NullPointerException">
+            <message>
+              <![CDATA[Cannot invoke "org.openqa.selenium.WebDriver.findElement(org.openqa.selenium.By)" because "driver" is null]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.findElement(org.openqa.selenium.By)" because "driver" is null
+at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:194)
+at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:190)
+at org.openqa.selenium.support.ui.ExpectedConditions$22.apply(ExpectedConditions.java:627)
+at org.openqa.selenium.support.ui.ExpectedConditions$22.apply(ExpectedConditions.java:624)
+at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:203)
+at Form_testing.MiniCart.TC_02_QuantityDecrease(MiniCart.java:38)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:848)
+at org.testng.TestRunner.run(TestRunner.java:621)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
+at org.testng.TestNG.runSuites(TestNG.java:1114)
+at org.testng.TestNG.run(TestNG.java:1082)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.NullPointerException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_02_QuantityDecrease -->
+        <test-method signature="TC_03_EnterPincode()[pri:3, instance:Form_testing.MiniCart@8462f31]" started-at="2025-11-26T17:39:30 IST" name="TC_03_EnterPincode" finished-at="2025-11-26T17:39:30 IST" duration-ms="6" status="FAIL">
+          <exception class="java.lang.NullPointerException">
+            <message>
+              <![CDATA[Cannot invoke "org.openqa.selenium.WebDriver.findElement(org.openqa.selenium.By)" because "driver" is null]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.findElement(org.openqa.selenium.By)" because "driver" is null
+at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:194)
+at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:190)
+at org.openqa.selenium.support.ui.ExpectedConditions$22.apply(ExpectedConditions.java:627)
+at org.openqa.selenium.support.ui.ExpectedConditions$22.apply(ExpectedConditions.java:624)
+at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:203)
+at Form_testing.MiniCart.TC_03_EnterPincode(MiniCart.java:53)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:848)
+at org.testng.TestRunner.run(TestRunner.java:621)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
+at org.testng.TestNG.runSuites(TestNG.java:1114)
+at org.testng.TestNG.run(TestNG.java:1082)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.NullPointerException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_03_EnterPincode -->
+        <test-method signature="TC_04_GoQuickCheckout()[pri:4, instance:Form_testing.MiniCart@8462f31]" started-at="2025-11-26T17:39:30 IST" name="TC_04_GoQuickCheckout" finished-at="2025-11-26T17:39:30 IST" duration-ms="4" status="FAIL">
+          <exception class="java.lang.NullPointerException">
+            <message>
+              <![CDATA[Cannot invoke "org.openqa.selenium.WebDriver.findElement(org.openqa.selenium.By)" because "driver" is null]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.findElement(org.openqa.selenium.By)" because "driver" is null
+at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:194)
+at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:190)
+at org.openqa.selenium.support.ui.ExpectedConditions$22.apply(ExpectedConditions.java:627)
+at org.openqa.selenium.support.ui.ExpectedConditions$22.apply(ExpectedConditions.java:624)
+at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:203)
+at Form_testing.MiniCart.TC_04_GoQuickCheckout(MiniCart.java:60)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:848)
+at org.testng.TestRunner.run(TestRunner.java:621)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
+at org.testng.TestNG.runSuites(TestNG.java:1114)
+at org.testng.TestNG.run(TestNG.java:1082)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.NullPointerException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_04_GoQuickCheckout -->
+      </class> <!-- Form_testing.MiniCart -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
 </testng-results>

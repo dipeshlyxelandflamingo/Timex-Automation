@@ -16,145 +16,101 @@ import Base.BaseClass;
 
 public class Homepage extends BaseClass {
 
-	@Test(priority = 1)
-	void TC_01_MarlinAutomatic_ShopNowButton() throws Throwable {
+	 // Helper method: open new tab, do actions, close tab safely
+    private void clickElementInNewTab(WebElement element) {
+        String parent = driver.getWindowHandle();
+        act.keyDown(Keys.CONTROL).click(element).keyUp(Keys.CONTROL).perform();
 
-		js.executeScript("window.scrollBy(0, 1400)");
+        // Switch to new tab
+        for (String tab : driver.getWindowHandles()) {
+            if (!tab.equals(parent)) {
+                driver.switchTo().window(tab);
+                break;
+            }
+        }
 
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		WebElement ClickOnShopNowButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(
-				"(//a[@href='/products/timex-men-green-analogue-round-stainless-steel-dial-watch-tw2v44600u9'])[2]")));
+        // Optional: do something in new tab (like print title)
+        System.out.println("Opened tab: " + driver.getTitle());
 
-		String parent = driver.getWindowHandle();
-		act.keyDown(Keys.CONTROL).click(ClickOnShopNowButton).keyUp(Keys.CONTROL).perform();
+        // Close new tab
+        driver.close();
 
-		for (String tab : driver.getWindowHandles()) {
-			if (!tab.equals(parent)) {
-				driver.switchTo().window(tab);
-				break;
-			}
-		}
+        // Switch back to parent
+        driver.switchTo().window(parent);
+    }
 
-		Thread.sleep(2000);
-		driver.close();
-		driver.switchTo().window(parent);
-	}
+    @Test(priority = 1)
+    void TC_01_ClosePopUp() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement popupCloseButton = wait.until(
+                ExpectedConditions.elementToBeClickable(By.id("md-btn__form__onSubmit")));
+        popupCloseButton.click();
+    }
 
-	@Test(priority = 2)
-	void TC_02_ClickOnLatestReleaseAndBestSellerProducts() throws Throwable {
+    @Test(priority = 2)
+    void TC_02_MarlinAutomatic_ShopNowButton() {
+        js.executeScript("window.scrollBy(0, 1400)");
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement shopNowButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(
+                "(//a[@href='/products/timex-men-green-analogue-round-stainless-steel-dial-watch-tw2v44600u9'])[2]")));
 
-		js.executeScript("window.scrollBy(0, 500)");
+        clickElementInNewTab(shopNowButton);
+    }
 
-		List<WebElement> Product = driver.findElements(By.xpath("//div[@class='product-bx']"));
+    @Test(priority = 3)
+    void TC_03_ClickOnLatestReleaseAndBestSellerProducts() {
+        js.executeScript("window.scrollBy(0, 500)");
 
-		for (WebElement Products : Product) {
+        List<WebElement> products = driver.findElements(By.xpath("//div[@class='product-bx']"));
 
-			System.out.println(Products.getText());
+        for (WebElement product : products) {
+            System.out.println(product.getText());
+            clickElementInNewTab(product);
 
-			String parent = driver.getWindowHandle();
-			act.keyDown(Keys.CONTROL).click(Products).keyUp(Keys.CONTROL).perform();
+            // Refresh elements after switching back
+            products = driver.findElements(By.xpath("//div[@class='product-bx']"));
+        }
+    }
 
-			for (String tab : driver.getWindowHandles()) {
-				if (!tab.equals(parent)) {
-					driver.switchTo().window(tab);
-					break;
-				}
-			}
+    @Test(priority = 4)
+    void TC_04_ClickOnPopularCategory() {
+        js.executeScript("window.scrollBy(0, 600)");
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement bestSeller = wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("(//a[@href='/collections/offers'])[9]")));
 
-			Thread.sleep(2000);
-			driver.close();
-			driver.switchTo().window(parent);
+        clickElementInNewTab(bestSeller);
+    }
 
-			// Refresh Elements after coming back
-			Product = driver.findElements(By.xpath("//div[@class='product-bx']"));
-		}
-	}
+    @Test(priority = 5)
+    void TC_05_ClickOnLeatherStrapWatch() {
+        js.executeScript("window.scrollBy(0, 600)");
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement watch = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(
+                "(//a[@href='/products/timex-men-burgundy-stainless-steel-tonneau-dial-analog-watch-tw2v25400u9'])[6]")));
 
-	@Test(priority = 3)
-	void TC_03_ClickOnPopularCategory() throws Throwable {
+        clickElementInNewTab(watch);
+    }
 
-		js.executeScript("window.scrollBy(0, 600)");
+    @Test(priority = 6)
+    void TC_06_ClickOnMoretoLoveSection() {
+        js.executeScript("window.scrollBy(0, 3500)");
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement collection = wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("(//a[@href='/collections/timex-x-jacquie-aiche'])[4]")));
 
-		WebElement BestSellerclick = driver.findElement(By.xpath("(//a[@href='/collections/offers'])[3]"));
+        clickElementInNewTab(collection);
+    }
 
-		String parent = driver.getWindowHandle();
-		act.keyDown(Keys.CONTROL).click(BestSellerclick).keyUp(Keys.CONTROL).perform();
+    @Test(priority = 7)
+    void TC_07_ClickOnWatchesCategoryPage() {
+        js.executeScript("window.scrollTo(0, 0)");
 
-		for (String tab : driver.getWindowHandles()) {
-			if (!tab.equals(parent)) {
-				driver.switchTo().window(tab);
-				break;
-			}
-		}
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement watchesTab = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@class='nav_link_timex']")));
+        watchesTab.click();
 
-		Thread.sleep(2000);
-		driver.close();
-		driver.switchTo().window(parent);
-	}
-
-	@Test(priority = 4)
-	void TC_04_ClickOnLeatherStrapWatch() throws Throwable {
-
-		js.executeScript("window.scrollBy(0, 600)");
-
-		WebElement BestSellerclick = driver.findElement(By.xpath(
-				"(//a[@href='/products/timex-men-burgundy-stainless-steel-tonneau-dial-analog-watch-tw2v25400u9'])[6]"));
-
-		String parent = driver.getWindowHandle();
-		act.keyDown(Keys.CONTROL).click(BestSellerclick).keyUp(Keys.CONTROL).perform();
-
-		for (String tab : driver.getWindowHandles()) {
-			if (!tab.equals(parent)) {
-				driver.switchTo().window(tab);
-				break;
-			}
-		}
-
-		Thread.sleep(2000);
-		driver.close();
-		driver.switchTo().window(parent);
-	}
-
-	@Test(priority = 5)
-	void TC_05_ClickOnMoretoLoveSection() throws Throwable {
-
-		js.executeScript("window.scrollBy(0, 3500)");
-
-		WebElement BestSellerclick = driver
-				.findElement(By.xpath("(//a[@href='/collections/timex-x-jacquie-aiche'])[4]"));
-
-		String parent = driver.getWindowHandle();
-		act.keyDown(Keys.CONTROL).click(BestSellerclick).keyUp(Keys.CONTROL).perform();
-
-		for (String tab : driver.getWindowHandles()) {
-			if (!tab.equals(parent)) {
-				driver.switchTo().window(tab);
-				break;
-			}
-		}
-
-		Thread.sleep(2000);
-		driver.close();
-		driver.switchTo().window(parent);
-
-	}
-
-	@Test(priority = 6)
-	void TC_06_ClickOnWatchesCategoryPage() throws Throwable {
-
-		// Scroll to top of page
-		js.executeScript("window.scrollTo(0, 0)");
-		Thread.sleep(2000);
-
-		// Click on Watches Tab
-		WebElement WatchesTab = driver.findElement(By.xpath("//a[@class='nav_link_timex']"));
-		WatchesTab.click();
-		Thread.sleep(2000);
-
-		// Click on Shop All Button inside Watches Menu
-		WebElement ShopAll = driver.findElement(By.xpath("//a[@href='/collections/mens']"));
-		ShopAll.click();
-		Thread.sleep(3000);
-
-	}
+        WebElement shopAll = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@href='/collections/mens']")));
+        shopAll.click();
+    }
 }

@@ -11,37 +11,32 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeSuite;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BaseClass {
 
-	public WebDriver driver;
-	public JavascriptExecutor js;
-	public Actions act;
+	public static WebDriver driver;
+    public static JavascriptExecutor js;
+    public static Actions act;
 
-	@BeforeClass
-	public void SetUp() throws Throwable {
-		WebDriverManager.chromedriver().setup();
-		driver = new ChromeDriver();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-		driver.manage().window().maximize();
-		driver.get("https://shop.timexindia.com");
+    @BeforeSuite
+    public void setUp() {
+        WebDriverManager.chromedriver().setup();
+        driver = new ChromeDriver();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+        driver.manage().window().maximize();
+        driver.get("https://shop.timexindia.com");
 
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		WebElement popupCloseButton = wait
-				.until(ExpectedConditions.elementToBeClickable(By.id("md-btn__form__onSubmit")));
-		popupCloseButton.click();
+        js = (JavascriptExecutor) driver;
+        act = new Actions(driver);
+    }
 
-		js = (JavascriptExecutor) driver;
-		act = new Actions(driver);
-	}
-
-	@AfterClass
-	public void TearDown() {
-
-		driver.quit();
-	}
-
+    @AfterSuite
+    public void tearDown() {
+        driver.quit();
+    }
 }
