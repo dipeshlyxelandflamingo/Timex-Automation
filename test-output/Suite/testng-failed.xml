@@ -1,25 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
-  <test thread-count="5" name="Test(failed)">
+  <test thread-count="5" name="MiniCartTest(failed)">
     <classes>
-      <class name="Form_testing.CheckOut">
+      <class name="TestPages.MiniCartTest">
         <methods>
-          <include name="TC_01_CheckOutEnableStatus"/>
-          <include name="tearDown"/>
-          <include name="setUp"/>
-        </methods>
-      </class> <!-- Form_testing.CheckOut -->
-      <class name="Form_testing.MiniCart">
-        <methods>
-          <include name="TC_04_GoQuickCheckout"/>
           <include name="TC_02_QuantityDecrease"/>
-          <include name="tearDown"/>
-          <include name="TC_01_QuantityIncrease"/>
-          <include name="TC_03_EnterPincode"/>
-          <include name="setUp"/>
+          <include name="setUpClass"/>
+          <include name="tearDownClass"/>
+          <include name="initFlow"/>
         </methods>
-      </class> <!-- Form_testing.MiniCart -->
+      </class> <!-- TestPages.MiniCartTest -->
     </classes>
-  </test> <!-- Test(failed) -->
+  </test> <!-- MiniCartTest(failed) -->
 </suite> <!-- Failed suite [Suite] -->

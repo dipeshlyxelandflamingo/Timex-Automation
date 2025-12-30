@@ -3,13 +3,15 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="Form_testing.CheckOut">
+      <class name="TestPages.MiniCartTest">
         <methods>
-          <include name="TC_01_CheckOutEnableStatus"/>
-          <include name="tearDown"/>
-          <include name="setUp"/>
+          <include name="TC_02_QuantityDecrease"/>
+          <include name="setUpClass"/>
+          <include name="TC_01_QuantityIncrease"/>
+          <include name="initFlow"/>
+          <include name="tearDownClass"/>
         </methods>
-      </class> <!-- Form_testing.CheckOut -->
+      </class> <!-- TestPages.MiniCartTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

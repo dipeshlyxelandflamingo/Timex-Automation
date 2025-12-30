@@ -4,18 +4,30 @@
 <th>Method name</th>
 <th>Groups</th>
 </tr><tr>
-<td>Form_testing.CheckOut</td>
+<td>TestPages.CheckOutTest</td>
 <td>&nbsp;</td><td>&nbsp;</td></tr>
 <tr>
 <td align='center' colspan='3'>@Test</td>
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>TC_01_CheckOutEnableStatus</td>
+<td>TC_01_VerifyCheckoutVisible</td>
+<td>&nbsp;</td></tr>
+<tr>
+<td>&nbsp;</td>
+<td>TC_02_VerifyCheckoutEnabled</td>
 <td>&nbsp;</td></tr>
 <tr>
 <td align='center' colspan='3'>@BeforeClass</td>
 </tr>
+<tr>
+<td>&nbsp;</td>
+<td>setUpClass</td>
+<td>&nbsp;</td></tr>
+<tr>
+<td>&nbsp;</td>
+<td>initFlow</td>
+<td>&nbsp;</td></tr>
 <tr>
 <td align='center' colspan='3'>@BeforeMethod</td>
 </tr>
@@ -26,42 +38,50 @@
 <td align='center' colspan='3'>@AfterClass</td>
 </tr>
 <tr>
-<td>Form_testing.Homepage</td>
+<td>&nbsp;</td>
+<td>tearDownClass</td>
+<td>&nbsp;</td></tr>
+<tr>
+<td>TestPages.PLPTest</td>
 <td>&nbsp;</td><td>&nbsp;</td></tr>
 <tr>
 <td align='center' colspan='3'>@Test</td>
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>TC_01_ClosePopUp</td>
+<td>TC_05_BandMaterialFilter</td>
 <td>&nbsp;</td></tr>
 <tr>
 <td>&nbsp;</td>
-<td>TC_03_ClickOnLatestReleaseAndBestSellerProducts</td>
+<td>TC_04_CaseDiameterFilter</td>
 <td>&nbsp;</td></tr>
 <tr>
 <td>&nbsp;</td>
-<td>TC_06_ClickOnMoretoLoveSection</td>
+<td>TC_03_DialColorFilter</td>
 <td>&nbsp;</td></tr>
 <tr>
 <td>&nbsp;</td>
-<td>TC_04_ClickOnPopularCategory</td>
+<td>TC_01_ClickOnShowFilterButton</td>
 <td>&nbsp;</td></tr>
 <tr>
 <td>&nbsp;</td>
-<td>TC_05_ClickOnLeatherStrapWatch</td>
+<td>TC_06_ClickOnProduct</td>
 <td>&nbsp;</td></tr>
 <tr>
 <td>&nbsp;</td>
-<td>TC_07_ClickOnWatchesCategoryPage</td>
-<td>&nbsp;</td></tr>
-<tr>
-<td>&nbsp;</td>
-<td>TC_02_MarlinAutomatic_ShopNowButton</td>
+<td>TC_02_BandColorFilter</td>
 <td>&nbsp;</td></tr>
 <tr>
 <td align='center' colspan='3'>@BeforeClass</td>
 </tr>
+<tr>
+<td>&nbsp;</td>
+<td>setUpClass</td>
+<td>&nbsp;</td></tr>
+<tr>
+<td>&nbsp;</td>
+<td>init</td>
+<td>&nbsp;</td></tr>
 <tr>
 <td align='center' colspan='3'>@BeforeMethod</td>
 </tr>
@@ -72,22 +92,34 @@
 <td align='center' colspan='3'>@AfterClass</td>
 </tr>
 <tr>
-<td>Form_testing.PDP</td>
+<td>&nbsp;</td>
+<td>tearDownClass</td>
+<td>&nbsp;</td></tr>
+<tr>
+<td>TestPages.PDPTest</td>
 <td>&nbsp;</td><td>&nbsp;</td></tr>
 <tr>
 <td align='center' colspan='3'>@Test</td>
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>TC_02_ClickOnAddToCartButton</td>
+<td>TC_02_addProductToCartProduct</td>
 <td>&nbsp;</td></tr>
 <tr>
 <td>&nbsp;</td>
-<td>TC_01_ClickOnProductRecommendations</td>
+<td>TC_01_clickOnProductRecommendations</td>
 <td>&nbsp;</td></tr>
 <tr>
 <td align='center' colspan='3'>@BeforeClass</td>
 </tr>
+<tr>
+<td>&nbsp;</td>
+<td>setUpClass</td>
+<td>&nbsp;</td></tr>
+<tr>
+<td>&nbsp;</td>
+<td>init</td>
+<td>&nbsp;</td></tr>
 <tr>
 <td align='center' colspan='3'>@BeforeMethod</td>
 </tr>
@@ -98,45 +130,11 @@
 <td align='center' colspan='3'>@AfterClass</td>
 </tr>
 <tr>
-<td>Form_testing.PLP_Page</td>
-<td>&nbsp;</td><td>&nbsp;</td></tr>
-<tr>
-<td align='center' colspan='3'>@Test</td>
-</tr>
-<tr>
 <td>&nbsp;</td>
-<td>TC_01_SelectBandColorFilter</td>
+<td>tearDownClass</td>
 <td>&nbsp;</td></tr>
 <tr>
-<td>&nbsp;</td>
-<td>TC_03_SelectCaseDiameterFilter</td>
-<td>&nbsp;</td></tr>
-<tr>
-<td>&nbsp;</td>
-<td>TC_05_ClickOnProduct</td>
-<td>&nbsp;</td></tr>
-<tr>
-<td>&nbsp;</td>
-<td>TC_04_SelectBandMaterialFilter</td>
-<td>&nbsp;</td></tr>
-<tr>
-<td>&nbsp;</td>
-<td>TC_02_SelectDialColorFilter</td>
-<td>&nbsp;</td></tr>
-<tr>
-<td align='center' colspan='3'>@BeforeClass</td>
-</tr>
-<tr>
-<td align='center' colspan='3'>@BeforeMethod</td>
-</tr>
-<tr>
-<td align='center' colspan='3'>@AfterMethod</td>
-</tr>
-<tr>
-<td align='center' colspan='3'>@AfterClass</td>
-</tr>
-<tr>
-<td>Form_testing.MiniCart</td>
+<td>TestPages.MiniCartTest</td>
 <td>&nbsp;</td><td>&nbsp;</td></tr>
 <tr>
 <td align='center' colspan='3'>@Test</td>
@@ -154,12 +152,16 @@
 <td>TC_01_QuantityIncrease</td>
 <td>&nbsp;</td></tr>
 <tr>
-<td>&nbsp;</td>
-<td>TC_02_QuantityDecrease</td>
-<td>&nbsp;</td></tr>
-<tr>
 <td align='center' colspan='3'>@BeforeClass</td>
 </tr>
+<tr>
+<td>&nbsp;</td>
+<td>setUpClass</td>
+<td>&nbsp;</td></tr>
+<tr>
+<td>&nbsp;</td>
+<td>initFlow</td>
+<td>&nbsp;</td></tr>
 <tr>
 <td align='center' colspan='3'>@BeforeMethod</td>
 </tr>
@@ -169,4 +171,62 @@
 <tr>
 <td align='center' colspan='3'>@AfterClass</td>
 </tr>
+<tr>
+<td>&nbsp;</td>
+<td>tearDownClass</td>
+<td>&nbsp;</td></tr>
+<tr>
+<td>TestPages.HomeTest</td>
+<td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr>
+<td align='center' colspan='3'>@Test</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>clickOnkLeatherStrapWatch</td>
+<td>&nbsp;</td></tr>
+<tr>
+<td>&nbsp;</td>
+<td>clickOnMarlinShopNow</td>
+<td>&nbsp;</td></tr>
+<tr>
+<td>&nbsp;</td>
+<td>clicOnWatchesCategory</td>
+<td>&nbsp;</td></tr>
+<tr>
+<td>&nbsp;</td>
+<td>clickOnLatestReleaseProducts</td>
+<td>&nbsp;</td></tr>
+<tr>
+<td>&nbsp;</td>
+<td>clicOnkMoreToLoveSection</td>
+<td>&nbsp;</td></tr>
+<tr>
+<td>&nbsp;</td>
+<td>clickOnPopularCategoryProducts</td>
+<td>&nbsp;</td></tr>
+<tr>
+<td align='center' colspan='3'>@BeforeClass</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>setUpClass</td>
+<td>&nbsp;</td></tr>
+<tr>
+<td>&nbsp;</td>
+<td>setUpHomePage</td>
+<td>&nbsp;</td></tr>
+<tr>
+<td align='center' colspan='3'>@BeforeMethod</td>
+</tr>
+<tr>
+<td align='center' colspan='3'>@AfterMethod</td>
+</tr>
+<tr>
+<td align='center' colspan='3'>@AfterClass</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>tearDownClass</td>
+<td>&nbsp;</td></tr>
 </table>
