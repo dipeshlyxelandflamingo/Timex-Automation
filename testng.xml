@@ -1,34 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Suite">
+
 	<test thread-count="5" name="HomeTest">
 		<classes>
 			<class name="TestPages.HomeTest" />
 		</classes>
-	</test> <!-- Test -->
+	</test>
 
 	<test thread-count="5" name="PLPTest">
 		<classes>
-
 			<class name="TestPages.PLPTest" />
 		</classes>
-	</test> <!-- Test -->
+	</test>
 
 	<test thread-count="5" name="PDPTest">
 		<classes>
 			<class name="TestPages.PDPTest" />
 		</classes>
-	</test> <!-- Test -->
+	</test>
 
 	<test thread-count="5" name="MiniCartTest">
 		<classes>
 			<class name="TestPages.MiniCartTest" />
 		</classes>
-	</test> <!-- Test -->
+	</test>
 
 	<test thread-count="5" name="CheckOutTest">
 		<classes>
 			<class name="TestPages.CheckOutTest" />
 		</classes>
-	</test> <!-- Test -->
-</suite> <!-- Suite -->
+	</test>
+
+</suite>

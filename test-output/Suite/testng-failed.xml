@@ -1,16 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
-  <test thread-count="5" name="MiniCartTest(failed)">
+  <test thread-count="5" name="HomeTest(failed)">
     <classes>
-      <class name="TestPages.MiniCartTest">
+      <class name="TestPages.HomeTest">
         <methods>
-          <include name="TC_02_QuantityDecrease"/>
+          <include name="clicOnkMoreToLoveSection"/>
+          <include name="setUpHomePage"/>
+          <include name="clickOnLatestReleaseProducts"/>
+          <include name="clickOnPopularCategoryProducts"/>
           <include name="setUpClass"/>
+          <include name="clicOnWatchesCategory"/>
+          <include name="clickOnMarlinShopNow"/>
+          <include name="clickOnkLeatherStrapWatch"/>
           <include name="tearDownClass"/>
-          <include name="initFlow"/>
         </methods>
-      </class> <!-- TestPages.MiniCartTest -->
+      </class> <!-- TestPages.HomeTest -->
     </classes>
-  </test> <!-- MiniCartTest(failed) -->
+  </test> <!-- HomeTest(failed) -->
+  <test thread-count="5" name="PLPTest(failed)">
+    <classes>
+      <class name="TestPages.PLPTest">
+        <methods>
+          <include name="TC_04_CaseDiameterFilter"/>
+          <include name="setUpClass"/>
+          <include name="init"/>
+          <include name="tearDownClass"/>
+          <include name="TC_02_BandColorFilter"/>
+        </methods>
+      </class> <!-- TestPages.PLPTest -->
+    </classes>
+  </test> <!-- PLPTest(failed) -->
 </suite> <!-- Failed suite [Suite] -->

@@ -157,7 +157,7 @@ public class HomePage {
 	public void goToWatchesCategory() throws Exception {
 		Thread.sleep(2000);
 		js.executeScript("window.scrollTo(0,0)");
-
+		Thread.sleep(2000);
 		WebElement watchesTab = wait
 				.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@class='nav_link_timex']")));
 		watchesTab.click();

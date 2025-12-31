@@ -50,7 +50,7 @@ public class BaseClass {
 	        }
 	    }
 
-	  @AfterClass
+	   @AfterClass
 	    public void tearDownClass() {
 	        if (driver != null) {
 	            driver.quit();

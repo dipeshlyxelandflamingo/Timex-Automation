@@ -1,0 +1,13 @@
+Pages\PDPPage.class
+TestPages\Contact_Us.class
+TestPages\PLPTest.class
+Pages\CheckOutPage.class
+Pages\HomePage.class
+Base\BaseClass.class
+TestPages\MiniCartTest.class
+Pages\MiniCartPage.class
+TestPages\HomeTest.class
+TestPages\CheckOutTest.class
+TestPages\PDPTest.class
+Pages\MiniCartPage$1.class
+Pages\PLPPage.class

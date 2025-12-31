@@ -1,12 +1,12 @@
 package Pages;
 
 import java.time.Duration;
-import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
@@ -22,144 +22,127 @@ public class PLPPage {
         this.js = (JavascriptExecutor) driver;
     }
 
-    // ---------------- Show Filter ----------------
-
-    public void ClickShowFilter() throws InterruptedException {
-        WebElement filterBtn =
-                driver.findElement(By.xpath("//button[@aria-label='Show Filter Hide Filter']"));
-
+    // ---------------- SHOW FILTER ----------------
+    public void clickShowFilter() {
+        WebElement filterBtn = wait.until(
+                ExpectedConditions.elementToBeClickable(By.xpath("//button[@aria-label='Show Filter Hide Filter']")));
         js.executeScript("arguments[0].click();", filterBtn);
-        Thread.sleep(2000);
     }
 
-    // ---------------- Band Color ----------------
-
-    public void selectBandColorFilter(String color, int expectedCount) throws InterruptedException {
-
-        js.executeScript("window.scrollTo(0,0)");
-        Thread.sleep(1000);
-
-        js.executeScript("arguments[0].click();",
-                driver.findElement(By.xpath("//button[text()='Gender']")));
-        js.executeScript("arguments[0].click();",
-                driver.findElement(By.xpath("//button[text()='Price']")));
-
-        Thread.sleep(1000);
-
-        WebElement filter =
-                driver.findElement(By.xpath("//button[text()='Band Color']"));
-
-        js.executeScript("arguments[0].scrollIntoView(true);", filter);
+    // ---------------- BAND COLOR FILTER ----------------
+    public void selectBandColorFilter(String color, int expectedCount) throws Exception {
+        // Open required filters
+        openFilter("Gender");
+        openFilter("Price");
+        // Open Band Color filter
+        WebElement filter = wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("//button[contains(@aria-label,'Filter by Band Color')]")));
+        js.executeScript("arguments[0].scrollIntoView({block:'center'});", filter);
         js.executeScript("arguments[0].click();", filter);
 
-        WebElement option =
-                driver.findElement(By.xpath("//button[@title='" + color + "']"));
+        // Select color option
+        WebElement option = wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("//div[contains(@class,'usf-facet-values')]//button[normalize-space(@title)='" + color + "']")));
+        js.executeScript("arguments[0].scrollIntoView({block:'center'});", option);
         js.executeScript("arguments[0].click();", option);
 
-        Thread.sleep(1500);
+        // Collapse filter
+        js.executeScript("arguments[0].scrollIntoView({block:'center'});", filter);
         js.executeScript("arguments[0].click();", filter);
 
+        // Wait and validate
+        waitForProductsToLoad();
         validateProductCount(expectedCount);
-        clearAllFilters();
+
+        // Clear filter
+        WebElement clearBtn = driver.findElement(By.xpath("(//button[@class='usf-clear-all usf-btn'])[1]"));
+        js.executeScript("arguments[0].scrollIntoView({block:'center'});", clearBtn);
+        js.executeScript("arguments[0].click();", clearBtn);
+        waitForProductsToLoad();
     }
 
-    // ---------------- Dial Color ----------------
-
+    // ---------------- DIAL COLOR FILTER ----------------
     public void selectDialColorFilter(String color, int expectedCount) throws InterruptedException {
-
-        WebElement filter =
-                driver.findElement(By.xpath("//button[text()='Dial Color']"));
-
-        js.executeScript("arguments[0].scrollIntoView(true);", filter);
+        WebElement filter = wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("//button[contains(@aria-label,'Filter by Dial Color')]")));
+        js.executeScript("arguments[0].scrollIntoView({block:'center'});", filter);
         js.executeScript("arguments[0].click();", filter);
 
-        WebElement option =
-                driver.findElement(By.xpath("//button[@title='" + color + "']"));
+        WebElement option = wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("//div[contains(@class,'usf-facet-values')]//button[normalize-space(@title)='" + color + "']")));
+        js.executeScript("arguments[0].scrollIntoView({block:'center'});", option);
         js.executeScript("arguments[0].click();", option);
 
-        Thread.sleep(1500);
+        // Collapse filter
+        js.executeScript("arguments[0].scrollIntoView({block:'center'});", filter);
         js.executeScript("arguments[0].click();", filter);
 
+        waitForProductsToLoad();
         validateProductCount(expectedCount);
-        clearAllFilters();
+
+        WebElement clearBtn = driver.findElement(By.xpath("(//button[@class='usf-clear-all usf-btn'])[1]"));
+        js.executeScript("arguments[0].scrollIntoView({block:'center'});", clearBtn);
+        js.executeScript("arguments[0].click();", clearBtn);
+        waitForProductsToLoad();
     }
 
-    // ---------------- Case Diameter ----------------
+   
 
-    public void selectCaseDiameterFilter(String diameter, int expectedCount) throws InterruptedException {
-
-        WebElement filter =
-                driver.findElement(By.xpath("//button[text()='Case Diameter']"));
-
-        js.executeScript("arguments[0].scrollIntoView(true);", filter);
-        js.executeScript("arguments[0].click();", filter);
-
-        WebElement option =
-                driver.findElement(By.xpath("//button[@title='" + diameter + "']"));
-        js.executeScript("arguments[0].click();", option);
-
-        Thread.sleep(1500);
-        js.executeScript("arguments[0].click();", filter);
-
-        validateProductCount(expectedCount);
-        clearAllFilters();
-    }
-
-    // ---------------- Band Material ----------------
-
+    // ---------------- BAND MATERIAL FILTER ----------------
     public void selectBandMaterialFilter(String material, int expectedCount) throws InterruptedException {
-
-        WebElement filter =
-                driver.findElement(By.xpath("(//div[@class='usf-title usf-no-select'])[6]"));
-
-        js.executeScript("arguments[0].scrollIntoView(true);", filter);
+        WebElement filter = wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("//button[contains(@aria-label,'Filter by Band Material')]")));
+        js.executeScript("arguments[0].scrollIntoView({block:'center'});", filter);
         js.executeScript("arguments[0].click();", filter);
 
-        WebElement option =
-                driver.findElement(By.xpath("//button[@title='" + material + "']"));
+        WebElement option = wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("//div[contains(@class,'usf-facet-values')]//button[normalize-space(@title)='" + material + "']")));
+        js.executeScript("arguments[0].scrollIntoView({block:'center'});", option);
         js.executeScript("arguments[0].click();", option);
 
-        Thread.sleep(1500);
+        // Collapse filter
+        js.executeScript("arguments[0].scrollIntoView({block:'center'});", filter);
         js.executeScript("arguments[0].click();", filter);
 
+        waitForProductsToLoad();
         validateProductCount(expectedCount);
-        clearAllFilters();
+
+        WebElement clearBtn = driver.findElement(By.xpath("(//button[@class='usf-clear-all usf-btn'])[1]"));
+        js.executeScript("arguments[0].scrollIntoView({block:'center'});", clearBtn);
+        js.executeScript("arguments[0].click();", clearBtn);
+        waitForProductsToLoad();
     }
 
-    // ---------------- Product ----------------
-
-    public void clickOnProduct() throws InterruptedException {
-
-        js.executeScript("window.scrollTo(0,0)");
-        Thread.sleep(1500);
-
-        WebElement product =
-                driver.findElement(By.xpath("//a[@href='/collections/mens/products/tw2t80700zv']"));
-
+    // ---------------- CLICK FIRST PRODUCT ----------------
+    public void clickOnFirstProduct() {
+        WebElement product = wait
+                .until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@href='/collections/mens/products/tw2t80700zv']")));
+        js.executeScript("arguments[0].scrollIntoView({block:'center'});", product);
         js.executeScript("arguments[0].click();", product);
-        Thread.sleep(3000);
     }
 
-    // ---------------- Helpers ----------------
+    // ---------------- HELPER METHODS ----------------
+    private void waitForProductsToLoad() {
+        try {
+            wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".usf-loader")));
+        } catch (Exception e) {
+            // Ignore if loader not found
+        }
+    }
 
     private void validateProductCount(int expectedCount) {
-
-        List<WebElement> products =
-                driver.findElements(By.xpath("//form[@class='home-cat-iteam hs-event-static']"));
-
-        int actualCount = products.size();
-        Assert.assertEquals(actualCount, expectedCount,
-                "❌ Product count is NOT correct after applying filter");
-
-        System.out.println("✔ Product count is correct: " + actualCount);
+        WebElement summary = driver
+                .findElement(By.xpath("//span[@class='usf-sr-summary' and contains(text(), 'Men’s Watches')]"));
+        String summaryText = summary.getText(); // e.g. "Men’s Watches (14)"
+        int actualCount = Integer.parseInt(summaryText.replaceAll("[^0-9]", ""));
+        Assert.assertEquals(actualCount, expectedCount, "Expected product count does not match filtered result");
     }
-
-    private void clearAllFilters() throws InterruptedException {
-
-        WebElement clearBtn =
-                driver.findElement(By.xpath("(//button[@class='usf-clear-all usf-btn'])[1]"));
-
-        js.executeScript("arguments[0].click();", clearBtn);
-        Thread.sleep(2000);
+    
+ // ---------------- OPEN FILTER ----------------
+    private void openFilter(String filterName) {
+        WebElement filterHeader = wait.until(ExpectedConditions
+                .elementToBeClickable(By.xpath("//button[contains(@aria-label,'Filter by " + filterName + "')]")));
+        js.executeScript("arguments[0].scrollIntoView({block:'center'});", filterHeader);
+        js.executeScript("arguments[0].click();", filterHeader);
     }
 }
