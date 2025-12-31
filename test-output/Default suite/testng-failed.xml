@@ -3,14 +3,19 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="TestPages.PLPTest">
+      <class name="TestPages.HomeTest">
         <methods>
-          <include name="TC_04_CaseDiameterFilter"/>
-          <include name="TC_06_ClickOnFirstProduct"/>
+          <include name="clicOnkMoreToLoveSection"/>
+          <include name="setUpHomePage"/>
+          <include name="clickOnLatestReleaseProducts"/>
+          <include name="clickOnPopularCategoryProducts"/>
           <include name="setUpClass"/>
-          <include name="init"/>
+          <include name="clicOnWatchesCategory"/>
+          <include name="clickOnMarlinShopNow"/>
+          <include name="clickOnkLeatherStrapWatch"/>
+          <include name="tearDownClass"/>
         </methods>
-      </class> <!-- TestPages.PLPTest -->
+      </class> <!-- TestPages.HomeTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
