@@ -21,12 +21,12 @@ public class PLPTest extends BaseClass {
     }
 
     @Test(priority = 1)
-    public void TC_01_ClickOnShowFilterButton() throws Exception {
+    public void ClickOnShowFilterButton() throws Exception {
         plp.clickShowFilter();
     }
 
     @Test(priority = 2)
-    public void TC_02_BandColorFilter() throws Exception {
+    public void ClickOnBandColorFilter() throws Exception {
         // Example: select Blue color with 14 products expected
         plp.selectBandColorFilter("Blue (14)", 14);
     }
@@ -40,13 +40,13 @@ public class PLPTest extends BaseClass {
     
 
     @Test(priority = 4)
-    public void TC_05_BandMaterialFilter() throws Exception {
+    public void ClickOnBandMaterialFilter() throws Exception {
         // Example: select Black material with 22 products expected
         plp.selectBandMaterialFilter("Black (22)", 22);
     }
 
     @Test(priority = 5)
-    public void TC_06_ClickOnFirstProduct() throws Exception {
+    public void ClickOnFirstProduct() throws Exception {
         plp.clickOnFirstProduct();
     }
 }

@@ -5,29 +5,9 @@
 	<test thread-count="5" name="HomeTest">
 		<classes>
 			<class name="TestPages.HomeTest" />
-		</classes>
-	</test>
-
-	<test thread-count="5" name="PLPTest">
-		<classes>
 			<class name="TestPages.PLPTest" />
-		</classes>
-	</test>
-
-	<test thread-count="5" name="PDPTest">
-		<classes>
 			<class name="TestPages.PDPTest" />
-		</classes>
-	</test>
-
-	<test thread-count="5" name="MiniCartTest">
-		<classes>
 			<class name="TestPages.MiniCartTest" />
-		</classes>
-	</test>
-
-	<test thread-count="5" name="CheckOutTest">
-		<classes>
 			<class name="TestPages.CheckOutTest" />
 		</classes>
 	</test>

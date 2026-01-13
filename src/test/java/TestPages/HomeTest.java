@@ -16,14 +16,16 @@ public class HomeTest extends BaseClass {
 	}
 
 	@Test(priority = 1)
-	public void clickOnMarlinShopNow() throws Exception {
+	public void ClickOnMarlinShopNow() throws Exception {
 
+		
 		home.clickMarlinShopNowAndCloseTab();
+		
 
 	}
 
 	@Test(priority = 2)
-	public void clickOnLatestReleaseProducts() throws Exception {
+	public void ClickOnLatestReleaseProducts() throws Exception {
 
 		home.clickLatestReleaseProducts();
 
@@ -39,21 +41,21 @@ public class HomeTest extends BaseClass {
 	}
 
 	@Test(priority = 4)
-	public void clickOnkLeatherStrapWatch() {
+	public void ClickOnkLeatherStrapWatch() {
 
 		home.clickLeatherStrapWatch();
 
 	}
 
 	@Test(priority = 5)
-	public void clicOnkMoreToLoveSection() throws Exception {
+	public void ClicOnkMoreToLoveSection() throws Exception {
 
 		home.clickMoreToLoveSection();
 
 	}
 
 	@Test(priority = 6)
-	public void clicOnWatchesCategory() throws Exception {
+	public void ClicOnWatchesCategory() throws Exception {
 
 		home.goToWatchesCategory();
 	}

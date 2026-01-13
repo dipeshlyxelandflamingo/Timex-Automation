@@ -1,451 +1,204 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="6" passed="0" failed="6" skipped="0">
+<testng-results ignored="0" total="18" passed="17" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-12-31T15:22:51 IST" name="Default suite" finished-at="2025-12-31T15:23:15 IST" duration-ms="23582">
+  <suite started-at="2026-01-12T17:12:11 IST" name="Suite" finished-at="2026-01-12T17:23:03 IST" duration-ms="652338">
     <groups>
     </groups>
-    <test started-at="2025-12-31T15:22:51 IST" name="Default test" finished-at="2025-12-31T15:23:15 IST" duration-ms="23582">
-      <class name="TestPages.HomeTest">
-        <test-method is-config="true" signature="setUpClass()[pri:0, instance:TestPages.HomeTest@5afa3c9]" started-at="2025-12-31T15:22:51 IST" name="setUpClass" finished-at="2025-12-31T15:23:12 IST" duration-ms="21262" status="PASS">
+    <test started-at="2026-01-12T17:12:11 IST" name="HomeTest" finished-at="2026-01-12T17:23:03 IST" duration-ms="652338">
+      <class name="TestPages.CheckOutTest">
+        <test-method is-config="true" signature="setUpClass()[pri:0, instance:TestPages.CheckOutTest@7ce026d3]" started-at="2026-01-12T17:21:17 IST" name="setUpClass" finished-at="2026-01-12T17:22:04 IST" duration-ms="46947" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method is-config="true" signature="setUpHomePage()[pri:0, instance:TestPages.HomeTest@5afa3c9]" started-at="2025-12-31T15:23:12 IST" name="setUpHomePage" finished-at="2025-12-31T15:23:12 IST" duration-ms="11" status="PASS">
+        <test-method is-config="true" signature="initFlow()[pri:0, instance:TestPages.CheckOutTest@7ce026d3]" started-at="2026-01-12T17:22:04 IST" name="initFlow" finished-at="2026-01-12T17:23:02 IST" duration-ms="57699" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initFlow -->
+        <test-method signature="TC_01_VerifyCheckoutVisible()[pri:1, instance:TestPages.CheckOutTest@7ce026d3]" started-at="2026-01-12T17:23:02 IST" name="TC_01_VerifyCheckoutVisible" finished-at="2026-01-12T17:23:02 IST" duration-ms="560" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_01_VerifyCheckoutVisible -->
+        <test-method signature="TC_02_VerifyCheckoutEnabled()[pri:2, instance:TestPages.CheckOutTest@7ce026d3]" started-at="2026-01-12T17:23:02 IST" name="TC_02_VerifyCheckoutEnabled" finished-at="2026-01-12T17:23:03 IST" depends-on-methods="TestPages.CheckOutTest.TC_01_VerifyCheckoutVisible" duration-ms="553" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_02_VerifyCheckoutEnabled -->
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:TestPages.CheckOutTest@7ce026d3]" started-at="2026-01-12T17:23:03 IST" name="tearDownClass" finished-at="2026-01-12T17:23:03 IST" duration-ms="440" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownClass -->
+      </class> <!-- TestPages.CheckOutTest -->
+      <class name="TestPages.PLPTest">
+        <test-method is-config="true" signature="setUpClass()[pri:0, instance:TestPages.PLPTest@710c2b53]" started-at="2026-01-12T17:13:57 IST" name="setUpClass" finished-at="2026-01-12T17:14:45 IST" duration-ms="48337" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpClass -->
+        <test-method is-config="true" signature="init()[pri:0, instance:TestPages.PLPTest@710c2b53]" started-at="2026-01-12T17:14:45 IST" name="init" finished-at="2026-01-12T17:15:14 IST" duration-ms="28625" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- init -->
+        <test-method signature="TC_01_ClickOnShowFilterButton()[pri:1, instance:TestPages.PLPTest@710c2b53]" started-at="2026-01-12T17:15:14 IST" name="TC_01_ClickOnShowFilterButton" finished-at="2026-01-12T17:15:14 IST" duration-ms="69" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_01_ClickOnShowFilterButton -->
+        <test-method signature="TC_02_BandColorFilter()[pri:2, instance:TestPages.PLPTest@710c2b53]" started-at="2026-01-12T17:15:14 IST" name="TC_02_BandColorFilter" finished-at="2026-01-12T17:15:25 IST" duration-ms="11727" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_02_BandColorFilter -->
+        <test-method signature="TC_03_DialColorFilter()[pri:3, instance:TestPages.PLPTest@710c2b53]" started-at="2026-01-12T17:15:25 IST" name="TC_03_DialColorFilter" finished-at="2026-01-12T17:15:36 IST" duration-ms="10542" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_03_DialColorFilter -->
+        <test-method signature="TC_05_BandMaterialFilter()[pri:4, instance:TestPages.PLPTest@710c2b53]" started-at="2026-01-12T17:15:36 IST" name="TC_05_BandMaterialFilter" finished-at="2026-01-12T17:15:52 IST" duration-ms="16240" status="FAIL">
+          <exception class="org.openqa.selenium.TimeoutException">
+            <message>
+              <![CDATA[Expected condition failed: waiting for element to be clickable: By.xpath: //div[contains(@class,'usf-facet-values')]//button[normalize-space(@title)='Black (22)'] (tried for 15 second(s) with 500 milliseconds interval)
+Build info: version: '4.25.0', revision: '8a8aea2337'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.7'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 143.0.7499.193, chrome: {chromedriverVersion: 143.0.7499.192 (be2c1f4fd45..., userDataDir: C:\Users\LYXELA~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:52037}, goog:processID: 33596, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:52037/devtoo..., se:cdpVersion: 143.0.7499.193, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: eecd720b19ca2b34d9194d6874a2b820]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: By.xpath: //div[contains(@class,'usf-facet-values')]//button[normalize-space(@title)='Black (22)'] (tried for 15 second(s) with 500 milliseconds interval)
+Build info: version: '4.25.0', revision: '8a8aea2337'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.7'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 143.0.7499.193, chrome: {chromedriverVersion: 143.0.7499.192 (be2c1f4fd45..., userDataDir: C:\Users\LYXELA~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:52037}, goog:processID: 33596, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:52037/devtoo..., se:cdpVersion: 143.0.7499.193, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: eecd720b19ca2b34d9194d6874a2b820
+at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
+at Pages.PLPPage.selectBandMaterialFilter(PLPPage.java:103)
+at TestPages.PLPTest.TC_05_BandMaterialFilter(PLPTest.java:45)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:848)
+at org.testng.TestRunner.run(TestRunner.java:621)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
+at org.testng.TestNG.runSuites(TestNG.java:1114)
+at org.testng.TestNG.run(TestNG.java:1082)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.TimeoutException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_05_BandMaterialFilter -->
+        <test-method signature="TC_06_ClickOnFirstProduct()[pri:5, instance:TestPages.PLPTest@710c2b53]" started-at="2026-01-12T17:15:52 IST" name="TC_06_ClickOnFirstProduct" finished-at="2026-01-12T17:16:15 IST" duration-ms="22892" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_06_ClickOnFirstProduct -->
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:TestPages.PLPTest@710c2b53]" started-at="2026-01-12T17:16:15 IST" name="tearDownClass" finished-at="2026-01-12T17:16:16 IST" duration-ms="415" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownClass -->
+      </class> <!-- TestPages.PLPTest -->
+      <class name="TestPages.PDPTest">
+        <test-method is-config="true" signature="setUpClass()[pri:0, instance:TestPages.PDPTest@5386659f]" started-at="2026-01-12T17:16:16 IST" name="setUpClass" finished-at="2026-01-12T17:17:03 IST" duration-ms="47275" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpClass -->
+        <test-method is-config="true" signature="init()[pri:0, instance:TestPages.PDPTest@5386659f]" started-at="2026-01-12T17:17:03 IST" name="init" finished-at="2026-01-12T17:17:54 IST" duration-ms="51280" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- init -->
+        <test-method signature="TC_01_clickOnProductRecommendations()[pri:1, instance:TestPages.PDPTest@5386659f]" started-at="2026-01-12T17:17:54 IST" name="TC_01_clickOnProductRecommendations" finished-at="2026-01-12T17:19:13 IST" duration-ms="78904" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_01_clickOnProductRecommendations -->
+        <test-method signature="TC_02_addProductToCartProduct()[pri:2, instance:TestPages.PDPTest@5386659f]" started-at="2026-01-12T17:19:13 IST" name="TC_02_addProductToCartProduct" finished-at="2026-01-12T17:19:17 IST" duration-ms="4286" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_02_addProductToCartProduct -->
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:TestPages.PDPTest@5386659f]" started-at="2026-01-12T17:19:17 IST" name="tearDownClass" finished-at="2026-01-12T17:19:18 IST" duration-ms="462" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownClass -->
+      </class> <!-- TestPages.PDPTest -->
+      <class name="TestPages.MiniCartTest">
+        <test-method is-config="true" signature="setUpClass()[pri:0, instance:TestPages.MiniCartTest@14028087]" started-at="2026-01-12T17:19:18 IST" name="setUpClass" finished-at="2026-01-12T17:20:05 IST" duration-ms="47621" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpClass -->
+        <test-method is-config="true" signature="initFlow()[pri:0, instance:TestPages.MiniCartTest@14028087]" started-at="2026-01-12T17:20:05 IST" name="initFlow" finished-at="2026-01-12T17:21:12 IST" duration-ms="66501" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initFlow -->
+        <test-method signature="TC_01_QuantityIncrease()[pri:1, instance:TestPages.MiniCartTest@14028087]" started-at="2026-01-12T17:21:12 IST" name="TC_01_QuantityIncrease" description="Increase product quantity in mini cart" finished-at="2026-01-12T17:21:16 IST" duration-ms="4435" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_01_QuantityIncrease -->
+        <test-method signature="TC_03_EnterPincode()[pri:2, instance:TestPages.MiniCartTest@14028087]" started-at="2026-01-12T17:21:16 IST" name="TC_03_EnterPincode" description="Enter pincode in mini cart" finished-at="2026-01-12T17:21:17 IST" duration-ms="208" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_03_EnterPincode -->
+        <test-method signature="TC_04_GoQuickCheckout()[pri:3, instance:TestPages.MiniCartTest@14028087]" started-at="2026-01-12T17:21:17 IST" name="TC_04_GoQuickCheckout" description="Proceed to quick checkout from mini cart" finished-at="2026-01-12T17:21:17 IST" duration-ms="200" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_04_GoQuickCheckout -->
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:TestPages.MiniCartTest@14028087]" started-at="2026-01-12T17:21:17 IST" name="tearDownClass" finished-at="2026-01-12T17:21:17 IST" duration-ms="416" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownClass -->
+      </class> <!-- TestPages.MiniCartTest -->
+      <class name="TestPages.HomeTest">
+        <test-method is-config="true" signature="setUpClass()[pri:0, instance:TestPages.HomeTest@5524cca1]" started-at="2026-01-12T17:12:11 IST" name="setUpClass" finished-at="2026-01-12T17:13:01 IST" duration-ms="50005" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpClass -->
+        <test-method is-config="true" signature="setUpHomePage()[pri:0, instance:TestPages.HomeTest@5524cca1]" started-at="2026-01-12T17:13:01 IST" name="setUpHomePage" finished-at="2026-01-12T17:13:01 IST" duration-ms="34" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpHomePage -->
-        <test-method signature="clickOnMarlinShopNow()[pri:1, instance:TestPages.HomeTest@5afa3c9]" started-at="2025-12-31T15:23:12 IST" name="clickOnMarlinShopNow" finished-at="2025-12-31T15:23:12 IST" duration-ms="19" status="FAIL">
-          <exception class="org.openqa.selenium.NoSuchWindowException">
-            <message>
-              <![CDATA[no such window: target window already closed
-from unknown error: web view not found
-  (Session info: chrome=143.0.7499.170)
-Build info: version: '4.25.0', revision: '8a8aea2337'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.7'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [9988dc10a85ccc13617f87804ff0afd0, executeScript {script=window.scrollBy(0,1400), args=[]}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 143.0.7499.170, chrome: {chromedriverVersion: 143.0.7499.169 (164b20aab62..., userDataDir: C:\Users\LYXELA~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:60208}, goog:processID: 4080, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:60208/devtoo..., se:cdpVersion: 143.0.7499.170, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 9988dc10a85ccc13617f87804ff0afd0]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[org.openqa.selenium.NoSuchWindowException: no such window: target window already closed
-from unknown error: web view not found
-  (Session info: chrome=143.0.7499.170)
-Build info: version: '4.25.0', revision: '8a8aea2337'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.7'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [9988dc10a85ccc13617f87804ff0afd0, executeScript {script=window.scrollBy(0,1400), args=[]}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 143.0.7499.170, chrome: {chromedriverVersion: 143.0.7499.169 (164b20aab62..., userDataDir: C:\Users\LYXELA~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:60208}, goog:processID: 4080, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:60208/devtoo..., se:cdpVersion: 143.0.7499.170, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 9988dc10a85ccc13617f87804ff0afd0
-at jdk.internal.reflect.GeneratedConstructorAccessor12.newInstance(Unknown Source)
-at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
-at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
-at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
-at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
-at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:545)
-at org.openqa.selenium.remote.RemoteWebDriver.executeScript(RemoteWebDriver.java:476)
-at Pages.HomePage.clickMarlinShopNowAndCloseTab(HomePage.java:36)
-at TestPages.HomeTest.clickOnMarlinShopNow(HomeTest.java:21)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
-at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
-at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
-at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
-at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
-at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-at org.testng.TestRunner.privateRun(TestRunner.java:848)
-at org.testng.TestRunner.run(TestRunner.java:621)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
-at org.testng.SuiteRunner.run(SuiteRunner.java:336)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
-at org.testng.TestNG.runSuites(TestNG.java:1114)
-at org.testng.TestNG.run(TestNG.java:1082)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.NoSuchWindowException -->
+        <test-method signature="clickOnMarlinShopNow()[pri:1, instance:TestPages.HomeTest@5524cca1]" started-at="2026-01-12T17:13:01 IST" name="clickOnMarlinShopNow" finished-at="2026-01-12T17:13:03 IST" duration-ms="1512" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- clickOnMarlinShopNow -->
-        <test-method signature="clickOnLatestReleaseProducts()[pri:2, instance:TestPages.HomeTest@5afa3c9]" started-at="2025-12-31T15:23:12 IST" name="clickOnLatestReleaseProducts" finished-at="2025-12-31T15:23:12 IST" duration-ms="5" status="FAIL">
-          <exception class="org.openqa.selenium.NoSuchWindowException">
-            <message>
-              <![CDATA[no such window: target window already closed
-from unknown error: web view not found
-  (Session info: chrome=143.0.7499.170)
-Build info: version: '4.25.0', revision: '8a8aea2337'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.7'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [9988dc10a85ccc13617f87804ff0afd0, executeScript {script=window.scrollBy(0,500), args=[]}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 143.0.7499.170, chrome: {chromedriverVersion: 143.0.7499.169 (164b20aab62..., userDataDir: C:\Users\LYXELA~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:60208}, goog:processID: 4080, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:60208/devtoo..., se:cdpVersion: 143.0.7499.170, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 9988dc10a85ccc13617f87804ff0afd0]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[org.openqa.selenium.NoSuchWindowException: no such window: target window already closed
-from unknown error: web view not found
-  (Session info: chrome=143.0.7499.170)
-Build info: version: '4.25.0', revision: '8a8aea2337'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.7'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [9988dc10a85ccc13617f87804ff0afd0, executeScript {script=window.scrollBy(0,500), args=[]}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 143.0.7499.170, chrome: {chromedriverVersion: 143.0.7499.169 (164b20aab62..., userDataDir: C:\Users\LYXELA~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:60208}, goog:processID: 4080, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:60208/devtoo..., se:cdpVersion: 143.0.7499.170, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 9988dc10a85ccc13617f87804ff0afd0
-at jdk.internal.reflect.GeneratedConstructorAccessor12.newInstance(Unknown Source)
-at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
-at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
-at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
-at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
-at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:545)
-at org.openqa.selenium.remote.RemoteWebDriver.executeScript(RemoteWebDriver.java:476)
-at Pages.HomePage.clickLatestReleaseProducts(HomePage.java:60)
-at TestPages.HomeTest.clickOnLatestReleaseProducts(HomeTest.java:28)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
-at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
-at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
-at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
-at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
-at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-at org.testng.TestRunner.privateRun(TestRunner.java:848)
-at org.testng.TestRunner.run(TestRunner.java:621)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
-at org.testng.SuiteRunner.run(SuiteRunner.java:336)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
-at org.testng.TestNG.runSuites(TestNG.java:1114)
-at org.testng.TestNG.run(TestNG.java:1082)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.NoSuchWindowException -->
+        <test-method signature="clickOnLatestReleaseProducts()[pri:2, instance:TestPages.HomeTest@5524cca1]" started-at="2026-01-12T17:13:03 IST" name="clickOnLatestReleaseProducts" finished-at="2026-01-12T17:13:29 IST" duration-ms="26844" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- clickOnLatestReleaseProducts -->
-        <test-method signature="clickOnPopularCategoryProducts()[pri:3, instance:TestPages.HomeTest@5afa3c9]" started-at="2025-12-31T15:23:12 IST" name="clickOnPopularCategoryProducts" finished-at="2025-12-31T15:23:13 IST" duration-ms="6" status="FAIL">
-          <exception class="org.openqa.selenium.NoSuchWindowException">
-            <message>
-              <![CDATA[no such window: target window already closed
-from unknown error: web view not found
-  (Session info: chrome=143.0.7499.170)
-Build info: version: '4.25.0', revision: '8a8aea2337'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.7'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [9988dc10a85ccc13617f87804ff0afd0, executeScript {script=window.scrollBy(0,600), args=[]}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 143.0.7499.170, chrome: {chromedriverVersion: 143.0.7499.169 (164b20aab62..., userDataDir: C:\Users\LYXELA~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:60208}, goog:processID: 4080, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:60208/devtoo..., se:cdpVersion: 143.0.7499.170, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 9988dc10a85ccc13617f87804ff0afd0]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[org.openqa.selenium.NoSuchWindowException: no such window: target window already closed
-from unknown error: web view not found
-  (Session info: chrome=143.0.7499.170)
-Build info: version: '4.25.0', revision: '8a8aea2337'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.7'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [9988dc10a85ccc13617f87804ff0afd0, executeScript {script=window.scrollBy(0,600), args=[]}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 143.0.7499.170, chrome: {chromedriverVersion: 143.0.7499.169 (164b20aab62..., userDataDir: C:\Users\LYXELA~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:60208}, goog:processID: 4080, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:60208/devtoo..., se:cdpVersion: 143.0.7499.170, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 9988dc10a85ccc13617f87804ff0afd0
-at jdk.internal.reflect.GeneratedConstructorAccessor12.newInstance(Unknown Source)
-at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
-at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
-at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
-at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
-at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:545)
-at org.openqa.selenium.remote.RemoteWebDriver.executeScript(RemoteWebDriver.java:476)
-at Pages.HomePage.clickPopularCategory(HomePage.java:86)
-at TestPages.HomeTest.clickOnPopularCategoryProducts(HomeTest.java:37)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
-at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
-at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
-at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
-at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
-at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-at org.testng.TestRunner.privateRun(TestRunner.java:848)
-at org.testng.TestRunner.run(TestRunner.java:621)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
-at org.testng.SuiteRunner.run(SuiteRunner.java:336)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
-at org.testng.TestNG.runSuites(TestNG.java:1114)
-at org.testng.TestNG.run(TestNG.java:1082)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.NoSuchWindowException -->
+        <test-method signature="clickOnPopularCategoryProducts()[pri:3, instance:TestPages.HomeTest@5524cca1]" started-at="2026-01-12T17:13:29 IST" name="clickOnPopularCategoryProducts" finished-at="2026-01-12T17:13:31 IST" duration-ms="1588" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- clickOnPopularCategoryProducts -->
-        <test-method signature="clickOnkLeatherStrapWatch()[pri:4, instance:TestPages.HomeTest@5afa3c9]" started-at="2025-12-31T15:23:13 IST" name="clickOnkLeatherStrapWatch" finished-at="2025-12-31T15:23:13 IST" duration-ms="5" status="FAIL">
-          <exception class="org.openqa.selenium.NoSuchWindowException">
-            <message>
-              <![CDATA[no such window: target window already closed
-from unknown error: web view not found
-  (Session info: chrome=143.0.7499.170)
-Build info: version: '4.25.0', revision: '8a8aea2337'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.7'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [9988dc10a85ccc13617f87804ff0afd0, executeScript {script=window.scrollBy(0,600), args=[]}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 143.0.7499.170, chrome: {chromedriverVersion: 143.0.7499.169 (164b20aab62..., userDataDir: C:\Users\LYXELA~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:60208}, goog:processID: 4080, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:60208/devtoo..., se:cdpVersion: 143.0.7499.170, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 9988dc10a85ccc13617f87804ff0afd0]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[org.openqa.selenium.NoSuchWindowException: no such window: target window already closed
-from unknown error: web view not found
-  (Session info: chrome=143.0.7499.170)
-Build info: version: '4.25.0', revision: '8a8aea2337'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.7'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [9988dc10a85ccc13617f87804ff0afd0, executeScript {script=window.scrollBy(0,600), args=[]}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 143.0.7499.170, chrome: {chromedriverVersion: 143.0.7499.169 (164b20aab62..., userDataDir: C:\Users\LYXELA~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:60208}, goog:processID: 4080, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:60208/devtoo..., se:cdpVersion: 143.0.7499.170, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 9988dc10a85ccc13617f87804ff0afd0
-at jdk.internal.reflect.GeneratedConstructorAccessor12.newInstance(Unknown Source)
-at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
-at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
-at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
-at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
-at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:545)
-at org.openqa.selenium.remote.RemoteWebDriver.executeScript(RemoteWebDriver.java:476)
-at Pages.HomePage.clickLeatherStrapWatch(HomePage.java:110)
-at TestPages.HomeTest.clickOnkLeatherStrapWatch(HomeTest.java:44)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
-at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
-at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
-at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
-at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
-at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-at org.testng.TestRunner.privateRun(TestRunner.java:848)
-at org.testng.TestRunner.run(TestRunner.java:621)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
-at org.testng.SuiteRunner.run(SuiteRunner.java:336)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
-at org.testng.TestNG.runSuites(TestNG.java:1114)
-at org.testng.TestNG.run(TestNG.java:1082)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.NoSuchWindowException -->
+        <test-method signature="clickOnkLeatherStrapWatch()[pri:4, instance:TestPages.HomeTest@5524cca1]" started-at="2026-01-12T17:13:31 IST" name="clickOnkLeatherStrapWatch" finished-at="2026-01-12T17:13:31 IST" duration-ms="389" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- clickOnkLeatherStrapWatch -->
-        <test-method signature="clicOnkMoreToLoveSection()[pri:5, instance:TestPages.HomeTest@5afa3c9]" started-at="2025-12-31T15:23:13 IST" name="clicOnkMoreToLoveSection" finished-at="2025-12-31T15:23:13 IST" duration-ms="5" status="FAIL">
-          <exception class="org.openqa.selenium.NoSuchWindowException">
-            <message>
-              <![CDATA[no such window: target window already closed
-from unknown error: web view not found
-  (Session info: chrome=143.0.7499.170)
-Build info: version: '4.25.0', revision: '8a8aea2337'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.7'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [9988dc10a85ccc13617f87804ff0afd0, executeScript {script=window.scrollBy(0,3500), args=[]}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 143.0.7499.170, chrome: {chromedriverVersion: 143.0.7499.169 (164b20aab62..., userDataDir: C:\Users\LYXELA~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:60208}, goog:processID: 4080, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:60208/devtoo..., se:cdpVersion: 143.0.7499.170, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 9988dc10a85ccc13617f87804ff0afd0]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[org.openqa.selenium.NoSuchWindowException: no such window: target window already closed
-from unknown error: web view not found
-  (Session info: chrome=143.0.7499.170)
-Build info: version: '4.25.0', revision: '8a8aea2337'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.7'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [9988dc10a85ccc13617f87804ff0afd0, executeScript {script=window.scrollBy(0,3500), args=[]}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 143.0.7499.170, chrome: {chromedriverVersion: 143.0.7499.169 (164b20aab62..., userDataDir: C:\Users\LYXELA~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:60208}, goog:processID: 4080, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:60208/devtoo..., se:cdpVersion: 143.0.7499.170, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 9988dc10a85ccc13617f87804ff0afd0
-at jdk.internal.reflect.GeneratedConstructorAccessor12.newInstance(Unknown Source)
-at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
-at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
-at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
-at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
-at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:545)
-at org.openqa.selenium.remote.RemoteWebDriver.executeScript(RemoteWebDriver.java:476)
-at Pages.HomePage.clickMoreToLoveSection(HomePage.java:134)
-at TestPages.HomeTest.clicOnkMoreToLoveSection(HomeTest.java:51)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
-at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
-at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
-at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
-at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
-at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-at org.testng.TestRunner.privateRun(TestRunner.java:848)
-at org.testng.TestRunner.run(TestRunner.java:621)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
-at org.testng.SuiteRunner.run(SuiteRunner.java:336)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
-at org.testng.TestNG.runSuites(TestNG.java:1114)
-at org.testng.TestNG.run(TestNG.java:1082)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.NoSuchWindowException -->
+        <test-method signature="clicOnkMoreToLoveSection()[pri:5, instance:TestPages.HomeTest@5524cca1]" started-at="2026-01-12T17:13:31 IST" name="clicOnkMoreToLoveSection" finished-at="2026-01-12T17:13:33 IST" duration-ms="1441" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- clicOnkMoreToLoveSection -->
-        <test-method signature="clicOnWatchesCategory()[pri:6, instance:TestPages.HomeTest@5afa3c9]" started-at="2025-12-31T15:23:13 IST" name="clicOnWatchesCategory" finished-at="2025-12-31T15:23:15 IST" duration-ms="2022" status="FAIL">
-          <exception class="org.openqa.selenium.NoSuchWindowException">
-            <message>
-              <![CDATA[no such window: target window already closed
-from unknown error: web view not found
-  (Session info: chrome=143.0.7499.170)
-Build info: version: '4.25.0', revision: '8a8aea2337'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.7'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [9988dc10a85ccc13617f87804ff0afd0, executeScript {script=window.scrollTo(0,0), args=[]}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 143.0.7499.170, chrome: {chromedriverVersion: 143.0.7499.169 (164b20aab62..., userDataDir: C:\Users\LYXELA~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:60208}, goog:processID: 4080, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:60208/devtoo..., se:cdpVersion: 143.0.7499.170, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 9988dc10a85ccc13617f87804ff0afd0]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[org.openqa.selenium.NoSuchWindowException: no such window: target window already closed
-from unknown error: web view not found
-  (Session info: chrome=143.0.7499.170)
-Build info: version: '4.25.0', revision: '8a8aea2337'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.7'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [9988dc10a85ccc13617f87804ff0afd0, executeScript {script=window.scrollTo(0,0), args=[]}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 143.0.7499.170, chrome: {chromedriverVersion: 143.0.7499.169 (164b20aab62..., userDataDir: C:\Users\LYXELA~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:60208}, goog:processID: 4080, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:60208/devtoo..., se:cdpVersion: 143.0.7499.170, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 9988dc10a85ccc13617f87804ff0afd0
-at jdk.internal.reflect.GeneratedConstructorAccessor12.newInstance(Unknown Source)
-at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
-at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
-at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
-at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
-at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:545)
-at org.openqa.selenium.remote.RemoteWebDriver.executeScript(RemoteWebDriver.java:476)
-at Pages.HomePage.goToWatchesCategory(HomePage.java:159)
-at TestPages.HomeTest.clicOnWatchesCategory(HomeTest.java:58)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
-at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
-at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
-at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
-at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
-at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-at org.testng.TestRunner.privateRun(TestRunner.java:848)
-at org.testng.TestRunner.run(TestRunner.java:621)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
-at org.testng.SuiteRunner.run(SuiteRunner.java:336)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
-at org.testng.TestNG.runSuites(TestNG.java:1114)
-at org.testng.TestNG.run(TestNG.java:1082)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.NoSuchWindowException -->
+        <test-method signature="clicOnWatchesCategory()[pri:6, instance:TestPages.HomeTest@5524cca1]" started-at="2026-01-12T17:13:33 IST" name="clicOnWatchesCategory" finished-at="2026-01-12T17:13:56 IST" duration-ms="23335" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- clicOnWatchesCategory -->
-        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:TestPages.HomeTest@5afa3c9]" started-at="2025-12-31T15:23:15 IST" name="tearDownClass" finished-at="2025-12-31T15:23:15 IST" duration-ms="171" status="PASS">
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:TestPages.HomeTest@5524cca1]" started-at="2026-01-12T17:13:56 IST" name="tearDownClass" finished-at="2026-01-12T17:13:57 IST" duration-ms="422" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->
       </class> <!-- TestPages.HomeTest -->
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+    </test> <!-- HomeTest -->
+  </suite> <!-- Suite -->
 </testng-results>

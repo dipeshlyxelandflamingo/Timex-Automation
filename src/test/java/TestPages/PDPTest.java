@@ -25,16 +25,16 @@ public class PDPTest extends BaseClass {
 		plp.clickOnFirstProduct(); 
 
 		// PDP page actions
-		pdp = new PDPPage(driver, wait, act); // PDP ke methods ready
+		pdp = new PDPPage(driver); // PDP ke methods ready
 	}
 
 	@Test(priority = 1)
-	public void TC_01_clickOnProductRecommendations() throws Exception {
+	public void TC_ClickOnProductRecommendations() throws Exception {
 		pdp.clickOnProductRecommendationsAndCloseTab();
 	}
 
 	@Test(priority = 2)
-	public void TC_02_addProductToCartProduct() throws Exception {
+	public void AddProductToCartProduct() throws Exception {
 		pdp.addProductToCart();
 	}
 }

@@ -28,7 +28,7 @@ public class MiniCartTest extends BaseClass {
 	        plp.clickOnFirstProduct();
 
 	        // Add product to cart from PDP
-	        pdp = new PDPPage(driver, wait, act);
+	        pdp = new PDPPage(driver);
 	        pdp.addProductToCart();
 
 	        // Initialize MiniCartPage
@@ -36,7 +36,7 @@ public class MiniCartTest extends BaseClass {
 	    }
 
 	    @Test(priority = 1, description = "Increase product quantity in mini cart")
-	    public void TC_01_QuantityIncrease() throws Exception {
+	    public void QuantityIncrease() throws Exception {
 	        try {
 	            miniCart.increaseQuantity(3);
 	        } catch (Exception e) {
@@ -48,7 +48,7 @@ public class MiniCartTest extends BaseClass {
 	   
 
 	    @Test(priority = 2, description = "Enter pincode in mini cart")
-	    public void TC_03_EnterPincode() throws Exception  {
+	    public void EnterPincode() throws Exception  {
 	        try {
 	            miniCart.enterPincode("201306");
 	        } catch (Exception e) {
@@ -58,7 +58,7 @@ public class MiniCartTest extends BaseClass {
 	    }
 
 	    @Test(priority = 3, description = "Proceed to quick checkout from mini cart")
-	    public void TC_04_GoQuickCheckout() throws Exception {
+	    public void GoQuickCheckout() throws Exception {
 	        try {
 	            miniCart.goToQuickCheckout();
 	        } catch (Exception e) {

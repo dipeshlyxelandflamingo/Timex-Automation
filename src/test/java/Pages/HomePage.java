@@ -25,11 +25,8 @@ public class HomePage {
 		this.wait = new WebDriverWait(driver, Duration.ofSeconds(15));
 		this.js = (JavascriptExecutor) driver;
 		this.act = new Actions(driver);
+
 	}
-
-	
-
-	/* ---------------- TC_02 ---------------- */
 
 	public void clickMarlinShopNowAndCloseTab() throws Exception {
 
@@ -149,7 +146,7 @@ public class HomePage {
 
 		driver.close();
 		driver.switchTo().window(parent);
-		
+
 	}
 
 	/* ---------------- TC_07 ---------------- */

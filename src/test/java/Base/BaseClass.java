@@ -11,14 +11,13 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BaseClass {
 
-	 protected WebDriver driver;
+	    protected WebDriver driver;
 	    protected JavascriptExecutor js;
 	    protected Actions act;
 	    protected WebDriverWait wait;

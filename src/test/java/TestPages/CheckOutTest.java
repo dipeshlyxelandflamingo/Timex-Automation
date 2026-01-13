@@ -27,23 +27,23 @@ public class CheckOutTest extends BaseClass {
 		plp = new PLPPage(driver);
 		plp.clickOnFirstProduct(); // PLP last step
 
-		pdp = new PDPPage(driver, wait, act);
+		pdp = new PDPPage(driver);
 		pdp.addProductToCart(); // PDP last step → MiniCart opens
 
 		miniCart = new MiniCartPage(driver);
 		miniCart.enterPincode("201306");
 		miniCart.goToQuickCheckout();
 
-		checkout = new CheckOutPage(driver, wait);
+		checkout = new CheckOutPage(driver);
 	}
 
 	@Test(priority = 1) 
-	public void TC_01_VerifyCheckoutVisible() {
+	public void VerifyCheckoutVisible() {
 		checkout.verifyCheckoutVisible();
 	}
 
 	@Test(priority = 2, dependsOnMethods = { "TC_01_VerifyCheckoutVisible" })
-	public void TC_02_VerifyCheckoutEnabled() {
+	public void VerifyCheckoutEnabled() {
 		checkout.verifyCheckoutEnabled();
 	}
 }
