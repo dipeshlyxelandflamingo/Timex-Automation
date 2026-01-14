@@ -5,15 +5,14 @@
     <classes>
       <class name="TestPages.HomeTest">
         <methods>
-          <include name="clicOnkMoreToLoveSection"/>
           <include name="setUpHomePage"/>
-          <include name="clickOnLatestReleaseProducts"/>
+          <include name="ClickOnLatestReleaseProducts"/>
           <include name="clickOnPopularCategoryProducts"/>
           <include name="setUpClass"/>
-          <include name="clicOnWatchesCategory"/>
-          <include name="clickOnMarlinShopNow"/>
-          <include name="clickOnkLeatherStrapWatch"/>
+          <include name="ClicOnWatchesCategory"/>
+          <include name="ClickOnkLeatherStrapWatchButton"/>
           <include name="tearDownClass"/>
+          <include name="ClicOnkMoreToLoveSection"/>
         </methods>
       </class> <!-- TestPages.HomeTest -->
     </classes>

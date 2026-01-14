@@ -5,8 +5,8 @@
     <classes>
       <class name="TestPages.PLPTest">
         <methods>
-          <include name="TC_05_BandMaterialFilter"/>
           <include name="setUpClass"/>
+          <include name="ClickOnBandMaterialFilter"/>
           <include name="init"/>
           <include name="tearDownClass"/>
         </methods>

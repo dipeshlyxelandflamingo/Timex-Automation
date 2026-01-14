@@ -1,8 +1,8 @@
 package TestPages;
 
+import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
 
 import Base.BaseClass;
 import Pages.CheckOutPage;
@@ -40,17 +40,21 @@ public class CheckOutTest extends BaseClass {
 
 	@Test(priority = 1)
 	public void VerifyCheckoutVisible() {
-		SoftAssert sa = new SoftAssert();
-		checkout.verifyCheckoutVisible();
-		sa.assertTrue(false, "Failed to Check Checkout Visibility");
-		sa.assertAll();
+
+		try {
+			checkout.verifyCheckoutVisible();
+		} catch (Exception e) {
+			Assert.fail("Failed to Check Checkout Visibility");
+		}
 	}
 
-	@Test(priority = 2, dependsOnMethods = { "TC_01_VerifyCheckoutVisible" })
+	@Test(priority = 2, dependsOnMethods = { "VerifyCheckoutVisible" })
 	public void VerifyCheckoutEnabled() {
-		SoftAssert sa = new SoftAssert();
-		checkout.verifyCheckoutEnabled();
-		sa.assertTrue(false, "Failed to Enable of Checkout ");
-		sa.assertAll();
+
+		try {
+			checkout.verifyCheckoutEnabled();
+		} catch (Exception e) {
+			Assert.fail("Failed to Enable Checkout");
+		}
 	}
 }

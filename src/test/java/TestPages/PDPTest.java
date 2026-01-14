@@ -1,8 +1,8 @@
 package TestPages;
 
+import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
 
 import Base.BaseClass;
 import Pages.HomePage;
@@ -23,25 +23,29 @@ public class PDPTest extends BaseClass {
 
 		// PLP page actions
 		plp = new PLPPage(driver);
-		plp.clickOnFirstProduct(); 
+		plp.clickOnFirstProduct();
 
 		// PDP page actions
 		pdp = new PDPPage(driver); // PDP ke methods ready
 	}
 
 	@Test(priority = 1)
-	public void TC_ClickOnRecommendationsProducts() throws Exception {
-		SoftAssert sa = new SoftAssert();
-		pdp.clickOnProductRecommendationsAndCloseTab();
-		sa.assertTrue(false, "Failed to Click on Recommendations Products List");
-		sa.assertAll();
+	public void TC_ClickOnRecommendationsProducts() {
+
+		try {
+			pdp.clickOnProductRecommendationsAndCloseTab();
+		} catch (Exception e) {
+			Assert.fail("Failed to Click on Recommendations Products List");
+		}
 	}
 
 	@Test(priority = 2)
-	public void ClickOnAddToCartButton() throws Exception {
-		SoftAssert sa = new SoftAssert();
-		pdp.addProductToCart();
-		sa.assertTrue(false, "Failed to Click on Add To Cart Button");
-		sa.assertAll();
+	public void ClickOnAddToCartButton() {
+
+		try {
+			pdp.addProductToCart();
+		} catch (Exception e) {
+			Assert.fail("Failed to Click on Add To Cart Button");
+		}
 	}
 }
