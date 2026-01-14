@@ -28,7 +28,7 @@ public class HomePage {
 
 	}
 
-	public void clickMarlinShopNowAndCloseTab() throws Exception {
+	public void clickMarlinShopNowAndCloseTab() {
 
 		js.executeScript("window.scrollBy(0,1400)");
 
@@ -38,7 +38,12 @@ public class HomePage {
 		String parent = driver.getWindowHandle();
 
 		act.keyDown(Keys.CONTROL).click(shopNowBtn).keyUp(Keys.CONTROL).perform();
-		Thread.sleep(1000);
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		for (String tab : driver.getWindowHandles()) {
 			if (!tab.equals(parent)) {
 				driver.switchTo().window(tab);
@@ -52,7 +57,7 @@ public class HomePage {
 
 	/* ---------------- TC_03 ---------------- */
 
-	public void clickLatestReleaseProducts() throws Exception {
+	public void clickLatestReleaseProducts() {
 
 		js.executeScript("window.scrollBy(0,500)");
 
@@ -63,7 +68,12 @@ public class HomePage {
 			String parent = driver.getWindowHandle();
 
 			act.keyDown(Keys.CONTROL).click(product).keyUp(Keys.CONTROL).perform();
-			Thread.sleep(1000);
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+
+				e.printStackTrace();
+			}
 			for (String tab : driver.getWindowHandles()) {
 				if (!tab.equals(parent)) {
 					driver.switchTo().window(tab);
@@ -78,7 +88,7 @@ public class HomePage {
 
 	/* ---------------- TC_04 ---------------- */
 
-	public void clickPopularCategory() throws Exception {
+	public void clickPopularCategory() {
 
 		js.executeScript("window.scrollBy(0,600)");
 
@@ -88,7 +98,12 @@ public class HomePage {
 		String parent = driver.getWindowHandle();
 
 		act.keyDown(Keys.CONTROL).click(category).keyUp(Keys.CONTROL).perform();
-		Thread.sleep(1000);
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		for (String tab : driver.getWindowHandles()) {
 			if (!tab.equals(parent)) {
 				driver.switchTo().window(tab);
@@ -126,7 +141,7 @@ public class HomePage {
 
 	/* ---------------- TC_06 ---------------- */
 
-	public void clickMoreToLoveSection() throws Exception {
+	public void clickMoreToLoveSection() {
 
 		js.executeScript("window.scrollBy(0,3500)");
 
@@ -136,7 +151,12 @@ public class HomePage {
 		String parent = driver.getWindowHandle();
 
 		act.keyDown(Keys.CONTROL).click(moreSection).keyUp(Keys.CONTROL).perform();
-		Thread.sleep(1000);
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		for (String tab : driver.getWindowHandles()) {
 			if (!tab.equals(parent)) {
 				driver.switchTo().window(tab);

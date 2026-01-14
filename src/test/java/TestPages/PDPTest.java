@@ -2,6 +2,7 @@ package TestPages;
 
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import Base.BaseClass;
 import Pages.HomePage;
@@ -29,12 +30,18 @@ public class PDPTest extends BaseClass {
 	}
 
 	@Test(priority = 1)
-	public void TC_ClickOnProductRecommendations() throws Exception {
+	public void TC_ClickOnRecommendationsProducts() throws Exception {
+		SoftAssert sa = new SoftAssert();
 		pdp.clickOnProductRecommendationsAndCloseTab();
+		sa.assertTrue(false, "Failed to Click on Recommendations Products List");
+		sa.assertAll();
 	}
 
 	@Test(priority = 2)
-	public void AddProductToCartProduct() throws Exception {
+	public void ClickOnAddToCartButton() throws Exception {
+		SoftAssert sa = new SoftAssert();
 		pdp.addProductToCart();
+		sa.assertTrue(false, "Failed to Click on Add To Cart Button");
+		sa.assertAll();
 	}
 }

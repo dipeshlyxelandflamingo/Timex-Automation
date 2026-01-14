@@ -2,6 +2,7 @@ package TestPages;
 
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import Base.BaseClass;
 import Pages.CheckOutPage;
@@ -37,13 +38,19 @@ public class CheckOutTest extends BaseClass {
 		checkout = new CheckOutPage(driver);
 	}
 
-	@Test(priority = 1) 
+	@Test(priority = 1)
 	public void VerifyCheckoutVisible() {
+		SoftAssert sa = new SoftAssert();
 		checkout.verifyCheckoutVisible();
+		sa.assertTrue(false, "Failed to Check Checkout Visibility");
+		sa.assertAll();
 	}
 
 	@Test(priority = 2, dependsOnMethods = { "TC_01_VerifyCheckoutVisible" })
 	public void VerifyCheckoutEnabled() {
+		SoftAssert sa = new SoftAssert();
 		checkout.verifyCheckoutEnabled();
+		sa.assertTrue(false, "Failed to Enable of Checkout ");
+		sa.assertAll();
 	}
 }
