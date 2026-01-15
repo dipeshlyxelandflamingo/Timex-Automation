@@ -2,13 +2,17 @@ package TestPages;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import Base.BaseClass;
+import Listeners.TestListener;
 import Pages.HomePage;
 import Pages.PDPPage;
 import Pages.PLPPage;
 
+
+@Listeners(TestListener.class)
 public class PDPTest extends BaseClass {
 
 	HomePage home;

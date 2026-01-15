@@ -3,18 +3,15 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="TestPages.HomeTest">
+      <class name="TestPages.PDPTest">
         <methods>
-          <include name="setUpHomePage"/>
-          <include name="ClickOnLatestReleaseProducts"/>
-          <include name="clickOnPopularCategoryProducts"/>
+          <include name="ClickOnAddToCartButton"/>
           <include name="setUpClass"/>
-          <include name="ClicOnWatchesCategory"/>
-          <include name="ClickOnkLeatherStrapWatchButton"/>
+          <include name="init"/>
+          <include name="TC_ClickOnRecommendationsProducts"/>
           <include name="tearDownClass"/>
-          <include name="ClicOnkMoreToLoveSection"/>
         </methods>
-      </class> <!-- TestPages.HomeTest -->
+      </class> <!-- TestPages.PDPTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

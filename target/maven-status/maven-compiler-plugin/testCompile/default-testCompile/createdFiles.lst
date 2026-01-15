@@ -1,5 +1,6 @@
 Pages\PDPPage.class
 TestPages\Contact_Us.class
+Listeners\TestListener.class
 TestPages\PLPTest.class
 Pages\CheckOutPage.class
 Pages\HomePage.class
