@@ -12,7 +12,7 @@ import Pages.PDPPage;
 import Pages.PLPPage;
 
 
-@Listeners(TestListener.class)
+
 public class PDPTest extends BaseClass {
 
 	HomePage home;

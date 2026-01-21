@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: TestSuite
 -------------------------------------------------------------------------------
-Tests run: 18, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 271.5 s <<< FAILURE! -- in TestSuite
-TestPages.PLPTest.ClickOnBandColorFilter -- Time elapsed: 16.52 s <<< FAILURE!
+Tests run: 18, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 664.9 s <<< FAILURE! -- in TestSuite
+TestPages.PLPTest.ClickOnBandColorFilter -- Time elapsed: 16.55 s <<< FAILURE!
 java.lang.AssertionError: Failed to Click on Band Color Filter Option
 	at org.testng.Assert.fail(Assert.java:110)
 	at TestPages.PLPTest.ClickOnBandColorFilter(PLPTest.java:44)

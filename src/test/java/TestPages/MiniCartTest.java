@@ -12,7 +12,7 @@ import Pages.MiniCartPage;
 import Pages.PDPPage;
 import Pages.PLPPage;
 
-@Listeners(TestListener.class)
+
 public class MiniCartTest extends BaseClass {
 
 	HomePage home;

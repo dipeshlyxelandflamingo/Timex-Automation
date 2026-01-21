@@ -3,15 +3,16 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="TestPages.PDPTest">
+      <class name="TestPages.MiniCartTest">
         <methods>
-          <include name="ClickOnAddToCartButton"/>
           <include name="setUpClass"/>
-          <include name="init"/>
-          <include name="TC_ClickOnRecommendationsProducts"/>
+          <include name="ClickOnGoQuickCheckoutButton"/>
+          <include name="ProductQuantityIncrease"/>
+          <include name="EnterPincode"/>
           <include name="tearDownClass"/>
+          <include name="initFlow"/>
         </methods>
-      </class> <!-- TestPages.PDPTest -->
+      </class> <!-- TestPages.MiniCartTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

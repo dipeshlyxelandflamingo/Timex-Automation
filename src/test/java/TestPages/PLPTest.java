@@ -11,7 +11,7 @@ import Pages.HomePage;
 import Pages.PLPPage;
 
 
-@Listeners(TestListener.class)
+
 public class PLPTest extends BaseClass {
 
 	HomePage home;

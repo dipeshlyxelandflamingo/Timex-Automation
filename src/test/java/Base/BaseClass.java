@@ -21,10 +21,10 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BaseClass {
 
-	 protected static WebDriver driver; // ✅ static so Listener can access
-	    protected static JavascriptExecutor js;
-	    protected static Actions act;
-	    protected static WebDriverWait wait;
+	public  WebDriver driver;
+	public JavascriptExecutor js;
+	public Actions act;
+	public  WebDriverWait wait;
 
     @BeforeClass
     public void setUpClass() {
@@ -33,9 +33,8 @@ public class BaseClass {
 
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--disable-blink-features=AutomationControlled");
-        options.addArguments("start-maximized");
         options.addArguments(
-                "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.7444.134 Safari/537.36");
+                "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)");
 
         if (System.getProperty("os.name").toLowerCase().contains("linux")) {
             options.addArguments("--headless=new");
@@ -45,7 +44,8 @@ public class BaseClass {
             options.addArguments("--window-size=1920,1080");
         }
 
-        options.setExperimentalOption("excludeSwitches", new String[] { "enable-automation" });
+        options.setExperimentalOption("excludeSwitches",
+                new String[]{"enable-automation"});
         options.setExperimentalOption("useAutomationExtension", false);
         options.addArguments("--remote-allow-origins=*");
 
@@ -67,31 +67,12 @@ public class BaseClass {
         try {
             By popupBtn = By.id("md-btn__form__onSubmit");
             wait.until(ExpectedConditions.elementToBeClickable(popupBtn)).click();
-            System.out.println("Popup closed successfully");
         } catch (Exception e) {
             System.out.println("Popup not present");
         }
     }
 
-    // ✅ Screenshot utility for Listener
-    public static String takeScreenshot(String testName) {
-
-        File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-
-        String dirPath = System.getProperty("user.dir") + "/test-output/screenshots/";
-        new File(dirPath).mkdirs();   // ✅ auto create folder
-
-        String path = dirPath + testName + "_" + System.currentTimeMillis() + ".png";
-
-        try {
-            FileUtils.copyFile(src, new File(path));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return path;
-    }
-
-    @AfterClass
+    @AfterClass(alwaysRun = true)
     public void tearDownClass() {
         if (driver != null) {
             driver.quit();
