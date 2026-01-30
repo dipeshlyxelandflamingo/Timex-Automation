@@ -9,7 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
-
+import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
@@ -53,29 +53,26 @@ public class TestListener implements ITestListener {
 	@Override
 	public void onTestFailure(ITestResult result) {
 
-		extentTest.get().fail(result.getThrowable());
+	    extentTest.get().fail(result.getThrowable());
 
-		try {
-			// ✅ GET DRIVER FROM TEST INSTANCE (MOST IMPORTANT)
-			WebDriver driver = ((BaseClass) result.getInstance()).driver;
+	    try {
+	        WebDriver driver = ((BaseClass) result.getInstance()).driver;
 
-			// ✅ iframe se bahar aao (GoKwik fix)
-			driver.switchTo().defaultContent();
+	        // iframe se bahar aao (GoKwik fix)
+	        driver.switchTo().defaultContent();
 
-			// ✅ Take screenshot
-			TakesScreenshot ts = (TakesScreenshot) driver;
-			File src = ts.getScreenshotAs(OutputType.FILE);
+	        // ✅ Screenshot as BASE64 (NO file saving)
+	        String base64 = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BASE64);
 
-			String path = System.getProperty("user.dir") + "/screenshots/" + result.getMethod().getMethodName() + "_"
-					+ System.currentTimeMillis() + ".png";
+	        // ✅ Attach directly in Extent report
+	        extentTest.get().fail("Screenshot",
+	                MediaEntityBuilder.createScreenCaptureFromBase64String(base64,
+	                        result.getMethod().getMethodName()).build());
 
-			FileUtils.copyFile(src, new File(path));
-
-			extentTest.get().addScreenCaptureFromPath(path);
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        extentTest.get().warning("Screenshot capture failed: " + e.getMessage());
+	    }
 	}
 
 	@Override
