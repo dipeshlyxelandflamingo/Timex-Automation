@@ -2,46 +2,46 @@
 <testng-results ignored="0" total="18" passed="17" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-01-16T16:23:07 IST" name="Timex Suite" finished-at="2026-01-16T16:34:10 IST" duration-ms="663097">
+  <suite started-at="2026-01-27T18:00:34 IST" name="Timex Suite" finished-at="2026-01-27T18:03:55 IST" duration-ms="201347">
     <groups>
     </groups>
-    <test started-at="2026-01-16T16:23:07 IST" name="Home and other Test" finished-at="2026-01-16T16:34:10 IST" duration-ms="663097">
+    <test started-at="2026-01-27T18:00:34 IST" name="Home and other Test" finished-at="2026-01-27T18:03:55 IST" duration-ms="201347">
       <class name="TestPages.CheckOutTest">
-        <test-method is-config="true" signature="setUpClass()[pri:0, instance:TestPages.CheckOutTest@4562e04d]" started-at="2026-01-16T16:32:20 IST" name="setUpClass" finished-at="2026-01-16T16:33:09 IST" duration-ms="49148" status="PASS">
+        <test-method is-config="true" signature="setUpClass()[pri:0, instance:TestPages.CheckOutTest@689604d9]" started-at="2026-01-27T18:03:39 IST" name="setUpClass" finished-at="2026-01-27T18:03:45 IST" duration-ms="6147" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method is-config="true" signature="initFlow()[pri:0, instance:TestPages.CheckOutTest@4562e04d]" started-at="2026-01-16T16:33:09 IST" name="initFlow" finished-at="2026-01-16T16:34:08 IST" duration-ms="58873" status="PASS">
+        <test-method is-config="true" signature="initFlow()[pri:0, instance:TestPages.CheckOutTest@689604d9]" started-at="2026-01-27T18:03:45 IST" name="initFlow" finished-at="2026-01-27T18:03:53 IST" duration-ms="8351" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initFlow -->
-        <test-method signature="VerifyCheckoutVisible()[pri:1, instance:TestPages.CheckOutTest@4562e04d]" started-at="2026-01-16T16:34:08 IST" name="VerifyCheckoutVisible" finished-at="2026-01-16T16:34:09 IST" duration-ms="947" status="PASS">
+        <test-method signature="VerifyCheckoutVisible()[pri:1, instance:TestPages.CheckOutTest@689604d9]" started-at="2026-01-27T18:03:53 IST" name="VerifyCheckoutVisible" finished-at="2026-01-27T18:03:54 IST" duration-ms="655" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- VerifyCheckoutVisible -->
-        <test-method signature="VerifyCheckoutEnabled()[pri:2, instance:TestPages.CheckOutTest@4562e04d]" started-at="2026-01-16T16:34:09 IST" name="VerifyCheckoutEnabled" finished-at="2026-01-16T16:34:09 IST" depends-on-methods="TestPages.CheckOutTest.VerifyCheckoutVisible" duration-ms="515" status="PASS">
+        <test-method signature="VerifyCheckoutEnabled()[pri:2, instance:TestPages.CheckOutTest@689604d9]" started-at="2026-01-27T18:03:54 IST" name="VerifyCheckoutEnabled" finished-at="2026-01-27T18:03:55 IST" depends-on-methods="TestPages.CheckOutTest.VerifyCheckoutVisible" duration-ms="607" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- VerifyCheckoutEnabled -->
-        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:TestPages.CheckOutTest@4562e04d]" started-at="2026-01-16T16:34:09 IST" name="tearDownClass" finished-at="2026-01-16T16:34:10 IST" duration-ms="546" status="PASS">
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:TestPages.CheckOutTest@689604d9]" started-at="2026-01-27T18:03:55 IST" name="tearDownClass" finished-at="2026-01-27T18:03:55 IST" duration-ms="338" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->
       </class> <!-- TestPages.CheckOutTest -->
       <class name="TestPages.PLPTest">
-        <test-method is-config="true" signature="setUpClass()[pri:0, instance:TestPages.PLPTest@799f10e1]" started-at="2026-01-16T16:25:01 IST" name="setUpClass" finished-at="2026-01-16T16:25:49 IST" duration-ms="47157" status="PASS">
+        <test-method is-config="true" signature="setUpClass()[pri:0, instance:TestPages.PLPTest@38d8f54a]" started-at="2026-01-27T18:00:54 IST" name="setUpClass" finished-at="2026-01-27T18:01:00 IST" duration-ms="6173" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method is-config="true" signature="init()[pri:0, instance:TestPages.PLPTest@799f10e1]" started-at="2026-01-16T16:25:49 IST" name="init" finished-at="2026-01-16T16:26:18 IST" duration-ms="29142" status="PASS">
+        <test-method is-config="true" signature="init()[pri:0, instance:TestPages.PLPTest@38d8f54a]" started-at="2026-01-27T18:01:00 IST" name="init" finished-at="2026-01-27T18:01:02 IST" duration-ms="2030" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- init -->
-        <test-method signature="ClickOnShowFilterButton()[pri:1, instance:TestPages.PLPTest@799f10e1]" started-at="2026-01-16T16:26:18 IST" name="ClickOnShowFilterButton" finished-at="2026-01-16T16:26:18 IST" duration-ms="86" status="PASS">
+        <test-method signature="ClickOnShowFilterButton()[pri:1, instance:TestPages.PLPTest@38d8f54a]" started-at="2026-01-27T18:01:02 IST" name="ClickOnShowFilterButton" finished-at="2026-01-27T18:01:02 IST" duration-ms="34" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- ClickOnShowFilterButton -->
-        <test-method signature="ClickOnBandColorFilter()[pri:2, instance:TestPages.PLPTest@799f10e1]" started-at="2026-01-16T16:26:18 IST" name="ClickOnBandColorFilter" finished-at="2026-01-16T16:26:34 IST" duration-ms="16513" status="FAIL">
+        <test-method signature="ClickOnBandColorFilter()[pri:2, instance:TestPages.PLPTest@38d8f54a]" started-at="2026-01-27T18:01:02 IST" name="ClickOnBandColorFilter" finished-at="2026-01-27T18:01:19 IST" duration-ms="16513" status="FAIL">
           <exception class="java.lang.AssertionError">
             <message>
               <![CDATA[Failed to Click on Band Color Filter Option]]>
@@ -88,105 +88,105 @@ at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- ClickOnBandColorFilter -->
-        <test-method signature="TC_03_DialColorFilter()[pri:3, instance:TestPages.PLPTest@799f10e1]" started-at="2026-01-16T16:26:35 IST" name="TC_03_DialColorFilter" finished-at="2026-01-16T16:26:45 IST" duration-ms="10500" status="PASS">
+        <test-method signature="TC_03_DialColorFilter()[pri:3, instance:TestPages.PLPTest@38d8f54a]" started-at="2026-01-27T18:01:19 IST" name="TC_03_DialColorFilter" finished-at="2026-01-27T18:01:51 IST" duration-ms="32549" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TC_03_DialColorFilter -->
-        <test-method signature="ClickOnBandMaterialFilter()[pri:4, instance:TestPages.PLPTest@799f10e1]" started-at="2026-01-16T16:26:45 IST" name="ClickOnBandMaterialFilter" finished-at="2026-01-16T16:26:57 IST" duration-ms="11525" status="PASS">
+        <test-method signature="ClickOnBandMaterialFilter()[pri:4, instance:TestPages.PLPTest@38d8f54a]" started-at="2026-01-27T18:01:51 IST" name="ClickOnBandMaterialFilter" finished-at="2026-01-27T18:02:24 IST" duration-ms="32630" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- ClickOnBandMaterialFilter -->
-        <test-method signature="ClickOnFirstProduct()[pri:5, instance:TestPages.PLPTest@799f10e1]" started-at="2026-01-16T16:26:57 IST" name="ClickOnFirstProduct" finished-at="2026-01-16T16:27:20 IST" duration-ms="23146" status="PASS">
+        <test-method signature="ClickOnFirstProduct()[pri:5, instance:TestPages.PLPTest@38d8f54a]" started-at="2026-01-27T18:02:24 IST" name="ClickOnFirstProduct" finished-at="2026-01-27T18:02:34 IST" duration-ms="9960" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- ClickOnFirstProduct -->
-        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:TestPages.PLPTest@799f10e1]" started-at="2026-01-16T16:27:20 IST" name="tearDownClass" finished-at="2026-01-16T16:27:20 IST" duration-ms="479" status="PASS">
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:TestPages.PLPTest@38d8f54a]" started-at="2026-01-27T18:02:34 IST" name="tearDownClass" finished-at="2026-01-27T18:02:34 IST" duration-ms="282" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->
       </class> <!-- TestPages.PLPTest -->
       <class name="TestPages.PDPTest">
-        <test-method is-config="true" signature="setUpClass()[pri:0, instance:TestPages.PDPTest@4c371370]" started-at="2026-01-16T16:27:20 IST" name="setUpClass" finished-at="2026-01-16T16:28:07 IST" duration-ms="46950" status="PASS">
+        <test-method is-config="true" signature="setUpClass()[pri:0, instance:TestPages.PDPTest@49e53c76]" started-at="2026-01-27T18:02:34 IST" name="setUpClass" finished-at="2026-01-27T18:02:41 IST" duration-ms="6677" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method is-config="true" signature="init()[pri:0, instance:TestPages.PDPTest@4c371370]" started-at="2026-01-16T16:28:07 IST" name="init" finished-at="2026-01-16T16:28:59 IST" duration-ms="51533" status="PASS">
+        <test-method is-config="true" signature="init()[pri:0, instance:TestPages.PDPTest@49e53c76]" started-at="2026-01-27T18:02:41 IST" name="init" finished-at="2026-01-27T18:02:57 IST" duration-ms="16250" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- init -->
-        <test-method signature="TC_ClickOnRecommendationsProducts()[pri:1, instance:TestPages.PDPTest@4c371370]" started-at="2026-01-16T16:28:59 IST" name="TC_ClickOnRecommendationsProducts" finished-at="2026-01-16T16:30:21 IST" duration-ms="81944" status="PASS">
+        <test-method signature="TC_ClickOnRecommendationsProducts()[pri:1, instance:TestPages.PDPTest@49e53c76]" started-at="2026-01-27T18:02:57 IST" name="TC_ClickOnRecommendationsProducts" finished-at="2026-01-27T18:03:09 IST" duration-ms="11544" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TC_ClickOnRecommendationsProducts -->
-        <test-method signature="ClickOnAddToCartButton()[pri:2, instance:TestPages.PDPTest@4c371370]" started-at="2026-01-16T16:30:21 IST" name="ClickOnAddToCartButton" finished-at="2026-01-16T16:30:25 IST" duration-ms="4273" status="PASS">
+        <test-method signature="ClickOnAddToCartButton()[pri:2, instance:TestPages.PDPTest@49e53c76]" started-at="2026-01-27T18:03:09 IST" name="ClickOnAddToCartButton" finished-at="2026-01-27T18:03:12 IST" duration-ms="2726" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- ClickOnAddToCartButton -->
-        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:TestPages.PDPTest@4c371370]" started-at="2026-01-16T16:30:25 IST" name="tearDownClass" finished-at="2026-01-16T16:30:26 IST" duration-ms="582" status="PASS">
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:TestPages.PDPTest@49e53c76]" started-at="2026-01-27T18:03:12 IST" name="tearDownClass" finished-at="2026-01-27T18:03:12 IST" duration-ms="290" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->
       </class> <!-- TestPages.PDPTest -->
       <class name="TestPages.MiniCartTest">
-        <test-method is-config="true" signature="setUpClass()[pri:0, instance:TestPages.MiniCartTest@145f66e3]" started-at="2026-01-16T16:30:26 IST" name="setUpClass" finished-at="2026-01-16T16:31:12 IST" duration-ms="46752" status="PASS">
+        <test-method is-config="true" signature="setUpClass()[pri:0, instance:TestPages.MiniCartTest@351d00c0]" started-at="2026-01-27T18:03:12 IST" name="setUpClass" finished-at="2026-01-27T18:03:22 IST" duration-ms="9707" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method is-config="true" signature="initFlow()[pri:0, instance:TestPages.MiniCartTest@145f66e3]" started-at="2026-01-16T16:31:12 IST" name="initFlow" finished-at="2026-01-16T16:32:13 IST" duration-ms="60584" status="PASS">
+        <test-method is-config="true" signature="initFlow()[pri:0, instance:TestPages.MiniCartTest@351d00c0]" started-at="2026-01-27T18:03:22 IST" name="initFlow" finished-at="2026-01-27T18:03:34 IST" duration-ms="12938" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initFlow -->
-        <test-method signature="ProductQuantityIncrease()[pri:1, instance:TestPages.MiniCartTest@145f66e3]" started-at="2026-01-16T16:32:13 IST" name="ProductQuantityIncrease" description="Increase product quantity in mini cart" finished-at="2026-01-16T16:32:18 IST" duration-ms="5196" status="PASS">
+        <test-method signature="ProductQuantityIncrease()[pri:1, instance:TestPages.MiniCartTest@351d00c0]" started-at="2026-01-27T18:03:34 IST" name="ProductQuantityIncrease" description="Increase product quantity in mini cart" finished-at="2026-01-27T18:03:38 IST" duration-ms="3864" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- ProductQuantityIncrease -->
-        <test-method signature="EnterPincode()[pri:2, instance:TestPages.MiniCartTest@145f66e3]" started-at="2026-01-16T16:32:18 IST" name="EnterPincode" description="Enter pincode in mini cart" finished-at="2026-01-16T16:32:18 IST" duration-ms="310" status="PASS">
+        <test-method signature="EnterPincode()[pri:2, instance:TestPages.MiniCartTest@351d00c0]" started-at="2026-01-27T18:03:38 IST" name="EnterPincode" description="Enter pincode in mini cart" finished-at="2026-01-27T18:03:39 IST" duration-ms="181" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- EnterPincode -->
-        <test-method signature="ClickOnGoQuickCheckoutButton()[pri:3, instance:TestPages.MiniCartTest@145f66e3]" started-at="2026-01-16T16:32:18 IST" name="ClickOnGoQuickCheckoutButton" description="Proceed to quick checkout from mini cart" finished-at="2026-01-16T16:32:19 IST" duration-ms="572" status="PASS">
+        <test-method signature="ClickOnGoQuickCheckoutButton()[pri:3, instance:TestPages.MiniCartTest@351d00c0]" started-at="2026-01-27T18:03:39 IST" name="ClickOnGoQuickCheckoutButton" description="Proceed to quick checkout from mini cart" finished-at="2026-01-27T18:03:39 IST" duration-ms="153" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- ClickOnGoQuickCheckoutButton -->
-        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:TestPages.MiniCartTest@145f66e3]" started-at="2026-01-16T16:32:19 IST" name="tearDownClass" finished-at="2026-01-16T16:32:20 IST" duration-ms="897" status="PASS">
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:TestPages.MiniCartTest@351d00c0]" started-at="2026-01-27T18:03:39 IST" name="tearDownClass" finished-at="2026-01-27T18:03:39 IST" duration-ms="311" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->
       </class> <!-- TestPages.MiniCartTest -->
       <class name="TestPages.HomeTest">
-        <test-method is-config="true" signature="setUpClass()[pri:0, instance:TestPages.HomeTest@3c19aaa5]" started-at="2026-01-16T16:23:07 IST" name="setUpClass" finished-at="2026-01-16T16:23:58 IST" duration-ms="51093" status="PASS">
+        <test-method is-config="true" signature="setUpClass()[pri:0, instance:TestPages.HomeTest@42a48628]" started-at="2026-01-27T18:00:34 IST" name="setUpClass" finished-at="2026-01-27T18:00:44 IST" duration-ms="10317" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method is-config="true" signature="setUpHomePage()[pri:0, instance:TestPages.HomeTest@3c19aaa5]" started-at="2026-01-16T16:23:58 IST" name="setUpHomePage" finished-at="2026-01-16T16:23:58 IST" duration-ms="110" status="PASS">
+        <test-method is-config="true" signature="setUpHomePage()[pri:0, instance:TestPages.HomeTest@42a48628]" started-at="2026-01-27T18:00:44 IST" name="setUpHomePage" finished-at="2026-01-27T18:00:44 IST" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpHomePage -->
-        <test-method signature="ClickOnMarlinShopNow()[pri:1, instance:TestPages.HomeTest@3c19aaa5]" started-at="2026-01-16T16:23:58 IST" name="ClickOnMarlinShopNow" finished-at="2026-01-16T16:24:00 IST" duration-ms="1561" status="PASS">
+        <test-method signature="ClickOnMarlinShopNow()[pri:1, instance:TestPages.HomeTest@42a48628]" started-at="2026-01-27T18:00:44 IST" name="ClickOnMarlinShopNow" finished-at="2026-01-27T18:00:45 IST" duration-ms="326" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- ClickOnMarlinShopNow -->
-        <test-method signature="ClickOnLatestReleaseProducts()[pri:2, instance:TestPages.HomeTest@3c19aaa5]" started-at="2026-01-16T16:24:00 IST" name="ClickOnLatestReleaseProducts" finished-at="2026-01-16T16:24:29 IST" duration-ms="28478" status="PASS">
+        <test-method signature="ClickOnLatestReleaseProducts()[pri:2, instance:TestPages.HomeTest@42a48628]" started-at="2026-01-27T18:00:45 IST" name="ClickOnLatestReleaseProducts" finished-at="2026-01-27T18:00:49 IST" duration-ms="4687" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- ClickOnLatestReleaseProducts -->
-        <test-method signature="clickOnPopularCategoryProducts()[pri:3, instance:TestPages.HomeTest@3c19aaa5]" started-at="2026-01-16T16:24:29 IST" name="clickOnPopularCategoryProducts" finished-at="2026-01-16T16:24:30 IST" duration-ms="1508" status="PASS">
+        <test-method signature="clickOnPopularCategoryProducts()[pri:3, instance:TestPages.HomeTest@42a48628]" started-at="2026-01-27T18:00:49 IST" name="clickOnPopularCategoryProducts" finished-at="2026-01-27T18:00:50 IST" duration-ms="261" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- clickOnPopularCategoryProducts -->
-        <test-method signature="ClickOnLeatherStrapWatchButton()[pri:4, instance:TestPages.HomeTest@3c19aaa5]" started-at="2026-01-16T16:24:30 IST" name="ClickOnLeatherStrapWatchButton" finished-at="2026-01-16T16:24:30 IST" duration-ms="326" status="PASS">
+        <test-method signature="ClickOnLeatherStrapWatchButton()[pri:4, instance:TestPages.HomeTest@42a48628]" started-at="2026-01-27T18:00:50 IST" name="ClickOnLeatherStrapWatchButton" finished-at="2026-01-27T18:00:50 IST" duration-ms="253" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- ClickOnLeatherStrapWatchButton -->
-        <test-method signature="ClickOnMoreToLoveSection()[pri:5, instance:TestPages.HomeTest@3c19aaa5]" started-at="2026-01-16T16:24:30 IST" name="ClickOnMoreToLoveSection" finished-at="2026-01-16T16:24:32 IST" duration-ms="1473" status="PASS">
+        <test-method signature="ClickOnMoreToLoveSection()[pri:5, instance:TestPages.HomeTest@42a48628]" started-at="2026-01-27T18:00:50 IST" name="ClickOnMoreToLoveSection" finished-at="2026-01-27T18:00:50 IST" duration-ms="145" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- ClickOnMoreToLoveSection -->
-        <test-method signature="ClickOnWatchesCategory()[pri:6, instance:TestPages.HomeTest@3c19aaa5]" started-at="2026-01-16T16:24:32 IST" name="ClickOnWatchesCategory" finished-at="2026-01-16T16:25:01 IST" duration-ms="28818" status="PASS">
+        <test-method signature="ClickOnWatchesCategory()[pri:6, instance:TestPages.HomeTest@42a48628]" started-at="2026-01-27T18:00:50 IST" name="ClickOnWatchesCategory" finished-at="2026-01-27T18:00:54 IST" duration-ms="3675" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- ClickOnWatchesCategory -->
-        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:TestPages.HomeTest@3c19aaa5]" started-at="2026-01-16T16:25:01 IST" name="tearDownClass" finished-at="2026-01-16T16:25:01 IST" duration-ms="667" status="PASS">
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:TestPages.HomeTest@42a48628]" started-at="2026-01-27T18:00:54 IST" name="tearDownClass" finished-at="2026-01-27T18:00:54 IST" duration-ms="302" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->

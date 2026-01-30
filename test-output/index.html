@@ -25,7 +25,7 @@
       <span class="top-banner-title-font">Test results</span>
       <button id="button" class="button">Switch Retro Theme</button> <!-- button -->
       <br/>
-      <span class="top-banner-font-1">1 suite, 1 failed test</span>
+      <span class="top-banner-font-1">1 suite, 3 failed tests</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -50,7 +50,7 @@
               <ul>
                 <li>
                   <a href="#" panel-name="test-xml-Timex_Suite" class="navigator-link ">
-                    <span>C:\Users\LYXELANDFLAMINGO\eclipse-workspace\Eclipse 1\Timex\testng.xml</span>
+                    <span>D:\Git Pull\Timex-Automation\testng.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -92,7 +92,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">18 methods, 1 failed,   17 passed</span>
+                    <span class="method-stats">18 methods, 3 failed,   15 passed</span>
                   </li>
                   <li>
                     <span class="method-list-title failed">Failed methods</span>
@@ -104,6 +104,16 @@
                       <span>
                         <img src="failed.png" width="3%"/>
                         <a href="#" panel-name="suite-Timex_Suite" title="TestPages.PLPTest" class="method navigator-link" hash-for-method="ClickOnBandColorFilter">ClickOnBandColorFilter</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Timex_Suite" title="TestPages.PLPTest" class="method navigator-link" hash-for-method="ClickOnBandMaterialFilter">ClickOnBandMaterialFilter</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Timex_Suite" title="TestPages.PLPTest" class="method navigator-link" hash-for-method="TC_03_DialColorFilter">TC_03_DialColorFilter</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content failed suite-Timex_Suite -->
@@ -118,11 +128,6 @@
                       <span>
                         <img src="passed.png" width="3%"/>
                         <a href="#" panel-name="suite-Timex_Suite" title="TestPages.PDPTest" class="method navigator-link" hash-for-method="ClickOnAddToCartButton">ClickOnAddToCartButton</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Timex_Suite" title="TestPages.PLPTest" class="method navigator-link" hash-for-method="ClickOnBandMaterialFilter">ClickOnBandMaterialFilter</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
@@ -177,11 +182,6 @@
                       <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Timex_Suite" title="TestPages.PLPTest" class="method navigator-link" hash-for-method="TC_03_DialColorFilter">TC_03_DialColorFilter</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="passed.png" width="3%"/>
                         <a href="#" panel-name="suite-Timex_Suite" title="TestPages.PDPTest" class="method navigator-link" hash-for-method="TC_ClickOnRecommendationsProducts">TC_ClickOnRecommendationsProducts</a> <!-- method navigator-link -->
                       </span>
                       <br/>
@@ -230,8 +230,76 @@
 </div> <!-- stack-trace -->
                 </div> <!-- method-content -->
               </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="ClickOnBandMaterialFilter">
+                  </a> <!-- ClickOnBandMaterialFilter -->
+                  <span class="method-name">ClickOnBandMaterialFilter</span>
+                  <div class="stack-trace">java.lang.AssertionError: Failed to Click on Band Material Filter Option
+	at TestPages.PLPTest.ClickOnBandMaterialFilter(PLPTest.java:64)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 28 stack frames
+</div> <!-- stack-trace -->
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="TC_03_DialColorFilter">
+                  </a> <!-- TC_03_DialColorFilter -->
+                  <span class="method-name">TC_03_DialColorFilter</span>
+                  <div class="stack-trace">java.lang.AssertionError: Failed to Click on Dial Color Filter Option
+	at TestPages.PLPTest.TC_03_DialColorFilter(PLPTest.java:54)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 28 stack frames
+</div> <!-- stack-trace -->
+                </div> <!-- method-content -->
+              </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
           </div> <!-- suite-Timex_Suite-class-failed -->
+          <div class="suite-Timex_Suite-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">TestPages.PDPTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="ClickOnAddToCartButton">
+                  </a> <!-- ClickOnAddToCartButton -->
+                  <span class="method-name">ClickOnAddToCartButton</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="TC_ClickOnRecommendationsProducts">
+                  </a> <!-- TC_ClickOnRecommendationsProducts -->
+                  <span class="method-name">TC_ClickOnRecommendationsProducts</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Timex_Suite-class-passed -->
+          <div class="suite-Timex_Suite-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">TestPages.PLPTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="ClickOnFirstProduct">
+                  </a> <!-- ClickOnFirstProduct -->
+                  <span class="method-name">ClickOnFirstProduct</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="ClickOnShowFilterButton">
+                  </a> <!-- ClickOnShowFilterButton -->
+                  <span class="method-name">ClickOnShowFilterButton</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Timex_Suite-class-passed -->
           <div class="suite-Timex_Suite-class-passed">
             <div class="main-panel-header rounded-window-top">
               <img src="passed.png"/>
@@ -285,35 +353,21 @@
           <div class="suite-Timex_Suite-class-passed">
             <div class="main-panel-header rounded-window-top">
               <img src="passed.png"/>
-              <span class="class-name">TestPages.PLPTest</span>
+              <span class="class-name">TestPages.CheckOutTest</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="ClickOnBandMaterialFilter">
-                  </a> <!-- ClickOnBandMaterialFilter -->
-                  <span class="method-name">ClickOnBandMaterialFilter</span>
+                  <a name="VerifyCheckoutEnabled">
+                  </a> <!-- VerifyCheckoutEnabled -->
+                  <span class="method-name">VerifyCheckoutEnabled</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="ClickOnFirstProduct">
-                  </a> <!-- ClickOnFirstProduct -->
-                  <span class="method-name">ClickOnFirstProduct</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="ClickOnShowFilterButton">
-                  </a> <!-- ClickOnShowFilterButton -->
-                  <span class="method-name">ClickOnShowFilterButton</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="TC_03_DialColorFilter">
-                  </a> <!-- TC_03_DialColorFilter -->
-                  <span class="method-name">TC_03_DialColorFilter</span>
+                  <a name="VerifyCheckoutVisible">
+                  </a> <!-- VerifyCheckoutVisible -->
+                  <span class="method-name">VerifyCheckoutVisible</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
@@ -353,54 +407,10 @@
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
           </div> <!-- suite-Timex_Suite-class-passed -->
-          <div class="suite-Timex_Suite-class-passed">
-            <div class="main-panel-header rounded-window-top">
-              <img src="passed.png"/>
-              <span class="class-name">TestPages.CheckOutTest</span>
-            </div> <!-- main-panel-header rounded-window-top -->
-            <div class="main-panel-content rounded-window-bottom">
-              <div class="method">
-                <div class="method-content">
-                  <a name="VerifyCheckoutEnabled">
-                  </a> <!-- VerifyCheckoutEnabled -->
-                  <span class="method-name">VerifyCheckoutEnabled</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="VerifyCheckoutVisible">
-                  </a> <!-- VerifyCheckoutVisible -->
-                  <span class="method-name">VerifyCheckoutVisible</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-            </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-Timex_Suite-class-passed -->
-          <div class="suite-Timex_Suite-class-passed">
-            <div class="main-panel-header rounded-window-top">
-              <img src="passed.png"/>
-              <span class="class-name">TestPages.PDPTest</span>
-            </div> <!-- main-panel-header rounded-window-top -->
-            <div class="main-panel-content rounded-window-bottom">
-              <div class="method">
-                <div class="method-content">
-                  <a name="ClickOnAddToCartButton">
-                  </a> <!-- ClickOnAddToCartButton -->
-                  <span class="method-name">ClickOnAddToCartButton</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="TC_ClickOnRecommendationsProducts">
-                  </a> <!-- TC_ClickOnRecommendationsProducts -->
-                  <span class="method-name">TC_ClickOnRecommendationsProducts</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-            </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-Timex_Suite-class-passed -->
         </div> <!-- panel Timex_Suite -->
         <div panel-name="test-xml-Timex_Suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\LYXELANDFLAMINGO\eclipse-workspace\Eclipse 1\Timex\testng.xml</span>
+            <span class="header-content">D:\Git Pull\Timex-Automation\testng.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -458,82 +468,82 @@ data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
 data.addRows(18);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'ClickOnBandMaterialFilter')
+data.setCell(0, 1, 'ClickOnBandColorFilter')
 data.setCell(0, 2, 'TestPages.PLPTest')
-data.setCell(0, 3, 32848);
+data.setCell(0, 3, 22049);
 data.setCell(1, 0, 1)
-data.setCell(1, 1, 'TC_03_DialColorFilter')
+data.setCell(1, 1, 'ClickOnBandMaterialFilter')
 data.setCell(1, 2, 'TestPages.PLPTest')
-data.setCell(1, 3, 32721);
+data.setCell(1, 3, 21635);
 data.setCell(2, 0, 2)
-data.setCell(2, 1, 'ClickOnWatchesCategory')
-data.setCell(2, 2, 'TestPages.HomeTest')
-data.setCell(2, 3, 23006);
+data.setCell(2, 1, 'TC_ClickOnRecommendationsProducts')
+data.setCell(2, 2, 'TestPages.PDPTest')
+data.setCell(2, 3, 11672);
 data.setCell(3, 0, 3)
-data.setCell(3, 1, 'ClickOnFirstProduct')
+data.setCell(3, 1, 'TC_03_DialColorFilter')
 data.setCell(3, 2, 'TestPages.PLPTest')
-data.setCell(3, 3, 22777);
+data.setCell(3, 3, 5447);
 data.setCell(4, 0, 4)
-data.setCell(4, 1, 'ClickOnBandColorFilter')
-data.setCell(4, 2, 'TestPages.PLPTest')
-data.setCell(4, 3, 16537);
+data.setCell(4, 1, 'VerifyCheckoutVisible')
+data.setCell(4, 2, 'TestPages.CheckOutTest')
+data.setCell(4, 3, 4492);
 data.setCell(5, 0, 5)
-data.setCell(5, 1, 'TC_ClickOnRecommendationsProducts')
-data.setCell(5, 2, 'TestPages.PDPTest')
-data.setCell(5, 3, 12178);
+data.setCell(5, 1, 'ClickOnLatestReleaseProducts')
+data.setCell(5, 2, 'TestPages.HomeTest')
+data.setCell(5, 3, 4339);
 data.setCell(6, 0, 6)
-data.setCell(6, 1, 'ClickOnLatestReleaseProducts')
-data.setCell(6, 2, 'TestPages.HomeTest')
-data.setCell(6, 3, 4192);
+data.setCell(6, 1, 'ProductQuantityIncrease')
+data.setCell(6, 2, 'TestPages.MiniCartTest')
+data.setCell(6, 3, 3995);
 data.setCell(7, 0, 7)
-data.setCell(7, 1, 'ProductQuantityIncrease')
-data.setCell(7, 2, 'TestPages.MiniCartTest')
-data.setCell(7, 3, 4040);
+data.setCell(7, 1, 'ClickOnWatchesCategory')
+data.setCell(7, 2, 'TestPages.HomeTest')
+data.setCell(7, 3, 3723);
 data.setCell(8, 0, 8)
-data.setCell(8, 1, 'ClickOnAddToCartButton')
-data.setCell(8, 2, 'TestPages.PDPTest')
-data.setCell(8, 3, 2275);
+data.setCell(8, 1, 'VerifyCheckoutEnabled')
+data.setCell(8, 2, 'TestPages.CheckOutTest')
+data.setCell(8, 3, 2663);
 data.setCell(9, 0, 9)
-data.setCell(9, 1, 'VerifyCheckoutVisible')
-data.setCell(9, 2, 'TestPages.CheckOutTest')
-data.setCell(9, 3, 753);
+data.setCell(9, 1, 'ClickOnAddToCartButton')
+data.setCell(9, 2, 'TestPages.PDPTest')
+data.setCell(9, 3, 2228);
 data.setCell(10, 0, 10)
-data.setCell(10, 1, 'VerifyCheckoutEnabled')
-data.setCell(10, 2, 'TestPages.CheckOutTest')
-data.setCell(10, 3, 404);
+data.setCell(10, 1, 'ClickOnFirstProduct')
+data.setCell(10, 2, 'TestPages.PLPTest')
+data.setCell(10, 3, 1927);
 data.setCell(11, 0, 11)
-data.setCell(11, 1, 'ClickOnMarlinShopNow')
+data.setCell(11, 1, 'clickOnPopularCategoryProducts')
 data.setCell(11, 2, 'TestPages.HomeTest')
-data.setCell(11, 3, 283);
+data.setCell(11, 3, 388);
 data.setCell(12, 0, 12)
-data.setCell(12, 1, 'ClickOnMoreToLoveSection')
+data.setCell(12, 1, 'ClickOnMarlinShopNow')
 data.setCell(12, 2, 'TestPages.HomeTest')
-data.setCell(12, 3, 220);
+data.setCell(12, 3, 364);
 data.setCell(13, 0, 13)
-data.setCell(13, 1, 'ClickOnLeatherStrapWatchButton')
-data.setCell(13, 2, 'TestPages.HomeTest')
-data.setCell(13, 3, 203);
+data.setCell(13, 1, 'ClickOnShowFilterButton')
+data.setCell(13, 2, 'TestPages.PLPTest')
+data.setCell(13, 3, 337);
 data.setCell(14, 0, 14)
-data.setCell(14, 1, 'EnterPincode')
+data.setCell(14, 1, 'ClickOnGoQuickCheckoutButton')
 data.setCell(14, 2, 'TestPages.MiniCartTest')
-data.setCell(14, 3, 201);
+data.setCell(14, 3, 249);
 data.setCell(15, 0, 15)
-data.setCell(15, 1, 'clickOnPopularCategoryProducts')
+data.setCell(15, 1, 'ClickOnMoreToLoveSection')
 data.setCell(15, 2, 'TestPages.HomeTest')
-data.setCell(15, 3, 186);
+data.setCell(15, 3, 178);
 data.setCell(16, 0, 16)
-data.setCell(16, 1, 'ClickOnGoQuickCheckoutButton')
-data.setCell(16, 2, 'TestPages.MiniCartTest')
-data.setCell(16, 3, 86);
+data.setCell(16, 1, 'ClickOnLeatherStrapWatchButton')
+data.setCell(16, 2, 'TestPages.HomeTest')
+data.setCell(16, 3, 175);
 data.setCell(17, 0, 17)
-data.setCell(17, 1, 'ClickOnShowFilterButton')
-data.setCell(17, 2, 'TestPages.PLPTest')
-data.setCell(17, 3, 42);
+data.setCell(17, 1, 'EnterPincode')
+data.setCell(17, 2, 'TestPages.MiniCartTest')
+data.setCell(17, 3, 147);
 window.suiteTableData['Timex_Suite']= { tableData: data, tableDiv: 'times-div-Timex_Suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 2 minutes</span>
+              <span class="suite-total-time">Total running time: 1 minutes</span>
               <div id="times-div-Timex_Suite">
               </div> <!-- times-div-Timex_Suite -->
             </div> <!-- times-div -->
@@ -566,145 +576,149 @@ return data;
               </div> <!-- configuration-class before -->
               <div class="configuration-class before">
                 <span class="method-name">setUpHomePage</span>
-                <span class="method-start">47999 ms</span>
+                <span class="method-start">9697 ms</span>
               </div> <!-- configuration-class before -->
               <div class="test-method">
                 <span class="method-name">ClickOnMarlinShopNow</span>
-                <span class="method-start">48015 ms</span>
+                <span class="method-start">9708 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">ClickOnLatestReleaseProducts</span>
-                <span class="method-start">48319 ms</span>
+                <span class="method-start">10081 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">clickOnPopularCategoryProducts</span>
-                <span class="method-start">52514 ms</span>
+                <span class="method-start">14423 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">ClickOnLeatherStrapWatchButton</span>
-                <span class="method-start">52702 ms</span>
+                <span class="method-start">14813 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">ClickOnMoreToLoveSection</span>
-                <span class="method-start">52916 ms</span>
+                <span class="method-start">14995 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">ClickOnWatchesCategory</span>
-                <span class="method-start">53138 ms</span>
+                <span class="method-start">15179 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-class after">
                 <span class="method-name">tearDownClass</span>
-                <span class="method-start">76148 ms</span>
+                <span class="method-start">18902 ms</span>
               </div> <!-- configuration-class after -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">TestPages.PLPTest</div> <!-- chronological-class-name -->
               <div class="configuration-class before">
                 <span class="method-name">setUpClass</span>
-                <span class="method-start">76526 ms</span>
+                <span class="method-start">19153 ms</span>
               </div> <!-- configuration-class before -->
               <div class="configuration-class before">
                 <span class="method-name">init</span>
-                <span class="method-start">124117 ms</span>
+                <span class="method-start">30500 ms</span>
               </div> <!-- configuration-class before -->
               <div class="test-method">
                 <span class="method-name">ClickOnShowFilterButton</span>
-                <span class="method-start">147599 ms</span>
+                <span class="method-start">32817 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <img src="failed.png">
                 </img>
                 <span class="method-name">ClickOnBandColorFilter</span>
-                <span class="method-start">147643 ms</span>
+                <span class="method-start">33156 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
+                <img src="failed.png">
+                </img>
                 <span class="method-name">TC_03_DialColorFilter</span>
-                <span class="method-start">164483 ms</span>
+                <span class="method-start">55418 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
+                <img src="failed.png">
+                </img>
                 <span class="method-name">ClickOnBandMaterialFilter</span>
-                <span class="method-start">197207 ms</span>
+                <span class="method-start">61058 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">ClickOnFirstProduct</span>
-                <span class="method-start">230060 ms</span>
+                <span class="method-start">82857 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-class after">
                 <span class="method-name">tearDownClass</span>
-                <span class="method-start">252839 ms</span>
+                <span class="method-start">84785 ms</span>
               </div> <!-- configuration-class after -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">TestPages.PDPTest</div> <!-- chronological-class-name -->
               <div class="configuration-class before">
                 <span class="method-name">setUpClass</span>
-                <span class="method-start">253204 ms</span>
+                <span class="method-start">85103 ms</span>
               </div> <!-- configuration-class before -->
               <div class="configuration-class before">
                 <span class="method-name">init</span>
-                <span class="method-start">301226 ms</span>
+                <span class="method-start">95305 ms</span>
               </div> <!-- configuration-class before -->
               <div class="test-method">
                 <span class="method-name">TC_ClickOnRecommendationsProducts</span>
-                <span class="method-start">328855 ms</span>
+                <span class="method-start">100877 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">ClickOnAddToCartButton</span>
-                <span class="method-start">341037 ms</span>
+                <span class="method-start">112551 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-class after">
                 <span class="method-name">tearDownClass</span>
-                <span class="method-start">343313 ms</span>
+                <span class="method-start">114780 ms</span>
               </div> <!-- configuration-class after -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">TestPages.MiniCartTest</div> <!-- chronological-class-name -->
               <div class="configuration-class before">
                 <span class="method-name">setUpClass</span>
-                <span class="method-start">343720 ms</span>
+                <span class="method-start">115118 ms</span>
               </div> <!-- configuration-class before -->
               <div class="configuration-class before">
                 <span class="method-name">initFlow</span>
-                <span class="method-start">391245 ms</span>
+                <span class="method-start">128065 ms</span>
               </div> <!-- configuration-class before -->
               <div class="test-method">
                 <span class="method-name">ProductQuantityIncrease</span>
-                <span class="method-start">439339 ms</span>
+                <span class="method-start">134768 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">EnterPincode</span>
-                <span class="method-start">443381 ms</span>
+                <span class="method-start">138764 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">ClickOnGoQuickCheckoutButton</span>
-                <span class="method-start">443583 ms</span>
+                <span class="method-start">138914 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-class after">
                 <span class="method-name">tearDownClass</span>
-                <span class="method-start">443671 ms</span>
+                <span class="method-start">139165 ms</span>
               </div> <!-- configuration-class after -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">TestPages.CheckOutTest</div> <!-- chronological-class-name -->
               <div class="configuration-class before">
                 <span class="method-name">setUpClass</span>
-                <span class="method-start">444119 ms</span>
+                <span class="method-start">139544 ms</span>
               </div> <!-- configuration-class before -->
               <div class="configuration-class before">
                 <span class="method-name">initFlow</span>
-                <span class="method-start">491423 ms</span>
+                <span class="method-start">148642 ms</span>
               </div> <!-- configuration-class before -->
               <div class="test-method">
                 <span class="method-name">VerifyCheckoutVisible</span>
-                <span class="method-start">541402 ms</span>
+                <span class="method-start">167720 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">VerifyCheckoutEnabled</span>
-                <span class="method-start">542163 ms</span>
+                <span class="method-start">172215 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-class after">
                 <span class="method-name">tearDownClass</span>
-                <span class="method-start">542568 ms</span>
+                <span class="method-start">174879 ms</span>
               </div> <!-- configuration-class after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

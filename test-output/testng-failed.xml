@@ -8,8 +8,10 @@
     <classes>
       <class name="TestPages.PLPTest">
         <methods>
+          <include name="TC_03_DialColorFilter"/>
           <include name="setUpClass"/>
           <include name="init"/>
+          <include name="ClickOnBandMaterialFilter"/>
           <include name="ClickOnBandColorFilter"/>
           <include name="tearDownClass"/>
         </methods>

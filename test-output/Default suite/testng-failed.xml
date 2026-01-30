@@ -3,16 +3,16 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="TestPages.MiniCartTest">
+      <class name="TestPages.PLPTest">
         <methods>
+          <include name="TC_03_DialColorFilter"/>
           <include name="setUpClass"/>
-          <include name="ClickOnGoQuickCheckoutButton"/>
-          <include name="ProductQuantityIncrease"/>
-          <include name="EnterPincode"/>
+          <include name="init"/>
+          <include name="ClickOnBandMaterialFilter"/>
+          <include name="ClickOnBandColorFilter"/>
           <include name="tearDownClass"/>
-          <include name="initFlow"/>
         </methods>
-      </class> <!-- TestPages.MiniCartTest -->
+      </class> <!-- TestPages.PLPTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

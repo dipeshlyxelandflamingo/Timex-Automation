@@ -69,7 +69,7 @@ public class PLPTest extends BaseClass {
     public void ClickOnFirstProduct() {
 
         try {
-            plp.clickOnFirstProduct();
+            plp.ClickonFirstProduct();
         } catch (Exception e) {
             Assert.fail("Failed to Click on First Product in Product List");
         }

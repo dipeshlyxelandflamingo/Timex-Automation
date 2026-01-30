@@ -4,6 +4,7 @@ import java.time.Duration;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -16,35 +17,28 @@ public class PLPPage {
 	WebDriver driver;
 	WebDriverWait wait;
 	JavascriptExecutor js;
+	Actions actions;
 
 	public PLPPage(WebDriver driver) {
 		this.driver = driver;
-		this.wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+		this.wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 		this.js = (JavascriptExecutor) driver;
+		this.actions = new Actions(driver);
 	}
 
-	// ---------------- SHOW FILTER ----------------
+	/* ===================== SHOW FILTER ===================== */
+
 	public void clickShowFilter() {
-		WebElement filterBtn = wait.until(ExpectedConditions.presenceOfElementLocated(
-				By.xpath("//button[@aria-label='Show Filter Hide Filter']")));
-		js.executeScript("arguments[0].click();", filterBtn);
+		safeClick(By.xpath("//button[contains(@aria-label,'Show Filter')]"));
 	}
 
-	// ---------------- BAND COLOR FILTER ----------------
+	/* ===================== BAND COLOR FILTER ===================== */
+
 	public void selectBandColorFilter(String color, int expectedCount) {
 
-		openFilter("Gender");
-		openFilter("Price");
+		openFilter("Band Color");
 
-		WebElement filter = wait.until(ExpectedConditions.presenceOfElementLocated(
-				By.xpath("//button[contains(@aria-label,'Filter by Band Color')]")));
-		scrollAndClick(filter);
-
-		WebElement option = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(
-				"//div[contains(@class,'usf-facet-values')]//button[normalize-space(@title)='" + color + "']")));
-		scrollAndClick(option);
-
-		scrollAndClick(filter);
+		safeClick(By.xpath("//button[@title='" + color + "']"));
 
 		waitForProductsToLoad();
 		validateProductCount(expectedCount);
@@ -52,18 +46,13 @@ public class PLPPage {
 		clearAllFilters();
 	}
 
-	// ---------------- DIAL COLOR FILTER ----------------
+	/* ===================== DIAL COLOR FILTER ===================== */
+
 	public void selectDialColorFilter(String color, int expectedCount) {
 
-		WebElement filter = wait.until(ExpectedConditions.presenceOfElementLocated(
-				By.xpath("//button[contains(@aria-label,'Filter by Dial Color')]")));
-		scrollAndClick(filter);
+		openFilter("Dial Color");
 
-		WebElement option = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(
-				"//div[contains(@class,'usf-facet-values')]//button[normalize-space(@title)='" + color + "']")));
-		scrollAndClick(option);
-
-		scrollAndClick(filter);
+		safeClick(By.xpath("//button[@title='" + color + "']"));
 
 		waitForProductsToLoad();
 		validateProductCount(expectedCount);
@@ -71,18 +60,13 @@ public class PLPPage {
 		clearAllFilters();
 	}
 
-	// ---------------- BAND MATERIAL FILTER ----------------
+	/* ===================== BAND MATERIAL FILTER ===================== */
+
 	public void selectBandMaterialFilter(String material, int expectedCount) {
 
-		WebElement filter = wait.until(ExpectedConditions.presenceOfElementLocated(
-				By.xpath("//button[contains(@aria-label,'Filter by Band Material')]")));
-		scrollAndClick(filter);
+		openFilter("Band Material");
 
-		WebElement option = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(
-				"//div[contains(@class,'usf-facet-values')]//button[normalize-space(@title)='" + material + "']")));
-		scrollAndClick(option);
-
-		scrollAndClick(filter);
+		safeClick(By.xpath("//button[@title='" + material + "']"));
 
 		waitForProductsToLoad();
 		validateProductCount(expectedCount);
@@ -90,49 +74,88 @@ public class PLPPage {
 		clearAllFilters();
 	}
 
-	// ---------------- CLICK FIRST PRODUCT ----------------
-	public void clickOnFirstProduct() {
-		WebElement product = wait.until(ExpectedConditions.presenceOfElementLocated(
-				By.xpath("//a[@href='/collections/mens/products/tw2t80700zv']")));
-		scrollAndClick(product);
+	/* ===================== CLICK FIRST PRODUCT ===================== */
+
+	public void ClickonFirstProduct() {
+
+		By ProductOpen = By.xpath("(//a[contains(@class,'prd-h-img')])[1]");
+
+		WebElement ClickOnPro = wait.until(ExpectedConditions.elementToBeClickable(ProductOpen));
+
+		SafeClick(ClickOnPro);
+
 	}
 
-	// ---------------- HELPER METHODS ----------------
-
-	private void scrollAndClick(WebElement element) {
+	/* ============================================================ */
+	/* ===================== HELPER METHODS ======================== */
+	/* ============================================================ */
+	
+	private void SafeClick(WebElement element) {
 		js.executeScript("arguments[0].scrollIntoView({block:'center'});", element);
-		wait.until(ExpectedConditions.elementToBeClickable(element));
 		js.executeScript("arguments[0].click();", element);
 	}
 
+	// ✅ SAFE CLICK METHOD (No issues in Jenkins)
+	private void safeClick(By locator) {
+
+		for (int i = 0; i < 2; i++) {
+			try {
+
+				WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
+
+				js.executeScript("arguments[0].scrollIntoView({block:'center'});", element);
+
+				try {
+					element.click();
+				} catch (Exception e) {
+					actions.moveToElement(element).click().perform();
+				}
+
+				return;
+
+			} catch (StaleElementReferenceException e) {
+				System.out.println("Retry due to stale element...");
+			}
+		}
+
+		throw new RuntimeException("Element not clickable: " + locator);
+	}
+
+	// ✅ Proper Loader Wait
 	private void waitForProductsToLoad() {
+
 		try {
-			wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".usf-loader")));
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".usf-loader")));
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".usf-loader, .usf-spinner")));
 		} catch (Exception e) {
-			// loader not present – ignore
+			System.out.println("Loader not visible, continue...");
 		}
 	}
 
+	// ✅ Correct Product Count Validation
 	private void validateProductCount(int expectedCount) {
-		WebElement summary = wait.until(ExpectedConditions.presenceOfElementLocated(
-				By.xpath("//span[@class='usf-sr-summary' and contains(text(), 'Men’s Watches')]")));
-		String summaryText = summary.getText();
-		int actualCount = Integer.parseInt(summaryText.replaceAll("[^0-9]", ""));
-		Assert.assertEquals(actualCount, expectedCount,
-				"Expected product count does not match filtered result");
+
+		WebElement summary = wait
+				.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".usf-sr-summary")));
+
+		String text = summary.getText();
+		System.out.println("Summary Text: " + text);
+
+		// Example: Showing 1–24 of 150 Men’s Watches
+		String total = text.replaceAll(".*of\\s+(\\d+).*", "$1");
+
+		int actualCount = Integer.parseInt(total);
+
+		Assert.assertEquals(actualCount, expectedCount, "Filtered product count mismatch!");
 	}
 
+	// ✅ Clear All Filters Safely
 	private void clearAllFilters() {
-		WebElement clearBtn = wait.until(ExpectedConditions.presenceOfElementLocated(
-				By.xpath("(//button[@class='usf-clear-all usf-btn'])[1]")));
-		scrollAndClick(clearBtn);
+		safeClick(By.xpath("//button[contains(@class,'usf-clear-all')]"));
 		waitForProductsToLoad();
 	}
 
+	// ✅ Open Any Filter
 	private void openFilter(String filterName) {
-		WebElement filterHeader = wait.until(ExpectedConditions.presenceOfElementLocated(
-				By.xpath("//button[contains(@aria-label,'Filter by " + filterName + "')]")));
-		scrollAndClick(filterHeader);
+		safeClick(By.xpath("//button[contains(@aria-label,'Filter by " + filterName + "')]"));
 	}
 }
