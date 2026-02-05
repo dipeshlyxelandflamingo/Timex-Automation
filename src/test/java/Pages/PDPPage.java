@@ -51,54 +51,60 @@ public class PDPPage {
 
 	public void clickOnProductRecommendationsAndCloseTab() {
 
-		js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+		List<WebElement> products = wait.until(
+	            ExpectedConditions.presenceOfAllElementsLocatedBy(
+	                    By.xpath("//form[@class='home-cat-iteam ']")));
 
-		List<WebElement> products = wait
-				.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//form[@class='home-cat-iteam ']")));
+	    for (WebElement product : products) {
 
-		for (WebElement product : products) {
-			scrollToElement(product);
-			wait.until(ExpectedConditions.elementToBeClickable(product));
-			try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			openInNewTabAndClose(product);
-		}
+	        // ✅ Proper controlled scroll (center me)
+	        js.executeScript(
+	                "arguments[0].scrollIntoView({block:'center', inline:'nearest'});",
+	                product
+	        );
+
+	        wait.until(ExpectedConditions.elementToBeClickable(product));
+
+	        try {
+	            Thread.sleep(1000);
+	        } catch (InterruptedException e) {
+	            e.printStackTrace();
+	        }
+
+	        openInNewTabAndClose(product);
+	    }
 	}
 
 	/* ---------------- Add To Cart ---------------- */
 
 	public void addProductToCart() {
 
-		try
+	    By addToCartBtnBy = By.xpath("//button[@class='add-tocart-btn']");
 
-		{
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		js.executeScript("window.scrollBy(0, 1000)");
+	    // 1️⃣ Button visible hone do
+	    WebElement addToCartBtn = wait.until(
+	            ExpectedConditions.visibilityOfElementLocated(addToCartBtnBy));
 
-		try
+	    // 2️⃣ Button ko top ke paas lao (not center / not bottom)
+	    js.executeScript(
+	            "arguments[0].scrollIntoView({block:'start', inline:'nearest'});",
+	            addToCartBtn
+	    );
 
-		{
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	    // 3️⃣ Thoda sa niche scroll, taaki button top edge se chipke na
+	    js.executeScript("window.scrollBy(0, -80);");
 
-		WebElement addToCartBtn = wait.until(ExpectedConditions.presenceOfElementLocated(
-				By.xpath("//button[@class='button button--action product-details__sticky-atc-add-btn']")));
+	    // 4️⃣ Clickable wait
+	    addToCartBtn = wait.until(
+	            ExpectedConditions.elementToBeClickable(addToCartBtnBy));
 
-		scrollToElement(addToCartBtn);
-		wait.until(ExpectedConditions.elementToBeClickable(addToCartBtn));
-		js.executeScript("arguments[0].click();", addToCartBtn);
+	    // 5️⃣ Click (safe + fallback)
+	    try {
+	        addToCartBtn.click();
+	    } catch (Exception e) {
+	        js.executeScript("arguments[0].click();", addToCartBtn);
+	    }
 
-		System.out.println("✔ Product added to cart");
+	    System.out.println("✔ Product added to cart");
 	}
 }

@@ -78,7 +78,7 @@ public class HomePage {
     public void clickPopularCategory() {
 
         WebElement category = wait.until(ExpectedConditions.presenceOfElementLocated(
-                By.xpath("(//a[@href='/collections/offers'])[3]")));
+                By.xpath("//a[@href='/collections/valentines-day-watch-gifts']")));
 
         js.executeScript("arguments[0].scrollIntoView({block:'center'});", category);
         wait.until(ExpectedConditions.elementToBeClickable(category));

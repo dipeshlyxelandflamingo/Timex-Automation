@@ -29,7 +29,7 @@ public class CheckOutTest extends BaseClass {
 		home.goToWatchesCategory(); // Homepage last step
 
 		plp = new PLPPage(driver);
-		//plp.clickOnFirstProduct(); // PLP last step
+		plp.clickFirstProduct(); // PLP last step
 
 		pdp = new PDPPage(driver);
 		pdp.addProductToCart(); // PDP last step → MiniCart opens

@@ -29,7 +29,7 @@ public class MiniCartTest extends BaseClass {
 
 		// Select a product from PLP
 		plp = new PLPPage(driver);
-		//plp.clickOnFirstProduct();
+		plp.clickFirstProduct();
 
 		// Add product to cart from PDP
 		pdp = new PDPPage(driver);
