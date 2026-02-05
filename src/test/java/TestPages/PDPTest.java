@@ -27,7 +27,7 @@ public class PDPTest extends BaseClass {
 
 		// PLP page actions
 		plp = new PLPPage(driver);
-		plp.ClickonFirstProduct();
+		//plp.clickOnFirstProduct();
 
 		// PDP page actions
 		pdp = new PDPPage(driver); // PDP ke methods ready
