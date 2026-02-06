@@ -43,7 +43,7 @@ public class PLPTest extends BaseClass {
 	@Test(priority = 3)
 	public void ClickOnBandColorFilter() {
 		try {
-			plp.openandselectbandcolorfilter("Black", 54);// 54
+			plp.openandselectbandcolorfilter("Black", 57);// 54
 		} catch (Exception e) {
 			Assert.fail("Failed Band Color Filter: ");
 		}

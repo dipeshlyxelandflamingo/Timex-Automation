@@ -3,7 +3,7 @@ package Pages;
 import java.time.Duration;
 import java.util.List;
 import java.util.Set;
-
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -14,97 +14,123 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class PDPPage {
 
 	WebDriver driver;
-	WebDriverWait wait;
-	JavascriptExecutor js;
+    WebDriverWait wait;
+    JavascriptExecutor js;
 
-	public PDPPage(WebDriver driver) {
-		this.driver = driver;
-		this.wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-		this.js = (JavascriptExecutor) driver;
-	}
+    public PDPPage(WebDriver driver) {
+        this.driver = driver;
 
-	/* ================= Helper ================= */
+        boolean isLinux = System.getProperty("os.name", "").toLowerCase().contains("linux");
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(isLinux ? 35 : 15));
 
-	private void openInNewTabAndClose(WebElement element) {
-		String parent = driver.getWindowHandle();
+        this.js = (JavascriptExecutor) driver;
+    }
 
-		String url = element.getAttribute("href");
-		js.executeScript("window.open(arguments[0], '_blank');", url);
+    /* ================= Helper ================= */
 
-		Set<String> windows = driver.getWindowHandles();
-		for (String win : windows) {
-			if (!win.equals(parent)) {
-				driver.switchTo().window(win);
-				break;
-			}
-		}
+    private void openInNewTabAndClose(WebElement element) {
+        String parent = driver.getWindowHandle();
+        int beforeCount = driver.getWindowHandles().size();
 
-		driver.close();
-		driver.switchTo().window(parent);
-	}
+        String url = element.getAttribute("href");
+        js.executeScript("window.open(arguments[0], '_blank');", url);
 
-	private void scrollToElement(WebElement element) {
-		js.executeScript("arguments[0].scrollIntoView({block:'center'});", element);
-	}
+        // ✅ wait for new tab handle to appear (headless needs this)
+        try {
+            wait.until(d -> d.getWindowHandles().size() > beforeCount);
+        } catch (TimeoutException te) {
+            // one retry (sometimes tab handle registers late in CI)
+            js.executeScript("window.open(arguments[0], '_blank');", url);
+            wait.until(d -> d.getWindowHandles().size() > beforeCount);
+        }
 
-	/* ---------------- Product Recommendation ---------------- */
+        // switch to new tab
+        Set<String> windows = driver.getWindowHandles();
+        String child = null;
+        for (String win : windows) {
+            if (!win.equals(parent)) {
+                child = win;
+            }
+        }
 
-	public void clickOnProductRecommendationsAndCloseTab() {
+        if (child != null) {
+            driver.switchTo().window(child);
+            driver.close();
+        }
 
-		List<WebElement> products = wait.until(
-	            ExpectedConditions.presenceOfAllElementsLocatedBy(
-	                    By.xpath("//form[@class='home-cat-iteam ']")));
+        driver.switchTo().window(parent);
+    }
 
-	    for (WebElement product : products) {
+    private void scrollToElement(WebElement element) {
+        js.executeScript("arguments[0].scrollIntoView({block:'center'});", element);
+    }
 
-	        // ✅ Proper controlled scroll (center me)
-	        js.executeScript(
-	                "arguments[0].scrollIntoView({block:'center', inline:'nearest'});",
-	                product
-	        );
+    /* ---------------- Product Recommendation ---------------- */
 
-	        wait.until(ExpectedConditions.elementToBeClickable(product));
+    public void clickOnProductRecommendationsAndCloseTab() {
 
-	        try {
-	            Thread.sleep(1000);
-	        } catch (InterruptedException e) {
-	            e.printStackTrace();
-	        }
+        By productsBy = By.xpath("//form[@class='home-cat-iteam ']");
 
-	        openInNewTabAndClose(product);
-	    }
-	}
+        // same logic: get list and iterate, but stable: re-fetch by index
+        List<WebElement> products = wait.until(
+                ExpectedConditions.presenceOfAllElementsLocatedBy(productsBy));
 
-	/* ---------------- Add To Cart ---------------- */
+        int count = products.size();
 
-	public void addProductToCart() {
+        for (int i = 0; i < count; i++) {
 
-	    By addToCartBtnBy = By.xpath("//button[@class='add-tocart-btn']");
+            // ✅ re-fetch fresh list each iteration (prevents stale in headless)
+            products = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(productsBy));
+            WebElement product = products.get(i);
 
-	    // 1️⃣ Button visible hone do
-	    WebElement addToCartBtn = wait.until(
-	            ExpectedConditions.visibilityOfElementLocated(addToCartBtnBy));
+            js.executeScript(
+                    "arguments[0].scrollIntoView({block:'center', inline:'nearest'});",
+                    product
+            );
 
-	    // 2️⃣ Button ko top ke paas lao (not center / not bottom)
-	    js.executeScript(
-	            "arguments[0].scrollIntoView({block:'start', inline:'nearest'});",
-	            addToCartBtn
-	    );
+            // ✅ clickable via JS click fallback not needed here; we open via href
+            // but wait until element is visible/stable
+            wait.until(ExpectedConditions.visibilityOf(product));
 
-	    // 3️⃣ Thoda sa niche scroll, taaki button top edge se chipke na
-	    js.executeScript("window.scrollBy(0, -80);");
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
 
-	    // 4️⃣ Clickable wait
-	    addToCartBtn = wait.until(
-	            ExpectedConditions.elementToBeClickable(addToCartBtnBy));
+            openInNewTabAndClose(product);
+        }
+    }
 
-	    // 5️⃣ Click (safe + fallback)
-	    try {
-	        addToCartBtn.click();
-	    } catch (Exception e) {
-	        js.executeScript("arguments[0].click();", addToCartBtn);
-	    }
+    /* ---------------- Add To Cart ---------------- */
 
-	    System.out.println("✔ Product added to cart");
-	}
+    public void addProductToCart() {
+
+        By addToCartBtnBy = By.xpath("//button[@class='add-tocart-btn']");
+
+        // 1️⃣ Button visible hone do
+        WebElement addToCartBtn = wait.until(
+                ExpectedConditions.visibilityOfElementLocated(addToCartBtnBy));
+
+        // 2️⃣ Button ko top ke paas lao
+        js.executeScript(
+                "arguments[0].scrollIntoView({block:'start', inline:'nearest'});",
+                addToCartBtn
+        );
+
+        // 3️⃣ Thoda sa upar scroll
+        js.executeScript("window.scrollBy(0, -80);");
+
+        // 4️⃣ Clickable wait (By based - stable)
+        wait.until(ExpectedConditions.elementToBeClickable(addToCartBtnBy));
+
+        // 5️⃣ Click (safe + fallback)
+        try {
+            driver.findElement(addToCartBtnBy).click();
+        } catch (Exception e) {
+            js.executeScript("arguments[0].click();", driver.findElement(addToCartBtnBy));
+        }
+
+        System.out.println("✔ Product added to cart");
+    }
 }

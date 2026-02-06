@@ -4,89 +4,117 @@ import java.time.Duration;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 public class MiniCartPage {
-	
-	 WebDriver driver;
-	    WebDriverWait wait;
-	    JavascriptExecutor js;
+	WebDriver driver;
+    WebDriverWait wait;
+    JavascriptExecutor js;
 
-	    public MiniCartPage(WebDriver driver) {
-	        this.driver = driver;
-	        this.wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-	        this.js = (JavascriptExecutor) driver;
-	    }
+    public MiniCartPage(WebDriver driver) {
+        this.driver = driver;
 
-	    // ---------- Quantity Increase ----------
-	    public void increaseQuantity(int times) {
+        boolean isLinux = System.getProperty("os.name", "").toLowerCase().contains("linux");
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(isLinux ? 35 : 20));
 
-	        WebElement qtyInput = wait.until(
-	                ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@class='qty']")));
+        this.js = (JavascriptExecutor) driver;
+    }
 
-	        js.executeScript("arguments[0].scrollIntoView({block:'center'});", qtyInput);
+    // ---------- Quantity Increase ----------
+    public void increaseQuantity(int times) {
 
-	        int currentQty = Integer.parseInt(qtyInput.getAttribute("value"));
-	        int targetQty = currentQty + times;
+        // SAME locators (no change)
+        By qtyInputBy = By.xpath("//input[@class='qty']");
+        By plusBtnBy = By.xpath("//button[@class='qty-plus']");
 
-	        int attempts = 0;
+        WebElement qtyInput = wait.until(ExpectedConditions.visibilityOfElementLocated(qtyInputBy));
+        js.executeScript("arguments[0].scrollIntoView({block:'center'});", qtyInput);
 
-	        while (currentQty < targetQty && attempts < times * 3) {
+        int currentQty = Integer.parseInt(qtyInput.getAttribute("value"));
+        int targetQty = currentQty + times;
 
-	            WebElement plusBtn = wait.until(
-	                    ExpectedConditions.elementToBeClickable(By.xpath("//button[@class='qty-plus']")));
+        int attempts = 0;
 
-	            js.executeScript("arguments[0].scrollIntoView({block:'center'});", plusBtn);
-	            js.executeScript("arguments[0].click();", plusBtn);
+        while (currentQty < targetQty && attempts < times * 3) {
 
-	            final int expectedQty = currentQty + 1;
+            WebElement plusBtn = wait.until(ExpectedConditions.elementToBeClickable(plusBtnBy));
+            js.executeScript("arguments[0].scrollIntoView({block:'center'});", plusBtn);
 
-	            wait.until(new ExpectedCondition<Boolean>() {
-	                @Override
-	                public Boolean apply(WebDriver driver) {
-	                    int val = Integer.parseInt(
-	                            driver.findElement(By.xpath("//input[@class='qty']")).getAttribute("value"));
-	                    return val == expectedQty;
-	                }
-	            });
+            // click (try normal then JS)
+            try {
+                plusBtn.click();
+            } catch (Exception e) {
+                js.executeScript("arguments[0].click();", plusBtn);
+            }
 
-	            qtyInput = driver.findElement(By.xpath("//input[@class='qty']"));
-	            currentQty = Integer.parseInt(qtyInput.getAttribute("value"));
-	            attempts++;
-	        }
+            final int expectedQty = currentQty + 1;
 
-	        Assert.assertEquals(currentQty, targetQty, "❌ Quantity increase failed");
-	        System.out.println("✔ Quantity increased successfully: " + currentQty);
-	    }
+            // wait until qty changes to expected (stale-safe)
+            wait.until(new ExpectedCondition<Boolean>() {
+                @Override
+                public Boolean apply(WebDriver d) {
+                    try {
+                        String v = d.findElement(qtyInputBy).getAttribute("value");
+                        int val = Integer.parseInt(v);
+                        return val == expectedQty;
+                    } catch (StaleElementReferenceException e) {
+                        return false;
+                    } catch (Exception e) {
+                        return false;
+                    }
+                }
+            });
 
-	    // ---------- Enter Pincode ----------
-	    public void enterPincode(String pincode) {
+            // re-fetch fresh input (same xpath)
+            qtyInput = wait.until(ExpectedConditions.visibilityOfElementLocated(qtyInputBy));
+            currentQty = Integer.parseInt(qtyInput.getAttribute("value"));
 
-	        WebElement pincodeInput = wait.until(
-	                ExpectedConditions.visibilityOfElementLocated(By.id("userPincode")));
+            attempts++;
+        }
 
-	        js.executeScript("arguments[0].scrollIntoView({block:'center'});", pincodeInput);
-	        pincodeInput.clear();
-	        pincodeInput.sendKeys(pincode);
+        Assert.assertEquals(currentQty, targetQty, "❌ Quantity increase failed");
+        System.out.println("✔ Quantity increased successfully: " + currentQty);
+    }
 
-	        System.out.println("✔ Pincode entered successfully");
-	    }
+    // ---------- Enter Pincode ----------
+    public void enterPincode(String pincode) {
 
-	    // ---------- Quick Checkout ----------
-	    public void goToQuickCheckout() {
+        // SAME locator (no change)
+        By pincodeBy = By.id("userPincode");
 
-	        WebElement checkoutBtn = wait.until(
-	                ExpectedConditions.elementToBeClickable(By.id("gokwik-checkout-btn")));
+        WebElement pincodeInput = wait.until(ExpectedConditions.visibilityOfElementLocated(pincodeBy));
+        js.executeScript("arguments[0].scrollIntoView({block:'center'});", pincodeInput);
 
-	        js.executeScript("arguments[0].scrollIntoView({block:'center'});", checkoutBtn);
-	        js.executeScript("arguments[0].click();", checkoutBtn);
+        try {
+            pincodeInput.clear();
+        } catch (Exception ignored) {}
 
-	        System.out.println("✔ Quick checkout initiated");
-	    }
-	}
+        pincodeInput.sendKeys(pincode);
+
+        System.out.println("✔ Pincode entered successfully");
+    }
+
+    // ---------- Quick Checkout ----------
+    public void goToQuickCheckout() {
+
+        // SAME locator (no change)
+        By checkoutBtnBy = By.id("gokwik-checkout-btn");
+
+        WebElement checkoutBtn = wait.until(ExpectedConditions.elementToBeClickable(checkoutBtnBy));
+        js.executeScript("arguments[0].scrollIntoView({block:'center'});", checkoutBtn);
+
+        try {
+            checkoutBtn.click();
+        } catch (Exception e) {
+            js.executeScript("arguments[0].click();", checkoutBtn);
+        }
+
+        System.out.println("✔ Quick checkout initiated");
+    }
+}

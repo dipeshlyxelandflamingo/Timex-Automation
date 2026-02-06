@@ -3,15 +3,18 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="TestPages.PDPTest">
+      <class name="TestPages.PLPTest">
         <methods>
-          <include name="ClickOnAddToCartButton"/>
           <include name="setUpClass"/>
           <include name="init"/>
-          <include name="TC_ClickOnRecommendationsProducts"/>
+          <include name="ClickOnBandMaterialcolorFilter"/>
+          <include name="ClickOnBandColorFilter"/>
+          <include name="ClickOnCaseDiameterFilter"/>
+          <include name="clickOnFirstProduct"/>
           <include name="tearDownClass"/>
+          <include name="ClickOnDialColorFilter"/>
         </methods>
-      </class> <!-- TestPages.PDPTest -->
+      </class> <!-- TestPages.PLPTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

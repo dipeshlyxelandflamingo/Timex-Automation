@@ -1,11 +1,13 @@
 package Pages;
 
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -14,130 +16,191 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class HomePage {
 
 	WebDriver driver;
-    WebDriverWait wait;
-    JavascriptExecutor js;
+	WebDriverWait wait;
+	JavascriptExecutor js;
 
-    public HomePage(WebDriver driver) {
-        this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-        this.js = (JavascriptExecutor) driver;
-    }
+	public HomePage(WebDriver driver) {
+		this.driver = driver;
 
-    /* ===================== Helper ===================== */
+		boolean isLinux = System.getProperty("os.name", "").toLowerCase().contains("linux");
+		this.wait = new WebDriverWait(driver, Duration.ofSeconds(isLinux ? 35 : 20));
 
-    private void openInNewTabAndClose(WebElement element) {
-        String parent = driver.getWindowHandle();
+		this.js = (JavascriptExecutor) driver;
+	}
 
-        String url = element.getAttribute("href");
-        js.executeScript("window.open(arguments[0], '_blank');", url);
+	/* ===================== Helpers ===================== */
 
-        // switch to new tab
-        Set<String> windows = driver.getWindowHandles();
-        for (String win : windows) {
-            if (!win.equals(parent)) {
-                driver.switchTo().window(win);
-                break;
-            }
-        }
+	private void scrollCenter(WebElement el) {
+		js.executeScript("arguments[0].scrollIntoView({block:'center'});", el);
+	}
 
-        // close child tab & switch back
-        driver.close();
-        driver.switchTo().window(parent);
-    }
+	private void waitForPageReady() {
+		try {
+			wait.until(d -> "complete".equals(((JavascriptExecutor) d).executeScript("return document.readyState")));
+		} catch (Exception ignored) {
+		}
+	}
 
-    /* ---------------- TC_02 ---------------- */
+	private WebElement visible(By by) {
+		return wait.until(ExpectedConditions.visibilityOfElementLocated(by));
+	}
 
-    public void clickMarlinShopNowAndCloseTab() {
+	private void safeClick(By by) {
+		waitForPageReady();
+		WebElement el = visible(by);
+		scrollCenter(el);
 
-        WebElement shopNowBtn = wait.until(ExpectedConditions.presenceOfElementLocated(
-                By.xpath("(//a[@href='/products/timex-men-green-analogue-round-stainless-steel-dial-watch-tw2v44600u9'])[2]")));
+		try {
+			wait.until(ExpectedConditions.elementToBeClickable(by)).click();
+		} catch (Exception e) {
+			// headless me overlay/sticky header ke case me fallback
+			js.executeScript("arguments[0].click();", driver.findElement(by));
+		}
+		waitForPageReady();
+	}
 
-        js.executeScript("arguments[0].scrollIntoView({block:'center'});", shopNowBtn);
-        wait.until(ExpectedConditions.elementToBeClickable(shopNowBtn));
+	private void openInNewTabAndClose(By linkLocator) {
 
-        openInNewTabAndClose(shopNowBtn);
-    }
+		waitForPageReady();
 
-    /* ---------------- TC_03 ---------------- */
+		// parent + handles snapshot
+		String parent = driver.getWindowHandle();
+		Set<String> before = driver.getWindowHandles();
 
-    public void clickLatestReleaseProducts() {
+		WebElement element = visible(linkLocator);
+		scrollCenter(element);
 
-        List<WebElement> products = wait.until(
-                ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//div[@class='product-bx']")));
+		String url = element.getAttribute("href");
 
-        for (WebElement product : products) {
-            js.executeScript("arguments[0].scrollIntoView({block:'center'});", product);
-            wait.until(ExpectedConditions.elementToBeClickable(product));
+		// Same logic: open new tab
+		js.executeScript("window.open(arguments[0], '_blank');", url);
 
-            openInNewTabAndClose(product);
-        }
-    }
+		// Wait until a new window handle appears (headless needs this)
+		try {
+			wait.until(d -> d.getWindowHandles().size() > before.size());
+		} catch (TimeoutException te) {
+			// fallback: try again once
+			js.executeScript("window.open(arguments[0], '_blank');", url);
+			wait.until(d -> d.getWindowHandles().size() > before.size());
+		}
 
-    /* ---------------- TC_04 ---------------- */
+		// Switch to the newest handle (not parent)
+		List<String> handles = new ArrayList<>(driver.getWindowHandles());
+		String child = null;
+		for (String h : handles) {
+			if (!h.equals(parent))
+				child = h;
+		}
 
-    public void clickPopularCategory() {
+		if (child != null) {
+			driver.switchTo().window(child);
+			waitForPageReady();
+			driver.close();
+		}
 
-        WebElement category = wait.until(ExpectedConditions.presenceOfElementLocated(
-                By.xpath("//a[@href='/collections/valentines-day-watch-gifts']")));
+		driver.switchTo().window(parent);
+		waitForPageReady();
+	}
 
-        js.executeScript("arguments[0].scrollIntoView({block:'center'});", category);
-        wait.until(ExpectedConditions.elementToBeClickable(category));
+	/* ---------------- TC_02 ---------------- */
 
-        openInNewTabAndClose(category);
-    }
+	public void clickMarlinShopNowAndCloseTab() {
+		By shopNowBtn = By.xpath(
+				"(//a[@href='/products/timex-men-green-analogue-round-stainless-steel-dial-watch-tw2v44600u9'])[2]");
+		openInNewTabAndClose(shopNowBtn);
+	}
 
-    /* ---------------- TC_05 ---------------- */
+	/* ---------------- TC_03 ---------------- */
 
-    public void clickLeatherStrapWatch() {
+	public void clickLatestReleaseProducts() {
 
-        WebElement product = wait.until(ExpectedConditions.presenceOfElementLocated(
-                By.xpath("(//a[@href='/products/timex-continental-black-round-dial-analog-mens-watch-tw2y25000uj'])[2]")));
+		By productCards = By.xpath("//div[@class='product-bx']");
 
-        js.executeScript("arguments[0].scrollIntoView({block:'center'});", product);
-        wait.until(ExpectedConditions.elementToBeClickable(product));
+		waitForPageReady();
+		List<WebElement> products = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(productCards));
 
-        openInNewTabAndClose(product);
-    }
+		int count = products.size();
 
-    /* ---------------- TC_06 ---------------- */
+		// IMPORTANT: re-fetch list each time to avoid stale after opening/closing tab
+		for (int i = 0; i < count; i++) {
+			products = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(productCards));
+			WebElement product = products.get(i);
 
-    public void clickMoreToLoveSection() {
+			scrollCenter(product);
 
-        WebElement moreSection = wait.until(ExpectedConditions.presenceOfElementLocated(
-                By.xpath("(//a[@href='/collections/timex-x-jacquie-aiche'])[4]")));
+			// product card ke andar first link
+			WebElement link = product.findElement(By.cssSelector("a[href]"));
+			String href = link.getAttribute("href");
 
-        js.executeScript("arguments[0].scrollIntoView({block:'center'});", moreSection);
-        wait.until(ExpectedConditions.elementToBeClickable(moreSection));
+			// Same logic: open that href in new tab and close
+			js.executeScript("window.open(arguments[0], '_blank');", href);
 
-        openInNewTabAndClose(moreSection);
-    }
+			// handle tab switching via our stable method
+			// (we reuse the window handle logic)
+			// create a temp locator to re-use openInNewTabAndClose pattern
+			// but we already opened, so switch & close:
+			String parent = driver.getWindowHandle();
+			Set<String> before = driver.getWindowHandles();
 
-    /* ---------------- TC_07 ---------------- */
+			// wait new tab to register (size increases)
+			wait.until(d -> d.getWindowHandles().size() >= before.size());
 
-    public void goToWatchesCategory() {
+			// find newest non-parent
+			List<String> handles = new ArrayList<>(driver.getWindowHandles());
+			String child = null;
+			for (String h : handles) {
+				if (!h.equals(parent))
+					child = h;
+			}
 
-        By watchesLocator = By.xpath("//a[contains(@class,'nav_link_timex')]");
-        By shopAllLocator = By.xpath("//a[contains(@href,'/collections/mens')]");
+			if (child != null) {
+				driver.switchTo().window(child);
+				waitForPageReady();
+				driver.close();
+			}
 
-        for (int i = 0; i < 2; i++) {
-            try {
+			driver.switchTo().window(parent);
+			waitForPageReady();
+		}
+	}
 
-                WebElement watchesTab = wait.until(
-                        ExpectedConditions.elementToBeClickable(watchesLocator)
-                );
-                watchesTab.click();
+	/* ---------------- TC_04 ---------------- */
 
-                WebElement shopAll = wait.until(
-                        ExpectedConditions.elementToBeClickable(shopAllLocator)
-                );
-                shopAll.click();
+	public void clickPopularCategory() {
+		By category = By.xpath("//a[@href='/collections/valentines-day-watch-gifts']");
+		openInNewTabAndClose(category);
+	}
 
-                break;
+	/* ---------------- TC_05 ---------------- */
 
-            } catch (Exception e) {
-                System.out.println("Retrying Test 7 due to: " + e);
-            }
-        }
-    }
+	public void clickLeatherStrapWatch() {
+		By product = By
+				.xpath("(//a[@href='/products/timex-continental-black-round-dial-analog-mens-watch-tw2y25000uj'])[2]");
+		openInNewTabAndClose(product);
+	}
 
+	/* ---------------- TC_06 ---------------- */
+
+	public void clickMoreToLoveSection() {
+		By moreSection = By.xpath("(//a[@href='/collections/timex-x-jacquie-aiche'])[4]");
+		openInNewTabAndClose(moreSection);
+	}
+
+	/* ---------------- TC_07 ---------------- */
+
+	public void goToWatchesCategory() {
+
+		By watchesLocator = By.xpath("//a[contains(@class,'nav_link_timex')]");
+		By shopAllLocator = By.xpath("//a[contains(@href,'/collections/mens')]");
+
+		for (int i = 0; i < 2; i++) {
+			try {
+				safeClick(watchesLocator);
+				safeClick(shopAllLocator);
+				break;
+			} catch (Exception e) {
+				System.out.println("Retrying Test 7 due to: " + e);
+			}
+		}
+	}
 }

@@ -13,59 +13,66 @@ import org.testng.Assert;
 
 public class CheckOutPage {
 
-	  WebDriver driver;
+	 WebDriver driver;
 	    WebDriverWait wait;
 
 	    public CheckOutPage(WebDriver driver) {
 	        this.driver = driver;
-	        this.wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+
+	        boolean isLinux = System.getProperty("os.name", "").toLowerCase().contains("linux");
+	        this.wait = new WebDriverWait(driver, Duration.ofSeconds(isLinux ? 35 : 20));
 	    }
 
 	    // ✅ Verify Checkout Page Visible
 	    public void verifyCheckoutVisible() {
 
-	        // ✅ Wait till iframe is visible (HEADLESS SAFE)
-	        WebElement gokwikFrame = wait.until(
-	                ExpectedConditions.visibilityOfElementLocated(
-	                        By.xpath("//iframe[contains(@src,'gokwik')]")
-	                )
-	        );
+	        // SAME locators (no change)
+	        By gokwikFrameBy = By.xpath("//iframe[contains(@src,'gokwik')]");
+	        By checkoutContainerBy = By.xpath("//div[contains(@class,'gk-content')]");
 
-	        driver.switchTo().frame(gokwikFrame);
-
-	        // ✅ Verify checkout container
-	        WebElement checkoutContainer = wait.until(
-	                ExpectedConditions.visibilityOfElementLocated(
-	                        By.xpath("//div[contains(@class,'gk-content')]")
-	                )
-	        );
-
-	        Assert.assertTrue(checkoutContainer.isDisplayed(), "❌ Checkout page is NOT visible");
-	        System.out.println("✔ Checkout page is visible");
-
-	        // ✅ IMPORTANT: switch back
+	        // reset context (headless safe)
 	        driver.switchTo().defaultContent();
+
+	        try {
+	            // ✅ wait + switch in one stable step
+	            wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(gokwikFrameBy));
+
+	            WebElement checkoutContainer = wait.until(
+	                    ExpectedConditions.visibilityOfElementLocated(checkoutContainerBy)
+	            );
+
+	            Assert.assertTrue(checkoutContainer.isDisplayed(), "❌ Checkout page is NOT visible");
+	            System.out.println("✔ Checkout page is visible");
+
+	        } finally {
+	            // ✅ IMPORTANT: switch back always
+	            driver.switchTo().defaultContent();
+	        }
 	    }
 
 	    // ✅ Verify Mobile input enabled
 	    public void verifyCheckoutEnabled() {
 
-	        // 🔁 iframe me wapas switch
-	        WebElement gokwikFrame = wait.until(
-	                ExpectedConditions.visibilityOfElementLocated(
-	                        By.xpath("//iframe[contains(@src,'gokwik')]")
-	                )
-	        );
-	        driver.switchTo().frame(gokwikFrame);
+	        // SAME locators (no change)
+	        By gokwikFrameBy = By.xpath("//iframe[contains(@src,'gokwik')]");
+	        By phoneInputBy = By.id("phone-input");
 
-	        WebElement phoneInput = wait.until(
-	                ExpectedConditions.visibilityOfElementLocated(By.id("phone-input"))
-	        );
-
-	        Assert.assertTrue(phoneInput.isEnabled(), "❌ Checkout page not enabled");
-	        System.out.println("✔ Checkout page is enabled");
-
-	        // ✅ switch back
 	        driver.switchTo().defaultContent();
+
+	        try {
+	            // ✅ wait + switch stable
+	            wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(gokwikFrameBy));
+
+	            WebElement phoneInput = wait.until(
+	                    ExpectedConditions.visibilityOfElementLocated(phoneInputBy)
+	            );
+
+	            Assert.assertTrue(phoneInput.isEnabled(), "❌ Checkout page not enabled");
+	            System.out.println("✔ Checkout page is enabled");
+
+	        } finally {
+	            // ✅ switch back always
+	            driver.switchTo().defaultContent();
+	        }
 	    }
 	}

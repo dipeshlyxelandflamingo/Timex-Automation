@@ -16,193 +16,239 @@ import org.testng.Assert;
 public class PLPPage {
 
 	WebDriver driver;
-	WebDriverWait wait;
-	JavascriptExecutor js;
-	Actions actions;
+    WebDriverWait wait;
+    JavascriptExecutor js;
+    Actions actions;
 
-	public PLPPage(WebDriver driver) {
-		this.driver = driver;
-		this.wait = new WebDriverWait(driver, Duration.ofSeconds(25));
-		this.js = (JavascriptExecutor) driver;
-		this.actions = new Actions(driver);
-	}
+    public PLPPage(WebDriver driver) {
+        this.driver = driver;
 
-	public void clickshowfilter() {
+        // Linux headless me thoda higher wait (no xpath/logic change)
+        boolean isLinux = System.getProperty("os.name", "").toLowerCase().contains("linux");
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(isLinux ? 35 : 25));
 
-		By filterBtn = By.xpath("//span[@class='collection-filters__button-spacing']");
-		By filterPanel = By.xpath("//div[contains(@class,'usf-facets') and contains(@class,'usf-sr-filters')]");
+        this.js = (JavascriptExecutor) driver;
+        this.actions = new Actions(driver);
+    }
 
-		// 1) Wait till button exists + visible
-		WebElement btn = wait.until(ExpectedConditions.visibilityOfElementLocated(filterBtn));
-		js.executeScript("arguments[0].scrollIntoView({block:'center'});", btn);
+    public void clickshowfilter() {
 
-		// 2) Click + wait panel (retry 2 times)
-		for (int i = 0; i < 3; i++) {
-			try {
-				wait.until(ExpectedConditions.elementToBeClickable(btn));
-				js.executeScript("arguments[0].click();", btn);
+        By filterBtn = By.xpath("//span[@class='collection-filters__button-spacing']");
+        By filterPanel = By.xpath("//div[contains(@class,'usf-facets') and contains(@class,'usf-sr-filters')]");
 
-				// 3) Wait till side filter panel opens
-				wait.until(ExpectedConditions.visibilityOfElementLocated(filterPanel));
-				return;
+        // 1) Wait till button exists + visible
+        WebElement btn = wait.until(ExpectedConditions.visibilityOfElementLocated(filterBtn));
+        js.executeScript("arguments[0].scrollIntoView({block:'center'});", btn);
 
-			} catch (Exception e) {
-				btn = wait.until(ExpectedConditions.visibilityOfElementLocated(filterBtn));
-				js.executeScript("arguments[0].scrollIntoView({block:'center'});", btn);
-			}
-		}
+        // 2) Click + wait panel (retry 2 times)
+        for (int i = 0; i < 3; i++) {
+            try {
+                // IMPORTANT: clickable(By) to avoid stale WebElement in headless
+                wait.until(ExpectedConditions.elementToBeClickable(filterBtn));
+                js.executeScript("arguments[0].click();", driver.findElement(filterBtn));
 
-		Assert.fail("Filter panel did not open after clicking Show Filter button");
-	}
+                // 3) Wait till side filter panel opens
+                wait.until(ExpectedConditions.visibilityOfElementLocated(filterPanel));
+                return;
 
-	public void scrollAndClick(By locator) {
-		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
-		js.executeScript("arguments[0].scrollIntoView({block:'center'});", element);
-		js.executeScript("arguments[0].click();", element);
-	}
+            } catch (Exception e) {
+                btn = wait.until(ExpectedConditions.visibilityOfElementLocated(filterBtn));
+                js.executeScript("arguments[0].scrollIntoView({block:'center'});", btn);
+            }
+        }
 
-	public void closeGenderandpricefilter() throws Exception {
+        Assert.fail("Filter panel did not open after clicking Show Filter button");
+    }
 
-		By closegenderfilter = By.xpath("(//div[@class='usf-title usf-no-select'])[1]");
-		scrollAndClick(closegenderfilter);
+    public void scrollAndClick(By locator) {
+        // IMPORTANT: use By-based wait to reduce stale issues
+        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+        js.executeScript("arguments[0].scrollIntoView({block:'center'});", element);
 
-		Thread.sleep(800);
-		By closepricefilter = By.xpath("(//div[@class='usf-title usf-no-select'])[2]");
-		scrollAndClick(closepricefilter);
+        try {
+            wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
+        } catch (Exception e) {
+            js.executeScript("arguments[0].click();", driver.findElement(locator));
+        }
+    }
 
-	}
+    public void closeGenderandpricefilter() throws Exception {
 
-	public void openandselectbandcolorfilter(String colorName, int expectedCount) throws Exception {
+        By closegenderfilter = By.xpath("(//div[@class='usf-title usf-no-select'])[1]");
+        scrollAndClick(closegenderfilter);
 
-		By openandclosebandfilter = By.xpath("(//div[@class='usf-title usf-no-select'])[3]");
-		scrollAndClick(openandclosebandfilter);
+        Thread.sleep(800);
+        By closepricefilter = By.xpath("(//div[@class='usf-title usf-no-select'])[2]");
+        scrollAndClick(closepricefilter);
+    }
 
-		WebElement selectbandfilter = wait.until(ExpectedConditions.elementToBeClickable(
-				By.xpath("//div[contains(@class,'usf-facet-values--Swatch')]//button[.//span[normalize-space()='"
-						+ colorName + "']]")));
-		js.executeScript("arguments[0].scrollIntoView({block:'center'});", selectbandfilter);
-		js.executeScript("arguments[0].click();", selectbandfilter);
+    public void openandselectbandcolorfilter(String colorName, int expectedCount) throws Exception {
 
-		waitForProductsToLoad();
-		scrollAndClick(openandclosebandfilter);
-		validateProductCount(expectedCount);
-		ClickOnClearbutton();
-		Thread.sleep(800);
-	}
+        By openandclosebandfilter = By.xpath("(//div[@class='usf-title usf-no-select'])[3]");
+        scrollAndClick(openandclosebandfilter);
 
-	public void openandselectDialcolorfilter(String colorName, int expectedCount) throws Exception {
+        By bandColorBtn = By.xpath("//div[contains(@class,'usf-facet-values--Swatch')]//button[.//span[normalize-space()='"
+                + colorName + "']]");
 
-		By openandclosedialcolorfilter = By.xpath("(//div[@class='usf-title usf-no-select'])[4]");
-		scrollAndClick(openandclosedialcolorfilter);
+        WebElement selectbandfilter = wait.until(ExpectedConditions.elementToBeClickable(bandColorBtn));
+        js.executeScript("arguments[0].scrollIntoView({block:'center'});", selectbandfilter);
+        js.executeScript("arguments[0].click();", selectbandfilter);
 
-		WebElement selectbandfilter = wait.until(ExpectedConditions.elementToBeClickable(
-				By.xpath("//div[contains(@class,'usf-facet-values--Swatch')]//button[.//span[normalize-space()='"
-						+ colorName + "']]")));
-		js.executeScript("arguments[0].scrollIntoView({block:'center'});", selectbandfilter);
-		js.executeScript("arguments[0].click();", selectbandfilter);
+        waitForProductsToLoad();
 
-		waitForProductsToLoad();
-		scrollAndClick(openandclosedialcolorfilter);
-		validateProductCount(expectedCount);
-		ClickOnClearbutton();
-		Thread.sleep(800);
-	}
+        // ✅ Cleanup ALWAYS runs, even if validate fails
+        try {
+            scrollAndClick(openandclosebandfilter);
+            validateProductCount(expectedCount);
+        } finally {
+            try { ClickOnClearbutton(); } catch (Exception ignored) {}
+        }
 
-	public void openandselectCaseDiameterfilter(String casediameterName, int expectedCount) throws Exception {
+        Thread.sleep(800);
+    }
 
-		By openCaseDiameterfilter = By.xpath("(//div[@class='usf-title usf-no-select'])[5]");
-		scrollAndClick(openCaseDiameterfilter);
+    public void openandselectDialcolorfilter(String colorName, int expectedCount) throws Exception {
 
-		WebElement selectbandfilter = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(
-				"//button[.//span[contains(@class,'usf-label') and normalize-space()='" + casediameterName + "']]")));
-		js.executeScript("arguments[0].scrollIntoView({block:'center'});", selectbandfilter);
-		js.executeScript("arguments[0].click();", selectbandfilter);
+        By openandclosedialcolorfilter = By.xpath("(//div[@class='usf-title usf-no-select'])[4]");
+        scrollAndClick(openandclosedialcolorfilter);
 
-		waitForProductsToLoad();
-		By closeCaseDiameterfilter = By.xpath("(//div[@class='usf-title usf-no-select'])[3]");
-		scrollAndClick(closeCaseDiameterfilter);
-		validateProductCount(expectedCount);
-		ClickOnClearbutton();
-		Thread.sleep(800);
-	}
+        By dialColorBtn = By.xpath("//div[contains(@class,'usf-facet-values--Swatch')]//button[.//span[normalize-space()='"
+                + colorName + "']]");
 
-	public void openandselectbandmaterialfilter(String bandMaterial, int expectedCount) throws Exception {
+        WebElement selectbandfilter = wait.until(ExpectedConditions.elementToBeClickable(dialColorBtn));
+        js.executeScript("arguments[0].scrollIntoView({block:'center'});", selectbandfilter);
+        js.executeScript("arguments[0].click();", selectbandfilter);
 
-		By openbandmaterialfilter = By.xpath("(//div[@class='usf-title usf-no-select'])[6]");
-		scrollAndClick(openbandmaterialfilter);
+        waitForProductsToLoad();
 
-		WebElement selectbandfilter = wait.until(ExpectedConditions.elementToBeClickable(
-				By.xpath("//div[contains(@class,'usf-facet-values--Box')]//button[.//span[normalize-space()='"
-						+ bandMaterial + "']]")));
-		js.executeScript("arguments[0].scrollIntoView({block:'center'});", selectbandfilter);
-		js.executeScript("arguments[0].click();", selectbandfilter);
+        // ✅ Cleanup ALWAYS runs
+        try {
+            scrollAndClick(openandclosedialcolorfilter);
+            validateProductCount(expectedCount);
+        } finally {
+            try { ClickOnClearbutton(); } catch (Exception ignored) {}
+        }
 
-		waitForProductsToLoad();
-		By closebandmaterialfilter = By.xpath("(//div[@class='usf-title usf-no-select'])[5]");
-		scrollAndClick(closebandmaterialfilter);
-		validateProductCount(expectedCount);
-		ClickOnClearbutton();
-		Thread.sleep(800);
-	}
+        Thread.sleep(800);
+    }
 
-	public void clickFirstProduct() throws Exception {
+    public void openandselectCaseDiameterfilter(String casediameterName, int expectedCount) throws Exception {
 
-		Thread.sleep(800);
-		WebElement selectbandfilter = wait.until(
-				ExpectedConditions.elementToBeClickable(By.xpath("//a[@href='/collections/mens/products/tw000t310']")));
-		js.executeScript("arguments[0].scrollIntoView({block:'center'});", selectbandfilter);
-		js.executeScript("arguments[0].click();", selectbandfilter);
+        By openCaseDiameterfilter = By.xpath("(//div[@class='usf-title usf-no-select'])[5]");
+        scrollAndClick(openCaseDiameterfilter);
 
-	}
+        By caseDiameterBtn = By.xpath("//button[.//span[contains(@class,'usf-label') and normalize-space()='"
+                + casediameterName + "']]");
 
-	private void waitForProductsToLoad() {
+        WebElement selectbandfilter = wait.until(ExpectedConditions.elementToBeClickable(caseDiameterBtn));
+        js.executeScript("arguments[0].scrollIntoView({block:'center'});", selectbandfilter);
+        js.executeScript("arguments[0].click();", selectbandfilter);
 
-		By summaryB = By.xpath("//span[contains(@class,'usf-sr-summary')]//b");
-		WebElement summary = wait.until(ExpectedConditions.visibilityOfElementLocated(summaryB));
-		String oldText = summary.getText().trim();
+        waitForProductsToLoad();
 
-		By anySpinner = By.cssSelector(".usf-loader, .usf-loading, .loading, .spinner");
+        By closeCaseDiameterfilter = By.xpath("(//div[@class='usf-title usf-no-select'])[3]");
 
-		try {
-			wait.until(driver -> {
-				try {
-					if (!driver.findElements(anySpinner).isEmpty()) {
-						for (WebElement sp : driver.findElements(anySpinner)) {
-							if (sp.isDisplayed())
-								return false;
-						}
-					}
+        // ✅ Cleanup ALWAYS runs
+        try {
+            scrollAndClick(closeCaseDiameterfilter);
+            validateProductCount(expectedCount);
+        } finally {
+            try { ClickOnClearbutton(); } catch (Exception ignored) {}
+        }
 
-					String newText = driver.findElement(summaryB).getText().trim();
-					return !newText.equals(oldText);
+        Thread.sleep(800);
+    }
 
-				} catch (StaleElementReferenceException e) {
-					return true;
-				} catch (Exception e) {
-					return false;
-				}
-			});
-		} catch (Exception e) {
-		}
-	}
+    public void openandselectbandmaterialfilter(String bandMaterial, int expectedCount) throws Exception {
 
-	private void validateProductCount(int expectedCount) {
+        By openbandmaterialfilter = By.xpath("(//div[@class='usf-title usf-no-select'])[6]");
+        scrollAndClick(openbandmaterialfilter);
 
-		By summaryB = By.xpath("//span[contains(@class,'usf-sr-summary')]//b");
-		WebElement summary = wait.until(ExpectedConditions.visibilityOfElementLocated(summaryB));
+        By bandMaterialBtn = By.xpath("//div[contains(@class,'usf-facet-values--Box')]//button[.//span[normalize-space()='"
+                + bandMaterial + "']]");
 
-		String summaryText = summary.getText().trim();
-		int actualCount = Integer.parseInt(summaryText.replaceAll("[^0-9]", ""));
+        WebElement selectbandfilter = wait.until(ExpectedConditions.elementToBeClickable(bandMaterialBtn));
+        js.executeScript("arguments[0].scrollIntoView({block:'center'});", selectbandfilter);
+        js.executeScript("arguments[0].click();", selectbandfilter);
 
-		Assert.assertEquals(actualCount, expectedCount, "Expected product count does not match filtered result");
-	}
+        waitForProductsToLoad();
 
-	private void ClickOnClearbutton() {
+        By closebandmaterialfilter = By.xpath("(//div[@class='usf-title usf-no-select'])[5]");
 
-		By clearBtn = By.xpath("(//button[contains(@class,'usf-clear-all')])[1]");
-		WebElement clear = wait.until(ExpectedConditions.elementToBeClickable(clearBtn));
+        // ✅ Cleanup ALWAYS runs
+        try {
+            scrollAndClick(closebandmaterialfilter);
+            validateProductCount(expectedCount);
+        } finally {
+            try { ClickOnClearbutton(); } catch (Exception ignored) {}
+        }
 
-		js.executeScript("arguments[0].scrollIntoView({block:'center'});", clear);
-		js.executeScript("arguments[0].click();", clear);
-	}
+        Thread.sleep(800);
+    }
+
+    public void clickFirstProduct() throws Exception {
+
+        Thread.sleep(800);
+        By firstProduct = By.xpath("//a[@href='/collections/mens/products/tw000t310']");
+        WebElement selectbandfilter = wait.until(ExpectedConditions.elementToBeClickable(firstProduct));
+        js.executeScript("arguments[0].scrollIntoView({block:'center'});", selectbandfilter);
+        js.executeScript("arguments[0].click();", selectbandfilter);
+    }
+
+    private void waitForProductsToLoad() {
+
+        By summaryB = By.xpath("//span[contains(@class,'usf-sr-summary')]//b");
+        WebElement summary = wait.until(ExpectedConditions.visibilityOfElementLocated(summaryB));
+
+        // oldText final for lambda safety (no logic change)
+        final String oldText = summary.getText().trim();
+
+        By anySpinner = By.cssSelector(".usf-loader, .usf-loading, .loading, .spinner");
+
+        try {
+            wait.until(d -> {
+                try {
+                    if (!d.findElements(anySpinner).isEmpty()) {
+                        for (WebElement sp : d.findElements(anySpinner)) {
+                            if (sp.isDisplayed()) return false;
+                        }
+                    }
+
+                    String newText = d.findElement(summaryB).getText().trim();
+                    return !newText.equals(oldText);
+
+                } catch (StaleElementReferenceException e) {
+                    return true;
+                } catch (Exception e) {
+                    return false;
+                }
+            });
+        } catch (Exception e) {
+        }
+    }
+
+    private void validateProductCount(int expectedCount) {
+
+        By summaryB = By.xpath("//span[contains(@class,'usf-sr-summary')]//b");
+        WebElement summary = wait.until(ExpectedConditions.visibilityOfElementLocated(summaryB));
+
+        String summaryText = summary.getText().trim();
+        int actualCount = Integer.parseInt(summaryText.replaceAll("[^0-9]", ""));
+
+        Assert.assertEquals(actualCount, expectedCount, "Expected product count does not match filtered result");
+    }
+
+    private void ClickOnClearbutton() {
+
+        By clearBtn = By.xpath("(//button[contains(@class,'usf-clear-all')])[1]");
+        WebElement clear = wait.until(ExpectedConditions.elementToBeClickable(clearBtn));
+
+        js.executeScript("arguments[0].scrollIntoView({block:'center'});", clear);
+
+        try {
+            clear.click();
+        } catch (Exception e) {
+            js.executeScript("arguments[0].click();", clear);
+        }
+    }
 }
