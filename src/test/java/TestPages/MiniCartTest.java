@@ -33,7 +33,7 @@ public class MiniCartTest extends BaseClass {
 
 		// Add product to cart from PDP
 		pdp = new PDPPage(driver);
-		pdp.addProductToCart();
+		pdp.addProductToCart();  
 
 		// Initialize MiniCartPage
 		miniCart = new MiniCartPage(driver);
@@ -45,7 +45,7 @@ public class MiniCartTest extends BaseClass {
         try {
             miniCart.increaseQuantity(3);
         } catch (Exception e) {
-            Assert.fail("Failed to Increase the Product Quantity");
+            Assert.fail("Failed to Increase the Product Quantity" + e.getMessage());
         }
     }
 
@@ -55,7 +55,7 @@ public class MiniCartTest extends BaseClass {
         try {
             miniCart.enterPincode("201306");
         } catch (Exception e) {
-            Assert.fail("Failed to Enter Pincode");
+            Assert.fail("Failed to Enter Pincode" +  e.getMessage());
         }
     }
 
@@ -65,7 +65,7 @@ public class MiniCartTest extends BaseClass {
         try {
             miniCart.goToQuickCheckout();
         } catch (Exception e) {
-            Assert.fail("Failed to Click on Checkout Button");
+            Assert.fail("Failed to Click on Checkout Button" +  e.getMessage());
         }
     }
 }

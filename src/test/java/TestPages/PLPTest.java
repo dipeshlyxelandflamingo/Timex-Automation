@@ -43,7 +43,7 @@ public class PLPTest extends BaseClass {
 	@Test(priority = 3)
 	public void ClickOnBandColorFilter() {
 		try {
-			plp.openandselectbandcolorfilter("Black", 57);// 54
+			plp.openandselectbandcolorfilter("Black", 55);// 54
 		} catch (Exception e) {
 			Assert.fail("Failed Band Color Filter: ");
 		}
@@ -61,7 +61,7 @@ public class PLPTest extends BaseClass {
 	@Test(priority = 5)
 	public void ClickOnCaseDiameterFilter() {
 		try {
-			plp.openandselectCaseDiameterfilter("29 MM", 1);// 1
+			plp.openandselectCaseDiameterfilter("30 MM", 1);// 1
 		} catch (Exception e) {
 			Assert.fail("Failed Case Diameter Filter: ");
 		}

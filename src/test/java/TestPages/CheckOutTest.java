@@ -47,7 +47,7 @@ public class CheckOutTest extends BaseClass {
 		try {
 			checkout.verifyCheckoutVisible();
 		} catch (Exception e) {
-			Assert.fail("Failed to Check Checkout Visibility");
+			Assert.fail("Failed to Check Checkout Visibility" + e.getMessage());
 		}
 	}
 
@@ -57,7 +57,7 @@ public class CheckOutTest extends BaseClass {
 		try {
 			checkout.verifyCheckoutEnabled();
 		} catch (Exception e) {
-			Assert.fail("Failed to Enable Checkout");
+			Assert.fail("Failed to Enable Checkout" + e.getMessage());
 		}
 	}
 }

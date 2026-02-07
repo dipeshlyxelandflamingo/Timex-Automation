@@ -131,6 +131,27 @@ public class PDPPage {
             js.executeScript("arguments[0].click();", driver.findElement(addToCartBtnBy));
         }
 
-        System.out.println("✔ Product added to cart");
+        // 6️⃣ If alert comes (CI/headless), accept it and FAIL with clear message
+        //    (alert text: "Unable to add Product, Please try again Later.")
+        try {
+            WebDriverWait alertWait = new WebDriverWait(driver, Duration.ofSeconds(2));
+            org.openqa.selenium.Alert alert = alertWait.until(ExpectedConditions.alertIsPresent());
+            String text = "";
+            try { text = alert.getText(); } catch (Exception ignored) {}
+            alert.accept();
+            throw new AssertionError("Add to Cart failed due to alert: " + text);
+        } catch (org.openqa.selenium.TimeoutException ignored) {
+            // no alert, continue
+        }
+
+        // 7️⃣ VERIFY product really added (very important for Jenkins)
+        //    We check if qty input is visible (your MiniCart uses this same xpath)
+        try {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@class='qty']")));
+            System.out.println("✔ Product added to cart (verified)");
+        } catch (Exception e) {
+            throw new AssertionError("Add to Cart clicked but product NOT added (qty not visible). CI/backend issue.");
+        }
     }
+    
 }
