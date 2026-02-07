@@ -29,7 +29,23 @@ public class CheckOutTest extends BaseClass {
 		home.goToWatchesCategory(); // Homepage last step
 
 		plp = new PLPPage(driver);
-		plp.clickFirstProduct(); // PLP last step
+		boolean opened = false;
+
+		for (int i = 0; i < 5; i++) {
+		    try {
+		        plp.clickProducts(i);   // ✅ your new method
+		        opened = true;
+		        System.out.println("✔ Opened product index: " + i);
+		        break;
+		    } catch (Exception e) {
+		        System.out.println("❌ Failed to open product index: " + i + " | " + e.getMessage());
+		    }
+		}
+
+		if (!opened) {
+		    Assert.fail("Failed to open any product from PLP (0-4)");
+		}
+
 
 		pdp = new PDPPage(driver);
 		pdp.addProductToCart(); // PDP last step → MiniCart opens

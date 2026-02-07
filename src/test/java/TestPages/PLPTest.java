@@ -77,11 +77,22 @@ public class PLPTest extends BaseClass {
 	}
 
 	@Test(priority = 7)
-	public void clickOnFirstProduct() {
-		try {
-			plp.clickFirstProduct();
-		} catch (Exception e) {
-			Assert.fail("Failed click on First Product");
+	public void clickOnProducts() {
+		 boolean opened = false;
+
+		    for (int i = 0; i < 5; i++) {   // first 5 products try
+		        try {
+		            plp.clickProducts(i);
+		            opened = true;
+		            System.out.println("✔ Opened product index: " + i);
+		            break;
+		        } catch (Exception e) {
+		            System.out.println("❌ Failed to open product index: " + i + " | " + e.getMessage());
+		        }
+		    }
+
+		    if (!opened) {
+		        Assert.fail("Failed to open any product from PLP (0-4)");
+		    }
 		}
 	}
-}

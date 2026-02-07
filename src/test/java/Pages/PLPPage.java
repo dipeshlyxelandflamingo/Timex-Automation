@@ -1,11 +1,11 @@
 package Pages;
 
 import java.time.Duration;
+import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.StaleElementReferenceException;
-import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -186,14 +186,35 @@ public class PLPPage {
         Thread.sleep(800);
     }
 
-    public void clickFirstProduct() throws Exception {
+    public void clickProducts(int index) throws Exception {
 
         Thread.sleep(800);
-        By firstProduct = By.xpath("//a[@href='/collections/mens/products/tw000t310']");
-        WebElement selectbandfilter = wait.until(ExpectedConditions.elementToBeClickable(firstProduct));
-        js.executeScript("arguments[0].scrollIntoView({block:'center'});", selectbandfilter);
-        js.executeScript("arguments[0].click();", selectbandfilter);
+        By productLinks = By.xpath("//a[contains(@href,'/collections/mens/products/') and contains(@class,'prd-h-img')]");
+        // DOM me yahi class dikh rahi hai
+
+        List<WebElement> links = wait.until(
+                ExpectedConditions.presenceOfAllElementsLocatedBy(productLinks)
+        );
+
+        if (links.size() == 0) {
+            Assert.fail("No product links found on PLP");
+        }
+
+        if (index >= links.size()) {
+            Assert.fail("Index " + index + " out of range. Total products: " + links.size());
+        }
+
+        WebElement product = links.get(index);
+
+        js.executeScript("arguments[0].scrollIntoView({block:'center'});", product);
+
+        try {
+            wait.until(ExpectedConditions.elementToBeClickable(product)).click();
+        } catch (Exception e) {
+            js.executeScript("arguments[0].click();", product);
+        }
     }
+    
 
     private void waitForProductsToLoad() {
 

@@ -29,7 +29,24 @@ public class MiniCartTest extends BaseClass {
 
 		// Select a product from PLP
 		plp = new PLPPage(driver);
-		plp.clickFirstProduct();
+		
+		boolean opened = false;
+
+		for (int i = 0; i < 5; i++) {
+		    try {
+		        plp.clickProducts(i);   // ✅ your new method
+		        opened = true;
+		        System.out.println("✔ Opened product index: " + i);
+		        break;
+		    } catch (Exception e) {
+		        System.out.println("❌ Failed to open product index: " + i + " | " + e.getMessage());
+		    }
+		}
+
+		if (!opened) {
+		    Assert.fail("Failed to open any product from PLP (0-4)");
+		}
+
 
 		// Add product to cart from PDP
 		pdp = new PDPPage(driver);
