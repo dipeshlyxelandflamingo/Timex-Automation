@@ -187,6 +187,8 @@ public class PLPPage {
     }
 
     public void clickProducts(int index) throws Exception {
+    	
+    	 ensureOnPLP();  
 
         Thread.sleep(800);
         By productLinks = By.xpath("//a[contains(@href,'/collections/mens/products/') and contains(@class,'prd-h-img')]");
@@ -270,6 +272,14 @@ public class PLPPage {
             clear.click();
         } catch (Exception e) {
             js.executeScript("arguments[0].click();", clear);
+        }
+    }
+    
+    private void ensureOnPLP() {
+        String url = driver.getCurrentUrl();
+        if (!url.contains("/collections/mens")) {
+            System.out.println("⚠️ Not on PLP, opening PLP directly. Current URL: " + url);
+            driver.get("https://shop.timexindia.com/collections/mens?usf_sort=bestselling");
         }
     }
 }

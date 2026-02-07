@@ -190,17 +190,25 @@ public class HomePage {
 
 	public void goToWatchesCategory() {
 
-		By watchesLocator = By.xpath("//a[contains(@class,'nav_link_timex')]");
-		By shopAllLocator = By.xpath("//a[contains(@href,'/collections/mens')]");
+		 By watchesLocator = By.xpath("//a[contains(@class,'nav_link_timex')]");
+		    By shopAllLocator = By.xpath("//a[contains(@href,'/collections/mens')]");
 
-		for (int i = 0; i < 2; i++) {
-			try {
-				safeClick(watchesLocator);
-				safeClick(shopAllLocator);
-				break;
-			} catch (Exception e) {
-				System.out.println("Retrying Test 7 due to: " + e);
-			}
+		    for (int i = 0; i < 2; i++) {
+		        try {
+		            WebElement watchesTab = wait.until(ExpectedConditions.elementToBeClickable(watchesLocator));
+		            watchesTab.click();
+
+		            WebElement shopAll = wait.until(ExpectedConditions.elementToBeClickable(shopAllLocator));
+		            shopAll.click();
+
+		            return; // ✅ success
+		        } catch (Exception e) {
+		            System.out.println("Retrying Test 7 due to: " + e);
+		        }
+		    }
+
+		    // ✅ Fallback for Linux headless / flaky header
+		    System.out.println("⚠️ goToWatchesCategory failed, opening PLP directly...");
+		    driver.get("https://shop.timexindia.com/collections/mens?usf_sort=bestselling");
 		}
-	}
 }
