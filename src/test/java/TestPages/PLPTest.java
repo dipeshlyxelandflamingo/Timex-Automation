@@ -61,7 +61,7 @@ public class PLPTest extends BaseClass {
 	@Test(priority = 5)
 	public void ClickOnCaseDiameterFilter() {
 		try {
-			plp.openandselectCaseDiameterfilter("30 MM", 1);// 1
+			plp.openandselectCaseDiameterfilter("30 MM", 3);// 1
 		} catch (Exception e) {
 			Assert.fail("Failed Case Diameter Filter: ");
 		}

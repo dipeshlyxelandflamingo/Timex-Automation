@@ -35,40 +35,72 @@ public class MiniCartPage {
     // ✅ Alert handler (CI/headless safe)
     private void handleAlertIfPresent() {
         try {
-            // short wait for alert
             WebDriverWait shortWait = new WebDriverWait(driver, Duration.ofSeconds(2));
             shortWait.until(ExpectedConditions.alertIsPresent());
 
             Alert alert = driver.switchTo().alert();
             String txt = "";
-            try {
-                txt = alert.getText();
-            } catch (Exception ignored) {}
+            try { txt = alert.getText(); } catch (Exception ignored) {}
 
             System.out.println("⚠ Alert found: " + txt);
 
-            try {
-                alert.accept();
-            } catch (Exception ignored) {}
-
+            try { alert.accept(); } catch (Exception ignored) {}
             driver.switchTo().defaultContent();
-        } catch (TimeoutException e) {
-            // no alert
-        } catch (NoAlertPresentException e) {
+
+        } catch (TimeoutException | NoAlertPresentException e) {
             // no alert
         } catch (Exception e) {
-            // ignore any unexpected alert handling issue
+            // ignore
+        }
+    }
+
+    // ✅ Wait until mini cart is open/visible (helps CI)
+    public void waitForMiniCartVisible() {
+        // mini cart ka container / header text ke through stabilize kar rahe hain
+        // (site pe "Your Bag" text aata hai)
+        By bagHeader = By.xpath("(//*[contains(normalize-space(),'Your Bag')])[8]");
+        try {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(bagHeader));
+        } catch (Exception ignored) {}
+    }
+
+    // ✅ NEW: check if cart empty (product add nahi hua)
+    public boolean isCartEmpty() {
+        // image me ye text clearly dikh raha hai
+        By emptyText = By.xpath("//*[contains(text(),'Your cart is currently empty')]");
+        try {
+            WebDriverWait shortWait = new WebDriverWait(driver, Duration.ofSeconds(4));
+            WebElement el = shortWait.until(ExpectedConditions.visibilityOfElementLocated(emptyText));
+            if (el != null) {
+                System.out.println("❌ Mini cart is EMPTY – product not added.");
+                return true;
+            }
+            return false;
+        } catch (TimeoutException e) {
+            // empty text nahi mila => cart me product hai
+            System.out.println("✔ Mini cart has product (not empty).");
+            return false;
+        }
+    }
+
+    // ✅ Guard: cart empty ho to direct fail (taaki pincode timeout ka drama na ho)
+    private void failIfCartEmpty() {
+        waitForMiniCartVisible();
+        if (isCartEmpty()) {
+            Assert.fail("❌ Mini cart empty: Product add to cart failed (PDP/Backend). " +
+                        "So pincode/checkout steps are not applicable.");
         }
     }
 
     // ---------- Quantity Increase ----------
     public void increaseQuantity(int times) {
 
-        // SAME locators (no change)
+        // ✅ first ensure cart not empty
+        failIfCartEmpty();
+
         By qtyInputBy = By.xpath("//input[@class='qty']");
         By plusBtnBy = By.xpath("//button[@class='qty-plus']");
 
-        // just in case alert pops up before qty actions
         handleAlertIfPresent();
 
         WebElement qtyInput = wait.until(ExpectedConditions.visibilityOfElementLocated(qtyInputBy));
@@ -86,7 +118,6 @@ public class MiniCartPage {
             WebElement plusBtn = wait.until(ExpectedConditions.elementToBeClickable(plusBtnBy));
             js.executeScript("arguments[0].scrollIntoView({block:'center'});", plusBtn);
 
-            // click (try normal then JS)
             try {
                 plusBtn.click();
             } catch (UnhandledAlertException ua) {
@@ -99,7 +130,7 @@ public class MiniCartPage {
 
             final int expectedQty = currentQty + 1;
 
-            // wait until qty changes to expected (stale-safe)
+            // wait until qty changes
             wait.until(new ExpectedCondition<Boolean>() {
                 @Override
                 public Boolean apply(WebDriver d) {
@@ -110,7 +141,7 @@ public class MiniCartPage {
                     } catch (StaleElementReferenceException e) {
                         return false;
                     } catch (UnhandledAlertException ua) {
-                        return true; // will be handled outside
+                        return true; // will be handled
                     } catch (Exception e) {
                         return false;
                     }
@@ -119,7 +150,6 @@ public class MiniCartPage {
 
             handleAlertIfPresent();
 
-            // re-fetch fresh input (same xpath)
             qtyInput = wait.until(ExpectedConditions.visibilityOfElementLocated(qtyInputBy));
             currentQty = Integer.parseInt(qtyInput.getAttribute("value"));
 
@@ -133,10 +163,11 @@ public class MiniCartPage {
     // ---------- Enter Pincode ----------
     public void enterPincode(String pincode) {
 
-        // SAME locator (no change)
+        // ✅ first ensure cart not empty
+        failIfCartEmpty();
+
         By pincodeBy = By.xpath("//input[@id='userPincode']");
 
-        // ✅ main fix: handle alert before touching DOM
         handleAlertIfPresent();
 
         WebElement pincodeInput;
@@ -149,9 +180,7 @@ public class MiniCartPage {
 
         js.executeScript("arguments[0].scrollIntoView({block:'center'});", pincodeInput);
 
-        try {
-            pincodeInput.clear();
-        } catch (Exception ignored) {}
+        try { pincodeInput.clear(); } catch (Exception ignored) {}
 
         try {
             pincodeInput.sendKeys(pincode);
@@ -168,7 +197,9 @@ public class MiniCartPage {
     // ---------- Quick Checkout ----------
     public void goToQuickCheckout() {
 
-        // SAME locator (no change)
+        // ✅ first ensure cart not empty
+        failIfCartEmpty();
+
         By checkoutBtnBy = By.id("gokwik-checkout-btn");
 
         handleAlertIfPresent();
