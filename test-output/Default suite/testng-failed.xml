@@ -3,14 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="TestPages.PLPTest">
+      <class name="TestPages.CheckOutTest">
         <methods>
+          <include name="VerifyCheckoutEnabled"/>
           <include name="setUpClass"/>
-          <include name="init"/>
-          <include name="ClickOnCaseDiameterFilter"/>
-          <include name="tearDownClass"/>
+          <include name="VerifyCheckoutVisible"/>
+          <include name="initFlow"/>
         </methods>
-      </class> <!-- TestPages.PLPTest -->
+      </class> <!-- TestPages.CheckOutTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

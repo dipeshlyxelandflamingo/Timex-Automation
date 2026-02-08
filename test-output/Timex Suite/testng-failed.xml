@@ -4,18 +4,21 @@
   <listeners>
     <listener class-name="Listeners.TestListener"/>
   </listeners>
-  <test thread-count="5" name="Home and other Test(failed)">
+  <test thread-count="5" name="02 - PLP (plp group)(failed)">
+    <groups>
+      <run>
+        <include name="plp"/>
+      </run>
+    </groups>
     <classes>
       <class name="TestPages.PLPTest">
         <methods>
-          <include name="TC_03_DialColorFilter"/>
           <include name="setUpClass"/>
           <include name="init"/>
-          <include name="ClickOnBandMaterialFilter"/>
           <include name="ClickOnBandColorFilter"/>
           <include name="tearDownClass"/>
         </methods>
       </class> <!-- TestPages.PLPTest -->
     </classes>
-  </test> <!-- Home and other Test(failed) -->
+  </test> <!-- 02 - PLP (plp group)(failed) -->
 </suite> <!-- Failed suite [Timex Suite] -->

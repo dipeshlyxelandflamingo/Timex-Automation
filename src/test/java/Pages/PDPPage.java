@@ -16,15 +16,23 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class PDPPage {
 
-	WebDriver driver;
+	 WebDriver driver;
     WebDriverWait wait;
     JavascriptExecutor js;
+
+    // ✅ Correct PDP URL (REAL product page)
+    private static final String PDP_URL = "https://shop.timexindia.com/products/tw000t310";
 
     public PDPPage(WebDriver driver) {
         this.driver = driver;
         boolean isLinux = System.getProperty("os.name", "").toLowerCase().contains("linux");
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(isLinux ? 35 : 15));
         this.js = (JavascriptExecutor) driver;
+    }
+
+    // ✅ Simple: always go to PDP
+    public void openPDP() {
+        driver.get(PDP_URL);
     }
 
     /* ================= Helper ================= */
@@ -60,19 +68,16 @@ public class PDPPage {
 
     public void clickOnProductRecommendationsAndCloseTab() {
         By productsBy = By.xpath("//form[@class='home-cat-iteam ']");
-        List<WebElement> products = wait.until(
-                ExpectedConditions.presenceOfAllElementsLocatedBy(productsBy));
+        List<WebElement> products = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(productsBy));
 
-        int count = products.size();
-
-        for (int i = 0; i < count; i++) {
+        for (int i = 0; i < products.size(); i++) {
             products = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(productsBy));
             WebElement product = products.get(i);
 
-            js.executeScript("arguments[0].scrollIntoView({block:'center', inline:'nearest'});", product);
+            js.executeScript("arguments[0].scrollIntoView({block:'center'});", product);
             wait.until(ExpectedConditions.visibilityOf(product));
 
-            try { Thread.sleep(1000); } catch (InterruptedException e) { Thread.currentThread().interrupt(); }
+            try { Thread.sleep(800); } catch (InterruptedException e) { Thread.currentThread().interrupt(); }
 
             openInNewTabAndClose(product);
         }
@@ -80,15 +85,14 @@ public class PDPPage {
 
     /* ---------------- Add To Cart ---------------- */
 
-    // ✅ IMPORTANT: now returns true/false so Test can decide next product
+    // ✅ returns true/false
     public boolean addProductToCart() {
 
         By addToCartBtnBy = By.xpath("//button[@class='add-tocart-btn']");
 
-        WebElement addToCartBtn = wait.until(
-                ExpectedConditions.visibilityOfElementLocated(addToCartBtnBy));
+        WebElement addToCartBtn = wait.until(ExpectedConditions.visibilityOfElementLocated(addToCartBtnBy));
 
-        js.executeScript("arguments[0].scrollIntoView({block:'start', inline:'nearest'});", addToCartBtn);
+        js.executeScript("arguments[0].scrollIntoView({block:'center'});", addToCartBtn);
         js.executeScript("window.scrollBy(0, -80);");
 
         wait.until(ExpectedConditions.elementToBeClickable(addToCartBtnBy));
@@ -99,7 +103,7 @@ public class PDPPage {
             js.executeScript("arguments[0].click();", driver.findElement(addToCartBtnBy));
         }
 
-        // ✅ If alert comes, accept and return false (do NOT stop suite)
+        // alert => fail
         try {
             WebDriverWait alertWait = new WebDriverWait(driver, Duration.ofSeconds(2));
             Alert alert = alertWait.until(ExpectedConditions.alertIsPresent());
@@ -108,11 +112,9 @@ public class PDPPage {
             alert.accept();
             System.out.println("❌ Add to cart alert: " + text);
             return false;
-        } catch (org.openqa.selenium.TimeoutException ignored) {
-            // no alert, continue
-        }
+        } catch (org.openqa.selenium.TimeoutException ignored) {}
 
-        // ✅ Verify cart (same xpath)
+        // verify mini cart qty visible
         try {
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@class='qty']")));
             System.out.println("✔ Product added to cart (verified)");

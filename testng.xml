@@ -8,13 +8,75 @@
         <listener class-name="Listeners.TestListener"/>
     </listeners>
 
-    <test name="Home and other Test">
+   <!-- ✅ HOME -->
+    <test name="01 - HOME (homepage group)">
+        <groups>
+            <run>
+                <include name="homepage"/>
+            </run>
+        </groups>
         <classes>
-            <class name="TestPages.HomeTest" />
-            <class name="TestPages.PLPTest" />
-            <class name="TestPages.PDPTest" />
-            <class name="TestPages.MiniCartTest" />
-            <class name="TestPages.CheckOutTest" />
+            <class name="TestPages.HomeTest"/>
+        </classes>
+    </test>
+
+    <!-- ✅ PLP -->
+    <test name="02 - PLP (plp group)">
+        <groups>
+            <run>
+                <include name="plp"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="TestPages.PLPTest"/>
+        </classes>
+    </test>
+
+    <!-- ✅ PDP -->
+    <test name="03 - PDP (pdp group)">
+        <groups>
+            <run>
+                <include name="pdp"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="TestPages.PDPTest"/>
+        </classes>
+    </test>
+
+    <!-- ✅ MINICART -->
+    <test name="04 - MINICART (minicart group)">
+        <groups>
+            <run>
+                <include name="minicart"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="TestPages.MiniCartTest"/>
+        </classes>
+    </test>
+
+    <!-- ✅ CHECKOUT -->
+    <test name="05 - CHECKOUT (checkout group)">
+        <groups>
+            <run>
+                <include name="checkout"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="TestPages.CheckOutTest"/>
+        </classes>
+    </test>
+
+    <!-- ✅ E2E -->
+    <test name="06 - E2E (e2e group)">
+        <groups>
+            <run>
+                <include name="e2e"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="TestPages.E2ETest"/>
         </classes>
     </test>
 

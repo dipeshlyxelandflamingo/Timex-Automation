@@ -19,6 +19,30 @@ public class PLPPage {
     WebDriverWait wait;
     JavascriptExecutor js;
     Actions actions;
+    
+    
+ // Central constants
+    private static final String PLP_URL =
+            "https://shop.timexindia.com/collections/mens?usf_sort=bestselling";
+
+    private static final String PLP_URL_CONTAINS = "/collections/mens";
+
+    // Public entry point for tests
+    public void openPLP() {
+        ensureOnPLP();
+    }
+
+    private void ensureOnPLP() {
+        String currentUrl = driver.getCurrentUrl();
+
+        if (currentUrl == null || !currentUrl.contains(PLP_URL_CONTAINS)) {
+            System.out.println("⚠️ Not on PLP. Navigating directly to PLP.");
+            driver.get(PLP_URL);
+        } else {
+            System.out.println("✔ Already on PLP.");
+        }
+    }
+    
 
     public PLPPage(WebDriver driver) {
         this.driver = driver;
@@ -28,7 +52,7 @@ public class PLPPage {
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(isLinux ? 35 : 25));
 
         this.js = (JavascriptExecutor) driver;
-        this.actions = new Actions(driver);
+        //this.actions = new Actions(driver);
     }
 
     public void clickshowfilter() {
@@ -146,7 +170,7 @@ public class PLPPage {
 
         waitForProductsToLoad();
 
-        By closeCaseDiameterfilter = By.xpath("(//div[@class='usf-title usf-no-select'])[3]");
+        By closeCaseDiameterfilter = By.xpath("(//div[@class='usf-title usf-no-select'])[4]");
 
         // ✅ Cleanup ALWAYS runs
         try {
@@ -275,11 +299,5 @@ public class PLPPage {
         }
     }
     
-    private void ensureOnPLP() {
-        String url = driver.getCurrentUrl();
-        if (!url.contains("/collections/mens")) {
-            System.out.println("⚠️ Not on PLP, opening PLP directly. Current URL: " + url);
-            driver.get("https://shop.timexindia.com/collections/mens?usf_sort=bestselling");
-        }
+    
     }
-}

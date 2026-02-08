@@ -13,7 +13,7 @@ import org.testng.Assert;
 
 public class CheckOutPage {
 
-	 WebDriver driver;
+	    WebDriver driver;
 	    WebDriverWait wait;
 
 	    public CheckOutPage(WebDriver driver) {

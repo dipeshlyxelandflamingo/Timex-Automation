@@ -2,55 +2,44 @@ package TestPages;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import Base.BaseClass;
+import Listeners.TestListener;
 import Pages.HomePage;
 import Pages.MiniCartPage;
 import Pages.PDPPage;
 import Pages.PLPPage;
 
-
+@Listeners(TestListener.class)
 public class MiniCartTest extends BaseClass {
 
-	HomePage home;
-    PLPPage plp;
-    PDPPage pdp;
+	PDPPage pdp;
     MiniCartPage miniCart;
 
-    @BeforeClass
-    public void initFlow() throws Exception {
+    @BeforeClass (alwaysRun = true)
+    public void initFlow() {
 
-        home = new HomePage(driver);
-        home.goToWatchesCategory();
+        // 1) Open PDP directly (use a stable PDP URL)
+        driver.get("https://shop.timexindia.com/products/tw000t310");
 
-        plp = new PLPPage(driver);
-
-        boolean opened = false;
-        for (int i = 0; i < 5; i++) {
-            try {
-                plp.clickProducts(i);
-                opened = true;
-                System.out.println("✔ Opened product index: " + i);
-                break;
-            } catch (Exception e) {
-                System.out.println("❌ Failed to open product index: " + i + " | " + e.getMessage());
-            }
-        }
-
-        if (!opened) {
-            Assert.fail("Failed to open any product from PLP (0-4)");
-        }
-
+        // 2) Add to cart from PDP
         pdp = new PDPPage(driver);
-        pdp.addProductToCart();
 
+        boolean added = pdp.addProductToCart();
+        if (!added) {
+            Assert.fail("❌ Add to cart failed on PDP. MiniCart flow can't continue.");
+        }
+
+        // 3) Mini cart page init (NO openMiniCart)
         miniCart = new MiniCartPage(driver);
-        miniCart.waitForMiniCartVisible();
-        Assert.assertFalse(miniCart.isCartEmpty(), "❌ Product not added, mini cart empty");
+
+        // ✅ Important: fail early if mini cart is empty
+        miniCart.failIfCartEmpty();
     }
 
-    @Test(priority = 1, description = "Enter pincode in mini cart")
+    @Test(priority = 1, groups = {"minicart"})
     public void EnterPincode() {
         try {
             miniCart.enterPincode("201306");
@@ -59,7 +48,7 @@ public class MiniCartTest extends BaseClass {
         }
     }
 
-    @Test(priority = 2, description = "Proceed to quick checkout from mini cart")
+    @Test(priority = 2,groups = {"minicart"})
     public void ClickOnGoQuickCheckoutButton() {
         try {
             miniCart.goToQuickCheckout();

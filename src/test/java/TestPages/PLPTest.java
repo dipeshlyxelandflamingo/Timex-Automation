@@ -10,89 +10,93 @@ import Listeners.TestListener;
 import Pages.HomePage;
 import Pages.PLPPage;
 
+@Listeners(TestListener.class)
 public class PLPTest extends BaseClass {
 
-	HomePage home;
 	PLPPage plp;
 
-	@BeforeClass
+	@BeforeClass(alwaysRun = true)
 	public void init() throws Exception {
-		home = new HomePage(driver);
-		home.goToWatchesCategory();
 		plp = new PLPPage(driver);
+
+		// ✅ Direct open PLP (no dependency on HomeTest)
+		plp.openPLP();
 	}
 
-	@Test(priority = 1)
+	@Test(priority = 1, groups = { "plp" })
 	public void clickOnShowFilter() {
 		try {
 			plp.clickshowfilter();
 		} catch (Exception e) {
-			Assert.fail("Failed to Click on Show Filter Option:");
+			Assert.fail("Failed to Click on Show Filter Option", e);
 		}
 	}
 
-	@Test(priority = 2)
+	@Test(priority = 2, groups = { "plp" })
 	public void closegenderandpriceFilter() {
 		try {
 			plp.closeGenderandpricefilter();
 		} catch (Exception e) {
-			Assert.fail("Failed to close/open Gender & Price filter:");
+			Assert.fail("Failed to close/open Gender & Price filter", e);
 		}
 	}
 
-	@Test(priority = 3)
+	@Test(priority = 3, groups = { "plp" })
 	public void ClickOnBandColorFilter() {
 		try {
-			plp.openandselectbandcolorfilter("Black", 55);// 54
+			plp.openandselectbandcolorfilter("Black", 54);
 		} catch (Exception e) {
-			Assert.fail("Failed Band Color Filter: ");
+			Assert.fail("Failed Band Color Filter", e);
 		}
 	}
 
-	@Test(priority = 4)
+	@Test(priority = 4, groups = { "plp" })
 	public void ClickOnDialColorFilter() {
 		try {
-			plp.openandselectDialcolorfilter("Beige", 3);// 3
+			plp.openandselectDialcolorfilter("Beige", 3);
 		} catch (Exception e) {
-			Assert.fail("Failed Dial Color Filter: ");
+			Assert.fail("Failed Dial Color Filter", e);
 		}
 	}
 
-	@Test(priority = 5)
+	@Test(priority = 5, groups = { "plp" })
 	public void ClickOnCaseDiameterFilter() {
 		try {
-			plp.openandselectCaseDiameterfilter("30 MM", 3);// 1
+			plp.openandselectCaseDiameterfilter("30 MM", 1);
 		} catch (Exception e) {
-			Assert.fail("Failed Case Diameter Filter: ");
+			Assert.fail("Failed Case Diameter Filter", e);
 		}
 	}
 
-	@Test(priority = 6)
+	@Test(priority = 6, groups = { "plp" })
 	public void ClickOnBandMaterialcolorFilter() {
 		try {
-			plp.openandselectbandmaterialfilter("Blue", 6);// 6
+			// ⚠️ NOTE: tumhara method "bandmaterialfilter" me actual value "Blue" hai,
+			// agar ye real site par band material nahi hai, to yaha value correct rakhna.
+			plp.openandselectbandmaterialfilter("Blue", 6);
 		} catch (Exception e) {
-			Assert.fail("Failed Band Material Filter:");
+			Assert.fail("Failed Band Material Filter", e);
 		}
 	}
 
-	@Test(priority = 7)
+	@Test(priority = 7, groups = { "plp" })
 	public void clickOnProducts() {
-		 boolean opened = false;
 
-		    for (int i = 0; i < 5; i++) {   // first 5 products try
-		        try {
-		            plp.clickProducts(i);
-		            opened = true;
-		            System.out.println("✔ Opened product index: " + i);
-		            break;
-		        } catch (Exception e) {
-		            System.out.println("❌ Failed to open product index: " + i + " | " + e.getMessage());
-		        }
-		    }
+		boolean opened = false;
 
-		    if (!opened) {
-		        Assert.fail("Failed to open any product from PLP (0-4)");
-		    }
+		for (int i = 0; i < 5; i++) {
+			try {
+				plp.clickProducts(i);
+				opened = true;
+				System.out.println("✔ Opened product index: " + i);
+				break;
+			} catch (Exception e) {
+				System.out.println("❌ Failed to open product index: " + i + " | " + e.getMessage());
+			}
+		}
+
+		if (!opened) {
+			Assert.fail("Failed to open any product from PLP (0-4)");
 		}
 	}
+}

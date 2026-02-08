@@ -9,67 +9,69 @@ import Base.BaseClass;
 import Pages.HomePage;
 import Listeners.TestListener;
 
+
+@Listeners(TestListener.class)
+@Test(groups = {"Homepage"})
 public class HomeTest extends BaseClass {
 
-	HomePage home;
+    HomePage home;
 
-	@BeforeClass
-	public void setUpHomePage() {
-		// Pass static driver from BaseClass to Page class
-		home = new HomePage(driver);
-	}
+    @BeforeClass(alwaysRun = true)
+    public void setUpHomePage() {
+        home = new HomePage(driver);
+    }
 
-	@Test(priority = 1)
-	public void ClickOnMarlinShopNow() {
-		try {
-			home.clickMarlinShopNowAndCloseTab();
-		} catch (Exception e) {
-			Assert.fail("Failed to Click on MarlinShopNow Button", e);
-		}
-	}
+    @Test(priority = 1, groups = {"homepage"})
+    public void ClickOnMarlinShopNow() {
+        try {
+            home.clickMarlinShopNowAndCloseTab();
+        } catch (Exception e) {
+            Assert.fail("Failed to Click on MarlinShopNow Button", e);
+        }
+    }
 
-	@Test(priority = 2)
-	public void ClickOnLatestReleaseProducts() {
-		try {
-			home.clickLatestReleaseProducts();
-		} catch (Exception e) {
-			Assert.fail("Failed to Click on Latest Release Products List", e);
-		}
-	}
+    @Test(priority = 2, groups = {"homepage"})
+    public void ClickOnLatestReleaseProducts() {
+        try {
+            home.clickLatestReleaseProducts();
+        } catch (Exception e) {
+            Assert.fail("Failed to Click on Latest Release Products List", e);
+        }
+    }
 
-	@Test(priority = 3)
-	public void clickOnPopularCategoryProducts() {
-		try {
-			home.clickPopularCategory();
-		} catch (Exception e) {
-			Assert.fail("Failed to Click on Popular Category Products List", e);
-		}
-	}
+    @Test(priority = 3, groups = {"homepage"})
+    public void clickOnPopularCategoryProducts() {
+        try {
+            home.clickPopularCategory();
+        } catch (Exception e) {
+            Assert.fail("Failed to Click on Popular Category Products List", e);
+        }
+    }
 
-	@Test(priority = 4)
-	public void ClickOnLeatherStrapWatchButton() {
-		try {
-			home.clickLeatherStrapWatch();
-		} catch (Exception e) {
-			Assert.fail("Failed to Click on Leather Strap Watch Button", e);
-		}
-	}
+    @Test(priority = 4, groups = {"homepage"})
+    public void ClickOnLeatherStrapWatchButton() {
+        try {
+            home.clickLeatherStrapWatch();
+        } catch (Exception e) {
+            Assert.fail("Failed to Click on Leather Strap Watch Button", e);
+        }
+    }
 
-	@Test(priority = 5)
-	public void ClickOnMoreToLoveSection() {
-		try {
-			home.clickMoreToLoveSection();
-		} catch (Exception e) {
-			Assert.fail("Failed to Click on More To Love Section", e);
-		}
-	}
+    @Test(priority = 5, groups = {"homepage"})
+    public void ClickOnMoreToLoveSection() {
+        try {
+            home.clickMoreToLoveSection();
+        } catch (Exception e) {
+            Assert.fail("Failed to Click on More To Love Section", e);
+        }
+    }
 
-	@Test(priority = 6)
-	public void ClickOnWatchesCategory() {
-		try {
-			home.goToWatchesCategory();
-		} catch (Exception e) {
-			Assert.fail("Failed to Click on Watches Category", e);
-		}
-	}
+    @Test(priority = 6, groups = {"homepage"})
+    public void ClickOnWatchesCategory() {
+        try {
+            home.goToWatchesCategory();
+        } catch (Exception e) {
+            Assert.fail("Failed to Click on Watches Category", e);
+        }
+    }
 }
