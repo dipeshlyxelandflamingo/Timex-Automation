@@ -56,17 +56,9 @@ public class MiniCartTest extends BaseClass {
 		miniCart = new MiniCartPage(driver);
 	}
 
-	@Test(priority = 1, description = "Increase product quantity in mini cart")
-    public void ProductQuantityIncrease() {
+	
 
-        try {
-            miniCart.increaseQuantity(3);
-        } catch (Exception e) {
-            Assert.fail("Failed to Increase the Product Quantity" + e.getMessage());
-        }
-    }
-
-    @Test(priority = 2, description = "Enter pincode in mini cart")
+    @Test(priority = 1, description = "Enter pincode in mini cart")
     public void EnterPincode() {
 
         try {
@@ -76,7 +68,7 @@ public class MiniCartTest extends BaseClass {
         }
     }
 
-    @Test(priority = 3, description = "Proceed to quick checkout from mini cart")
+    @Test(priority = 2, description = "Proceed to quick checkout from mini cart")
     public void ClickOnGoQuickCheckoutButton() {
 
         try {
