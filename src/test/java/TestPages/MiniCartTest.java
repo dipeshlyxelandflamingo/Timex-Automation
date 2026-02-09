@@ -13,6 +13,7 @@ import Pages.PDPPage;
 import Pages.PLPPage;
 
 @Listeners(TestListener.class)
+@Test(groups = {"MiniCart"})
 public class MiniCartTest extends BaseClass {
 
 	PDPPage pdp;
@@ -39,7 +40,7 @@ public class MiniCartTest extends BaseClass {
         miniCart.failIfCartEmpty();
     }
 
-    @Test(priority = 1, groups = {"minicart"})
+    @Test(priority = 1, groups = {"MiniCart"})
     public void EnterPincode() {
         try {
             miniCart.enterPincode("201306");
@@ -48,7 +49,7 @@ public class MiniCartTest extends BaseClass {
         }
     }
 
-    @Test(priority = 2,groups = {"minicart"})
+    @Test(priority = 2,groups = {"MiniCart"})
     public void ClickOnGoQuickCheckoutButton() {
         try {
             miniCart.goToQuickCheckout();

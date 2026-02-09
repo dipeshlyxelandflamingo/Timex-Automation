@@ -10,9 +10,10 @@ import Pages.E2E;
 
 
 @Listeners(TestListener.class)
+@Test(groups = {"E2E"})
 public class E2ETest extends BaseClass {
 
-    @Test(groups = {"e2e"}, description = "Complete E2E Flow: Home → PLP → PDP → MiniCart → Checkout")
+    @Test(groups = {"E2E"}, description = "Complete E2E Flow: Home → PLP → PDP → MiniCart → Checkout")
     public void Complete_E2E_Flow_Test() {
         try {
             E2E flow = new E2E(driver);

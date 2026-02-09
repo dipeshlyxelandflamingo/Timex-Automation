@@ -3,16 +3,15 @@
 
 <suite name="Timex Suite" verbose="1">
 
-    <!-- Optional: Global Listener -->
     <listeners>
         <listener class-name="Listeners.TestListener"/>
     </listeners>
 
-   <!-- ✅ HOME -->
-    <test name="01 - HOME (homepage group)">
+    <!-- ✅ HOME -->
+    <test name="01 - HOME (Homepage group)">
         <groups>
             <run>
-                <include name="homepage"/>
+                <include name="Homepage"/>
             </run>
         </groups>
         <classes>
@@ -21,10 +20,10 @@
     </test>
 
     <!-- ✅ PLP -->
-    <test name="02 - PLP (plp group)">
+    <test name="02 - PLP (PLP group)">
         <groups>
             <run>
-                <include name="plp"/>
+                <include name="PLP"/>
             </run>
         </groups>
         <classes>
@@ -33,10 +32,10 @@
     </test>
 
     <!-- ✅ PDP -->
-    <test name="03 - PDP (pdp group)">
+    <test name="03 - PDP (PDP group)">
         <groups>
             <run>
-                <include name="pdp"/>
+                <include name="PDP"/>
             </run>
         </groups>
         <classes>
@@ -45,10 +44,10 @@
     </test>
 
     <!-- ✅ MINICART -->
-    <test name="04 - MINICART (minicart group)">
+    <test name="04 - MINICART (MiniCart group)">
         <groups>
             <run>
-                <include name="minicart"/>
+                <include name="MiniCart"/>
             </run>
         </groups>
         <classes>
@@ -57,10 +56,10 @@
     </test>
 
     <!-- ✅ CHECKOUT -->
-    <test name="05 - CHECKOUT (checkout group)">
+    <test name="05 - CHECKOUT (CheckOut group)">
         <groups>
             <run>
-                <include name="checkout"/>
+                <include name="CheckOut"/>
             </run>
         </groups>
         <classes>
@@ -69,10 +68,10 @@
     </test>
 
     <!-- ✅ E2E -->
-    <test name="06 - E2E (e2e group)">
+    <test name="06 - E2E (E2E group)">
         <groups>
             <run>
-                <include name="e2e"/>
+                <include name="E2E"/>
             </run>
         </groups>
         <classes>

@@ -11,6 +11,7 @@ import Pages.HomePage;
 import Pages.PLPPage;
 
 @Listeners(TestListener.class)
+@Test(groups = {"PLP"})
 public class PLPTest extends BaseClass {
 
 	PLPPage plp;
@@ -23,7 +24,7 @@ public class PLPTest extends BaseClass {
 		plp.openPLP();
 	}
 
-	@Test(priority = 1, groups = { "plp" })
+	@Test(priority = 1, groups = { "PLP" })
 	public void clickOnShowFilter() {
 		try {
 			plp.clickshowfilter();
@@ -32,7 +33,7 @@ public class PLPTest extends BaseClass {
 		}
 	}
 
-	@Test(priority = 2, groups = { "plp" })
+	@Test(priority = 2, groups = { "PLP" })
 	public void closegenderandpriceFilter() {
 		try {
 			plp.closeGenderandpricefilter();
@@ -41,7 +42,7 @@ public class PLPTest extends BaseClass {
 		}
 	}
 
-	@Test(priority = 3, groups = { "plp" })
+	@Test(priority = 3, groups = { "PLP" })
 	public void ClickOnBandColorFilter() {
 		try {
 			plp.openandselectbandcolorfilter("Black", 54);
@@ -50,7 +51,7 @@ public class PLPTest extends BaseClass {
 		}
 	}
 
-	@Test(priority = 4, groups = { "plp" })
+	@Test(priority = 4, groups = { "PLP" })
 	public void ClickOnDialColorFilter() {
 		try {
 			plp.openandselectDialcolorfilter("Beige", 3);
@@ -59,7 +60,7 @@ public class PLPTest extends BaseClass {
 		}
 	}
 
-	@Test(priority = 5, groups = { "plp" })
+	@Test(priority = 5, groups = { "PLP" })
 	public void ClickOnCaseDiameterFilter() {
 		try {
 			plp.openandselectCaseDiameterfilter("30 MM", 1);
@@ -68,7 +69,7 @@ public class PLPTest extends BaseClass {
 		}
 	}
 
-	@Test(priority = 6, groups = { "plp" })
+	@Test(priority = 6, groups = { "PLP" })
 	public void ClickOnBandMaterialcolorFilter() {
 		try {
 			// ⚠️ NOTE: tumhara method "bandmaterialfilter" me actual value "Blue" hai,
@@ -79,7 +80,7 @@ public class PLPTest extends BaseClass {
 		}
 	}
 
-	@Test(priority = 7, groups = { "plp" })
+	@Test(priority = 7, groups = { "PLP" })
 	public void clickOnProducts() {
 
 		boolean opened = false;

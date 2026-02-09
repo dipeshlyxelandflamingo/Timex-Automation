@@ -18,6 +18,7 @@ import Pages.PDPPage;
 import Pages.PLPPage;
 
 @Listeners(TestListener.class)
+@Test(groups = {"PDP"})
 public class PDPTest extends BaseClass {
 
     PDPPage pdp;
@@ -28,7 +29,7 @@ public class PDPTest extends BaseClass {
         pdp.openPDP(); // ✅ always same PDP
     }
 
-    @Test(priority = 1, groups = {"pdp"})
+    @Test(priority = 1, groups = {"PDP"})
     public void TC_ClickOnRecommendationsProducts() {
         try {
             pdp.clickOnProductRecommendationsAndCloseTab();
@@ -37,7 +38,7 @@ public class PDPTest extends BaseClass {
         }
     }
 
-    @Test(priority = 2, groups = {"pdp"})
+    @Test(priority = 2, groups = {"PDP"})
     public void ClickOnAddToCartButton() {
         try {
             boolean added = pdp.addProductToCart();

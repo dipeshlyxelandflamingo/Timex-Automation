@@ -14,6 +14,7 @@ import Pages.PDPPage;
 
 
 @Listeners(TestListener.class)
+@Test(groups = {"CheckOut"})
 public class CheckOutTest extends BaseClass {
 
 	private static final String PDP_URL = "https://shop.timexindia.com/products/tw000t310";
@@ -42,7 +43,7 @@ public class CheckOutTest extends BaseClass {
 		checkout = new CheckOutPage(driver);
 	}
 
-	@Test(priority = 1, groups = {"checkout"})
+	@Test(priority = 1, groups = {"CheckOut"})
 	public void VerifyCheckoutVisible() {
 		try {
 			checkout.verifyCheckoutVisible();
@@ -51,7 +52,7 @@ public class CheckOutTest extends BaseClass {
 		}
 	}
 
-	@Test(priority = 2, groups = {"checkout"})
+	@Test(priority = 2, groups = {"CheckOut"})
 	public void VerifyCheckoutEnabled() {
 		try {
 			checkout.verifyCheckoutEnabled();

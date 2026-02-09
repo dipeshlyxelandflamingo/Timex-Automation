@@ -21,7 +21,7 @@ public class HomeTest extends BaseClass {
         home = new HomePage(driver);
     }
 
-    @Test(priority = 1, groups = {"homepage"})
+    @Test(priority = 1, groups = {"Homepage"})
     public void ClickOnMarlinShopNow() {
         try {
             home.clickMarlinShopNowAndCloseTab();
@@ -30,7 +30,7 @@ public class HomeTest extends BaseClass {
         }
     }
 
-    @Test(priority = 2, groups = {"homepage"})
+    @Test(priority = 2, groups = {"Homepage"})
     public void ClickOnLatestReleaseProducts() {
         try {
             home.clickLatestReleaseProducts();
@@ -39,7 +39,7 @@ public class HomeTest extends BaseClass {
         }
     }
 
-    @Test(priority = 3, groups = {"homepage"})
+    @Test(priority = 3, groups = {"Homepage"})
     public void clickOnPopularCategoryProducts() {
         try {
             home.clickPopularCategory();
@@ -48,7 +48,7 @@ public class HomeTest extends BaseClass {
         }
     }
 
-    @Test(priority = 4, groups = {"homepage"})
+    @Test(priority = 4, groups = {"Homepage"})
     public void ClickOnLeatherStrapWatchButton() {
         try {
             home.clickLeatherStrapWatch();
@@ -57,7 +57,7 @@ public class HomeTest extends BaseClass {
         }
     }
 
-    @Test(priority = 5, groups = {"homepage"})
+    @Test(priority = 5, groups = {"Homepage"})
     public void ClickOnMoreToLoveSection() {
         try {
             home.clickMoreToLoveSection();
@@ -66,7 +66,7 @@ public class HomeTest extends BaseClass {
         }
     }
 
-    @Test(priority = 6, groups = {"homepage"})
+    @Test(priority = 6, groups = {"Homepage"})
     public void ClickOnWatchesCategory() {
         try {
             home.goToWatchesCategory();
