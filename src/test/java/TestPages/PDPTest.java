@@ -18,7 +18,7 @@ import Pages.PDPPage;
 import Pages.PLPPage;
 
 @Listeners(TestListener.class)
-@Test(groups = {"PDP"})
+@Test(groups = {"03_PDP"})
 public class PDPTest extends BaseClass {
 
     PDPPage pdp;

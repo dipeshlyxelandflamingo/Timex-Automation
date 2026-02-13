@@ -45,7 +45,7 @@ public class PLPTest extends BaseClass {
 	@Test(priority = 3, groups = { "PLP" })
 	public void ClickOnBandColorFilter() {
 		try {
-			plp.openandselectbandcolorfilter("Black", 54);
+			plp.openandselectbandcolorfilter("Black", 55);
 		} catch (Exception e) {
 			Assert.fail("Failed Band Color Filter", e);
 		}
@@ -54,7 +54,7 @@ public class PLPTest extends BaseClass {
 	@Test(priority = 4, groups = { "PLP" })
 	public void ClickOnDialColorFilter() {
 		try {
-			plp.openandselectDialcolorfilter("Beige", 3);
+			plp.openandselectDialcolorfilter("Beige", 4);
 		} catch (Exception e) {
 			Assert.fail("Failed Dial Color Filter", e);
 		}
@@ -72,8 +72,7 @@ public class PLPTest extends BaseClass {
 	@Test(priority = 6, groups = { "PLP" })
 	public void ClickOnBandMaterialcolorFilter() {
 		try {
-			// ⚠️ NOTE: tumhara method "bandmaterialfilter" me actual value "Blue" hai,
-			// agar ye real site par band material nahi hai, to yaha value correct rakhna.
+			
 			plp.openandselectbandmaterialfilter("Blue", 6);
 		} catch (Exception e) {
 			Assert.fail("Failed Band Material Filter", e);

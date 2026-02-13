@@ -4,10 +4,10 @@
   <listeners>
     <listener class-name="Listeners.TestListener"/>
   </listeners>
-  <test thread-count="5" name="02 - PLP (plp group)(failed)">
+  <test thread-count="5" name="02 - PLP (PLP group)(failed)">
     <groups>
       <run>
-        <include name="plp"/>
+        <include name="PLP"/>
       </run>
     </groups>
     <classes>
@@ -20,5 +20,5 @@
         </methods>
       </class> <!-- TestPages.PLPTest -->
     </classes>
-  </test> <!-- 02 - PLP (plp group)(failed) -->
+  </test> <!-- 02 - PLP (PLP group)(failed) -->
 </suite> <!-- Failed suite [Timex Suite] -->
