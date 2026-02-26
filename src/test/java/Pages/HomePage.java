@@ -167,7 +167,7 @@ public class HomePage {
 	/* ---------------- TC_04 ---------------- */
 
 	public void clickPopularCategory() {
-		By category = By.xpath("(//a[@href='/collections/offers'])[4]");
+		By category = By.xpath("(//a[@href='/collections/offers-old'])[2]");
 		openInNewTabAndClose(category);
 	}
 
